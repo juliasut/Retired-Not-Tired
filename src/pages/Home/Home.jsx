@@ -1,10 +1,10 @@
-import { database } from '../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import { database } from "../config/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 const Home = () => {
   const [user, setUser] = useState(null);
-  const ref = collection(database, 'user');
+  const ref = collection(database, "user");
 
   useEffect(() => {
     const getUser = async () => {
@@ -20,6 +20,7 @@ const Home = () => {
 
   return (
     <div>
+      //tami work here only! retard..
       <h1>Retired Not Tired</h1>
       {user &&
         user.map((user) => (
