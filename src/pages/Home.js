@@ -28,6 +28,7 @@ const Home = () => {
             <h2>
               {user.firstName} <span>{user.lastName}</span>
             </h2>
+            <p>{user.displayName}</p>
           </div>
         ))}
     </div>
