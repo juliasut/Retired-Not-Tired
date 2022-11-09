@@ -1,4 +1,4 @@
-import { database } from '../config/firebase';
+import { database } from '../../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <div>
-      //tami work here only! retard..
+      {/* tami work here only! retard.. */}
       <h1>Retired Not Tired</h1>
       {user &&
         user.map((user) => (
