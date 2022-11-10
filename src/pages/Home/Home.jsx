@@ -1,37 +1,29 @@
-import { database } from '../../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import useEvents from '../../hooks/useEvents';
 
 const Home = () => {
-  const [user, setUser] = useState(null);
-  const ref = collection(database, 'user');
+  const { events, isError, isLoading } = useEvents();
 
-  useEffect(() => {
-    const getUser = async () => {
-      const snapshot = await getDocs(ref);
-      let results = [];
-      snapshot.docs.forEach((doc) => {
-        results.push({ id: doc.id, ...doc.data() });
-      });
-      setUser(results);
-    };
-    getUser();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error</div>;
 
   return (
     <div>
       {/* tami work here only! retard.. */}
       <h1>Retired Not Tired</h1>
-      {user &&
-        user.map((user) => (
-          <div key={user.id}>
-            {/* {console.log(user)} */}
-            <h2>
-              {user.firstName} <span>{user.lastName}</span>
-            </h2>
-            <p>{user.displayName}</p>
+
+      {events &&
+        events.map((event) => (
+          <div key={event.id}>
+            <h2>{event.title}</h2>
           </div>
         ))}
+      {/* <label>
+        <input type="text" value="email" required />
+      </label>
+      <label>
+        <input type="password" value="password" required />
+      </label>
+      <button type="submit">Submit</button> */}
     </div>
   );
 };
