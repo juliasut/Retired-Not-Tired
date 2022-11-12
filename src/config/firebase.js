@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCTUdmauc2ooohHRRQ8kXQsAji2gLQnc-I',
-  authDomain: 'retired-not-tired.firebaseapp.com',
-  projectId: 'retired-not-tired',
-  storageBucket: 'retired-not-tired.appspot.com',
-  messagingSenderId: '101143551119',
-  appId: '1:101143551119:web:e880854c99a92c1a0ba4fa',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
 };
 
 //* Initialize firebase
