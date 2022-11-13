@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import "./home.css";
-import "react-calendar/dist/Calendar.css";
+import './home.css';
+import 'react-calendar/dist/Calendar.css';
 // import Calendar from "react-calendar";
-import CalendarPicker from "@mui/x-date-pickers-pro/CalendarPicker";
-import Logo from "../../assets/images/retired-not-tired-just-flip-flops.png";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import { format } from "date-fns";
-import { Link } from "react-router-dom";
+// import CalendarPicker from '@mui/x-date-pickers-pro/CalendarPicker';
+import Logo from '../../assets/images/retired-not-tired-just-flip-flops.png';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 // import Icon from "@mui/material/Icon;
 import { database } from '../../config/firebase';
@@ -18,12 +18,11 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const ref = collection(database, 'user');
 
-function Home() {
   const dummyActivities = [
-    { id: 1, title: "swimming", date: new Date() },
-    { id: 2, title: "golf", date: new Date() },
-    { id: 3, title: "bingo", date: new Date() },
-    { id: 4, title: "boxing", date: new Date() },
+    { id: 1, title: 'swimming', date: new Date() },
+    { id: 2, title: 'golf', date: new Date() },
+    { id: 3, title: 'bingo', date: new Date() },
+    { id: 4, title: 'boxing', date: new Date() },
   ];
 
   return (
@@ -41,14 +40,22 @@ function Home() {
       <div className="activity-containter">
         {dummyActivities.map((activity) => (
           <Link to={`/activity/${activity.id}`}>
-            <Card sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }} key={activity.id}>
+            <Card
+              sx={{
+                display: 'inline-block',
+                mx: '2px',
+                transform: 'scale(0.8)',
+              }}
+              key={activity.id}
+            >
               <p>{activity.title}</p>
-              <p>{format(activity.date, "dd-MM-yyyy")}</p>
+              <p>{format(activity.date, 'dd-MM-yyyy')}</p>
             </Card>
           </Link>
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default Home;
