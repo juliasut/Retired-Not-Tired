@@ -1,3 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import "./home.css";
+import "react-calendar/dist/Calendar.css";
+// import Calendar from "react-calendar";
+import CalendarPicker from "@mui/x-date-pickers-pro/CalendarPicker";
+import Logo from "../../assets/images/retired-not-tired-just-flip-flops.png";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import { format } from "date-fns";
+import { Link } from "react-router-dom";
+
+// import Icon from "@mui/material/Icon;
 import { database } from '../../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -6,34 +18,37 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const ref = collection(database, 'user');
 
-  useEffect(() => {
-    const getUser = async () => {
-      const snapshot = await getDocs(ref);
-      let results = [];
-      snapshot.docs.forEach((doc) => {
-        results.push({ id: doc.id, ...doc.data() });
-      });
-      setUser(results);
-    };
-    getUser();
-  }, []);
+function Home() {
+  const dummyActivities = [
+    { id: 1, title: "swimming", date: new Date() },
+    { id: 2, title: "golf", date: new Date() },
+    { id: 3, title: "bingo", date: new Date() },
+    { id: 4, title: "boxing", date: new Date() },
+  ];
 
   return (
-    <div>
-      {/* tami work here only! retard.. */}
-      <h1>Retired Not Tired</h1>
-      {user &&
-        user.map((user) => (
-          <div key={user.id}>
-            {/* {console.log(user)} */}
-            <h2>
-              {user.firstName} <span>{user.lastName}</span>
-            </h2>
-            <p>{user.displayName}</p>
-          </div>
-        ))}
+    <div className="container">
+      <Typography variant="h4" component="h3" align="center" gutterBottom>
+        Stay Active
+      </Typography>
+      <Typography variant="h3" component="h1" align="center" gutterBottom>
+        Retrired Not Tired
+      </Typography>
+      <img className="logo" src={Logo} alt="Retirement flip flop" />
+      <Typography variant="h3" component="h2" align="center" gutterBottom>
+        Activites on your schedule:
+      </Typography>
+      <div className="activity-containter">
+        {dummyActivities.map((activity) => (
+          <Link to={`/activity/${activity.id}`}>
+            <Card sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }} key={activity.id}>
+              <p>{activity.title}</p>
+              <p>{format(activity.date, "dd-MM-yyyy")}</p>
+            </Card>
+          </Link>
+      </div>
     </div>
   );
-};
+}
 
 export default Home;
