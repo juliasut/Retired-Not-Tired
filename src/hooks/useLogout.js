@@ -1,9 +1,9 @@
 import { authentication } from '../config/firebase';
-import { signOut } from 'firebase/auth';
 
 export const Logout = () => {
   const logout = () => {
-    signOut(authentication)
+    authentication
+      .signOut(authentication)
       .then((res) => {
         console.log('User signed out', res);
       })
