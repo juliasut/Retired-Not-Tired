@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Error from "./pages/Page404/Page404";
 
+
 const queryClient = new QueryClient();
 
 function App() {

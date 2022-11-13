@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./home.css";
-// import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 // import Calendar from "react-calendar";
 import CalendarPicker from "@mui/x-date-pickers-pro/CalendarPicker";
@@ -10,10 +9,14 @@ import Card from "@mui/material/Card";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
-// import Icon from "@mui/material/Icon";
-// const Home = () => {
-// const [date, setDate] = useState(new Date());
-//  const element = <FontAwesomeIcon icon={faCoffee} />;
+// import Icon from "@mui/material/Icon;
+import { database } from '../../config/firebase';
+import { collection, getDocs } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+
+const Home = () => {
+  const [user, setUser] = useState(null);
+  const ref = collection(database, 'user');
 
 function Home() {
   const dummyActivities = [
@@ -43,7 +46,6 @@ function Home() {
               <p>{format(activity.date, "dd-MM-yyyy")}</p>
             </Card>
           </Link>
-        ))}
       </div>
     </div>
   );
