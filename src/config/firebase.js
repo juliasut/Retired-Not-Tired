@@ -24,6 +24,7 @@ const authentication = firebase.auth();
 //* Initialize storage
 const storage = firebase.storage();
 
+//* Timestamp
 const timestamp = firebase.firestore.Timestamp;
 
 export { database, authentication, timestamp, storage };

@@ -1,13 +1,15 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
-import { authentication } from '../config/firebase';
+import { authentication, storage } from '../config/firebase';
 import { useAuthContext } from './useAuthContext';
 
 const useSignup = () => {
-  const [error, setError] = useState(null);
+  const [cancelled, setCancelled] = useState(false);
   const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password, displayName) => {
+  const signup = async (email, password, displayName, profilePic) => {
     setError(null);
     setIsPending(true);
     try {
@@ -21,20 +23,35 @@ const useSignup = () => {
         throw new Error('Could not Sign you up');
       }
 
+      //* upload user profile image
+      const uploadPath = `thumbnails/${response.user.uid}/${profilePic.name}`;
+      const image = await storage.ref(uploadPath).put(profilePic);
+      const imageUrl = await image.ref.getDownloadURL();
+
       //* Update user profile with display name
-      await response.user.updateProfile({ displayName });
+      await response.user.updateProfile({ displayName, photoURL: imageUrl });
 
       //* Dispatch login action(change comment!!)
       dispatch({ type: 'LOGIN', payload: response.user });
 
-      setIsPending(false);
-      setError(null);
+      //* Set State
+      if (!cancelled) {
+        setError(null);
+        setIsPending(false);
+      }
     } catch (err) {
-      console.log(err.mesage);
-      setError(err.message);
-      setIsPending(false);
+      if (!cancelled) {
+        console.log(err.mesage);
+        setError(err.message);
+        setIsPending(false);
+      }
     }
   };
+
+  useEffect(() => {
+    setCancelled(false);
+    return () => setCancelled(true);
+  }, []);
 
   return { signup, error, isPending };
 };
