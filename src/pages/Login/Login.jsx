@@ -34,7 +34,7 @@ const Login = () => {
           />
         </label>
         {!isPending && <button>login</button>}
-        {isPending && <button disabled>Loading...</button>}
+        {isPending && <button disabled>Signing in...</button>}
         {error && <p>{error}</p>}
       </form>
     </div>

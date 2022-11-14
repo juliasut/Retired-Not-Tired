@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { authentication } from '../config/firebase';
+import { authentication, database } from '../config/firebase';
 import { useAuthContext } from './useAuthContext';
 
 export const useLogin = (email, password) => {
@@ -13,12 +13,17 @@ export const useLogin = (email, password) => {
     setError(null);
     setIsPending(true);
 
-    //* try to sign user in
+    //* try to sign user in and set online status to online
     try {
       const response = await authentication.signInWithEmailAndPassword(
         email,
         password
       );
+
+      await database
+        .collection('users')
+        .doc(response.user.uid)
+        .update({ online: true });
 
       if (!response) {
         throw new Error('Could not sign you in');

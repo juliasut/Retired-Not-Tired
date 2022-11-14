@@ -18,7 +18,7 @@ function App() {
   return (
     // <QueryClientProvider client={queryClient}>
     <div className="App">
-      {!authIsReady && (
+      {authIsReady && (
         <BrowserRouter>
           <nav className="nav">
             <ul>
@@ -39,7 +39,7 @@ function App() {
                 <>
                   <li>
                     {!isPending && <Link onClick={logout}>Sign Out</Link>}
-                    {isPending && <Link disabled>Signing Out...</Link>}
+                    {isPending && <Link disabled>Logging Out...</Link>}
                   </li>
                   <li>
                     <h3>hello {user.displayName}</h3>{' '}
