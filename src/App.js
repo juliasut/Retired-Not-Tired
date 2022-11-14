@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Error from "./pages/Page404/Page404";
+import SignUp from "./pages/SignUp/SignUp";
 
 
 const queryClient = new QueryClient();
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="*" element={<Error />} />
           </Routes>
           {/* <ReactQueryDevtools initialIsOpen={false} /> */}
