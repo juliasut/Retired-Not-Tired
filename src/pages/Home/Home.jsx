@@ -1,22 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './home.css';
 import 'react-calendar/dist/Calendar.css';
-// import Calendar from "react-calendar";
-// import CalendarPicker from '@mui/x-date-pickers-pro/CalendarPicker';
+
 import Logo from '../../assets/images/retired-not-tired-just-flip-flops.png';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 
-// import Icon from "@mui/material/Icon;
-import { database } from '../../config/firebase';
-
-import { useEffect, useState } from 'react';
-
 const Home = () => {
-  const [user, setUser] = useState(null);
-
   const dummyActivities = [
     { id: 1, title: 'swimming', date: new Date() },
     { id: 2, title: 'golf', date: new Date() },

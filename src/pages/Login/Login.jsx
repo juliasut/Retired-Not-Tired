@@ -6,14 +6,15 @@ import { ReactComponent as BackgroundImage } from '../../assets/images/backgroun
 
 const Login = () => {
   const { login } = useLogin();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    setEmail(data.get('email'));
+    setPassword(data.get('password'));
+    login(email, password);
   };
 
   return (
@@ -87,8 +88,8 @@ const Login = () => {
           <Grid item>
             <Typography variant="body2" color="text.primary" align="center">
               {'Not a member yet? '}
-              <Link href="#" variant="body2" color="text.primary">
-                {'Sign Up'}
+              <Link href="/signup" variant="body2" color="text.primary">
+                {'Sign up'}
               </Link>
             </Typography>
           </Grid>

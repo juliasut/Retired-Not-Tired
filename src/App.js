@@ -1,6 +1,4 @@
 import './App.css';
-// import { QueryClient, QueryClientProvider } from 'react-query';
-// import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login';
@@ -9,14 +7,11 @@ import Error from './pages/Page404/Page404';
 import { useLogout } from './hooks/useLogout';
 import { useAuthContext } from './hooks/useAuthContext';
 
-// const queryClient = new QueryClient();
-
 function App() {
   const { logout, isPending } = useLogout();
   const { user, authIsReady } = useAuthContext();
 
   return (
-    // <QueryClientProvider client={queryClient}>
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
@@ -54,8 +49,6 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="*" element={<Error />} />
           </Routes>
-          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-          {/* </QueryClientProvider> */}
         </BrowserRouter>
       )}
     </div>

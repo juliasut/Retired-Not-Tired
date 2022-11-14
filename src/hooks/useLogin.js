@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { authentication, database } from '../config/firebase';
 import { useAuthContext } from './useAuthContext';
 
-export const useLogin = (email, password) => {
+export const useLogin = () => {
   const [cancelled, setCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(null);
   const { dispatch } = useAuthContext();
 
   //* Login user
-  const login = async () => {
+  const login = async (email, password) => {
     setError(null);
     setIsPending(true);
 
