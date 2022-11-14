@@ -1,0 +1,11 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin: 0.5rem 0.5rem;
+}
+form label span {
+  margin-right: 0.5rem;
+}

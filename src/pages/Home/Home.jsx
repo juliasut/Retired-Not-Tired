@@ -11,12 +11,11 @@ import { Link } from 'react-router-dom';
 
 // import Icon from "@mui/material/Icon;
 import { database } from '../../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+
 import { useEffect, useState } from 'react';
 
 const Home = () => {
   const [user, setUser] = useState(null);
-  const ref = collection(database, 'user');
 
   const dummyActivities = [
     { id: 1, title: 'swimming', date: new Date() },

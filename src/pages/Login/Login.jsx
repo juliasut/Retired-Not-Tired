@@ -1,11 +1,15 @@
+import { useState } from 'react';
+import { useLogin } from '../../hooks/useLogin';
 import { Grid, Box, Button, Link, Typography, TextField } from '@mui/material';
 import Container from '@mui/material/Container';
 import { ReactComponent as BackgroundImage } from '../../assets/images/background.svg';
 
 const Login = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const { login } = useLogin();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
@@ -75,7 +79,7 @@ const Login = () => {
               type="submit"
               variant="contained"
               disableElevation={true}
-              sx={{ mt: 2, mb: 2, width: 140, backgroundColor:  '#625b71'}}
+              sx={{ mt: 2, mb: 2, width: 140, backgroundColor: '#625b71' }}
             >
               Log In
             </Button>
