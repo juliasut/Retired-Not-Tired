@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
+import SignUp from './pages/SignUp/SignUp';
 import Error from './pages/Page404/Page404';
 import { useLogout } from './hooks/useLogout';
 import { useAuthContext } from './hooks/useAuthContext';
@@ -51,14 +51,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="*" element={<Error />} />
           </Routes>
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+          {/* </QueryClientProvider> */}
         </BrowserRouter>
       )}
     </div>
-    // <ReactQueryDevtools initialIsOpen={false} />
-    // </QueryClientProvider>
   );
 }
 

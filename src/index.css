@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 *,
 *::before,
@@ -11,5 +11,5 @@
 body {
   background-color: #f6f6f6;
   color: #1b2540;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
