@@ -2,6 +2,7 @@ import { Grid, Box, Button, Link, Typography, TextField } from '@mui/material';
 import Container from '@mui/material/Container';
 import { ReactComponent as BackgroundTop } from '../../assets/rectangleTop.svg';
 import { ReactComponent as BackgroundBottom } from '../../assets/rectangleBottom.svg';
+import UploadButtons from '../../components/UploadButton';
 
 const SignUp = () => {
   const handleSubmit = (event) => {
@@ -15,7 +16,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" sx={{ display: 'flex', height: "100vh" }}>
         <BackgroundTop
           color="#988fad"
           style={{
@@ -40,47 +41,27 @@ const SignUp = () => {
             zIndex: -10,
           }}
         />
-        <Typography
-          component="h1"
-          variant="h5"
-          align="center"
-          sx={{ mt: 10, mb: 1 }}
-        >
-          Sign Up
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{alignSelf: "center"}}>
+          <Typography
+            component="h1"
+            variant="h5"
+            align="center"
+            sx={{ mb: 1, fontWeight: "700" }}
+            
+          >
+            Sign Up
+          </Typography>
           <TextField
             margin="normal"
             color="secondary"
             required
             fullWidth
-            id="firstName"
-            label="First Name"
-            name="firstName"
+            id="userName"
+            label="Username"
+            name="userName"
             autoComplete="given-name"
             autoFocus
-          />
-          <TextField
-            margin="normal"
-            color="secondary"
-            required
-            fullWidth
-            id="lastName"
-            label="Last Name"
-            name="lastName"
-            autoComplete="family-name"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            color="secondary"
-            required
-            fullWidth
-            id="postalCode"
-            label="Zip/postal"
-            name="postalCode"
-            autoComplete="postal-code"
-            autoFocus
+            sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
           />
           <TextField
             margin="normal"
@@ -92,6 +73,7 @@ const SignUp = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
           />
           <TextField
             margin="normal"
@@ -103,12 +85,27 @@ const SignUp = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
           />
+          <TextField
+            margin="normal"
+            color="secondary"
+            required
+            fullWidth
+            name="password"
+            label="Confirm password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
+          />
+          <UploadButtons />
           <Grid
             container
             direction="column"
             justifyContent="center"
             alignItems="center"
+            marginY={2}
           >
             <Grid item xs>
               <Button
@@ -137,23 +134,23 @@ const SignUp = () => {
               </Typography>
             </Grid>
           </Grid>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            align="center"
+            sx={{ mt: 2, fontSize: '11px' }}
+          >
+            {'By logging in or signing up, you agree to Retired Not Tired '}
+            <Link href="#" color="text.secondary">
+              {'Terms of Service'}
+            </Link>{' '}
+            and{' '}
+            <Link href="#" color="text.secondary">
+              {'Privacy Policy'}
+            </Link>
+            , confirm that you are 18 years of age or older.
+          </Typography>
         </Box>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          align="center"
-          sx={{ mt: 2 }}
-        >
-          {'By logging in or signing up, you agree to Retired Not Tired '}
-          <Link href="#" variant="body2" color="text.secondary">
-            {'Terms of Service'}
-          </Link>{' '}
-          and{' '}
-          <Link href="#" variant="body2" color="text.secondary">
-            {'Privacy Policy'}
-          </Link>
-          , confirm that you are 18 years of age or older.
-        </Typography>
       </Container>
     </>
   );
