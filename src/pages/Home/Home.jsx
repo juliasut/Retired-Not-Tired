@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
+import Activities from '../activities/Activities';
 
 const Home = () => {
   const dummyActivities = [
@@ -30,7 +31,7 @@ const Home = () => {
       </Typography>
       <div className="activity-containter">
         {dummyActivities.map((activity) => (
-          <Link to={`/activity/${activity.id}`}>
+          <Link key={activity.id} to={`/activity/${activity.id}`}>
             <Card
               sx={{
                 display: 'inline-block',
@@ -45,6 +46,7 @@ const Home = () => {
           </Link>
         ))}
       </div>
+      <Activities />
     </div>
   );
 };
