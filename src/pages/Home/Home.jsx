@@ -1,22 +1,36 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import './home.css';
-import 'react-calendar/dist/Calendar.css';
-import Logo from '../../assets/images/retired-not-tired-just-flip-flops.png';
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import { format } from 'date-fns';
-import { Link } from 'react-router-dom';
 import Activities from '../activities/Activities';
 import CreateActivity from '../createActivity/CreateActivity';
+import "./home.css";
+import "react-calendar/dist/Calendar.css";
+// import Calendar from "react-calendar";
+// import CalendarPicker from "@mui/x-date-pickers-pro/CalendarPicker";
+import Logo from "../../assets/images/retired-not-tired-just-flip-flops.png";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import { format } from "date-fns";
+import { Link } from "react-router-dom";
+import StaticDatePickerLandscape from "../../components/Calendar";
+import Button from "../../components/Button";
+// import Icon from "@mui/material/Icon;
+import { database } from "../../config/firebase";
+import { useEffect, useState } from "react";
 
-const Home = () => {
-  const dummyActivities = [
-    { id: 1, title: 'swimming', date: new Date() },
-    { id: 2, title: 'golf', date: new Date() },
-    { id: 3, title: 'bingo', date: new Date() },
-    { id: 4, title: 'boxing', date: new Date() },
-  ];
+function Home() {
+  const [details, setDetails] = useState([]);
+  useEffect(() => {
+    fetch("db.json")
+      .then((response) => response.json())
+      .then((json) => setDetails(json));
+  }, []);
 
+  // const dummyActivities = [
+  //   { id: 1, title: "swimming", date: new Date() },
+  //   { id: 2, title: "golf", date: new Date() },
+  //   { id: 3, title: "bingo", date: new Date() },
+  //   { id: 4, title: "boxing", date: new Date() },
+  // ];
+  // pass in db.json here, the pass it into props in the detailed activey page
   return (
     <div className="container">
       <Typography variant="h4" component="h3" align="center" gutterBottom>
@@ -30,28 +44,33 @@ const Home = () => {
         Activites on your schedule:
       </Typography>
       <div className="activity-containter">
-        {dummyActivities.map((activity) => (
-          <Link key={activity.id} to={`/activity/${activity.id}`}>
+        {details.map((activity) => (
+          <Link to={`/activity/${activity.id}`}>
             <Card
               sx={{
-                display: 'inline-block',
-                mx: '2px',
-                transform: 'scale(0.8)',
+                display: "inline-block",
+                mx: "2px",
+                transform: "scale(0.8)",
               }}
               key={activity.id}
             >
               <p>{activity.title}</p>
-              <p>{format(activity.date, 'dd-MM-yyyy')}</p>
+              <p>{format(activity.date, "dd-MM-yyyy")}</p>
             </Card>
           </Link>
         ))}
       </div>
+
       <Activities />
       <Link to="/create-activity" element={<CreateActivity />}>
         <button className="create-activity">Create Activity</button>
       </Link>
+
+      <StaticDatePickerLandscape />
+      <Button />
+
     </div>
   );
-};
+}
 
 export default Home;

@@ -1,9 +1,15 @@
-import { Grid, Box, Button, Link, Typography, TextField } from '@mui/material';
+import { Grid, Box, Button, Link, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import { ReactComponent as BackgroundTop } from '../../assets/rectangleTop.svg';
 import { ReactComponent as BackgroundBottom } from '../../assets/rectangleBottom.svg';
 import { useState } from 'react';
 import useSignup from '../../hooks/useSignup';
+import UploadButtons from '../../components/UploadButton';
+import BackGroundTop from '../../components/BackGroundTop';
+import BackGroundBottom from '../../components/BackGroundBottom';
+import FormTextField from '../../components/FormTextField';
+import TermsAndConditionsDisclaimer from '../../components/TermsAndConditionsDisclaimer';
+import PageTitleTypography from '../../components/PageTitleTypography';
 
 const SignUp = () => {
   const { signup, isPending } = useSignup();
@@ -45,38 +51,53 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      <Container component="main" maxWidth="xs">
-        <BackgroundTop
-          color="#988fad"
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            width: '100%',
-            height: 'auto',
-            maxHeight: '287px',
-            zIndex: -10,
-          }}
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{ display: 'flex', minHeight: '100vh' }}
+    >
+      <BackGroundTop />
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        noValidate
+        sx={{ alignSelf: 'center' }}
+      >
+        <PageTitleTypography>Sign Up</PageTitleTypography>
+        <FormTextField
+          id="userName"
+          label="Username"
+          name="userName"
+          autoComplete="given-name"
         />
-        <BackgroundBottom
-          color="#988fad"
-          style={{
-            position: 'absolute',
-            left: 0,
-            bottom: 0,
-            width: '100%',
-            height: 'auto',
-            maxHeight: '146px',
-            zIndex: -10,
-          }}
+        <FormTextField
+          id="email"
+          label="Email"
+          name="email"
+          autoComplete="email"
         />
-        <Typography
-          component="h1"
-          variant="h5"
-          align="center"
-          sx={{ mt: 10, mb: 1 }}
+        <FormTextField
+          name="password"
+          label="Create password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+        />
+        <FormTextField
+          name="confirm-password"
+          label="Confirm password"
+          type="password"
+          id="confirm-password"
+        />
+        <UploadButtons />
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          marginY={3}
         >
+ {/*dan-feat-firebase
           Sign Up
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
@@ -203,26 +224,39 @@ const SignUp = () => {
                 </Link>
               </Typography>
             </Grid>
+
+          <Grid item xs>
+            <Button
+              type="submit"
+              variant="contained"
+              disableElevation={true}
+              sx={{
+                mt: 2,
+                mb: 2,
+                width: 140,
+                backgroundColor: '#625b71',
+                '&:hover': {
+                  backgroundColor: '#988fad',
+                },
+              }}
+            >
+              Sign Up
+            </Button>*/}
+
           </Grid>
-        </Box>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          align="center"
-          sx={{ mt: 2 }}
-        >
-          {'By logging in or signing up, you agree to Retired Not Tired '}
-          <Link href="#" variant="body2" color="text.secondary">
-            {'Terms of Service'}
-          </Link>{' '}
-          and{' '}
-          <Link href="#" variant="body2" color="text.secondary">
-            {'Privacy Policy'}
-          </Link>
-          , confirm that you are 18 years of age or older.
-        </Typography>
-      </Container>
-    </>
+          <Grid item>
+            <Typography variant="body2" color="text.primary" align="center">
+              {'Already a member? '}
+              <Link href="/login" variant="body2" color="text.primary">
+                {'Log In'}
+              </Link>
+            </Typography>
+          </Grid>
+        </Grid>
+        <TermsAndConditionsDisclaimer />
+      </Box>
+      <BackGroundBottom />
+    </Container>
   );
 };
 
