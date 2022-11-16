@@ -1,6 +1,5 @@
 import { Box, Button, CardMedia, Link, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
-import MobileNav from '../../components/MobileNav';
 
 const Error = () => {
   return (
@@ -58,7 +57,6 @@ const Error = () => {
           </Button>
         </Link>
       </Box>
-      <MobileNav />
     </Container>
   );
 };
