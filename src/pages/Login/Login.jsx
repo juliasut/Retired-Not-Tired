@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">   
+    <Container component="main" maxWidth="xs">
       <Typography
         component="h1"
         variant="h5"
@@ -44,8 +44,28 @@ const Login = () => {
           margin="normal"
           required
           fullWidth
+          label="Password"
+          type="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          value={password}
+        />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+          disabled={isPending}
+        >
+          Log In
+        </Button>
+      </Box>
+
       <BackGroundTop />
-      <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 35 }}>
+
+      {/* //! Will need to bee removed, check with team */}
+      {/* <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 35 }}>
         <PageTitleTypography>Log in</PageTitleTypography>
         <FormTextField
           id="email"
@@ -112,7 +132,7 @@ const Login = () => {
           </Grid>
         </Grid>
         <TermsAndConditionsDisclaimer />
-      </Box>
+      </Box> */}
       <BackGroundBottom />
     </Container>
   );

@@ -3,10 +3,14 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 
-export default function UploadButtons() {
+export default function UploadButtons({ handleFileChange }) {
   return (
     <Stack direction="row" alignItems="center" spacing={0}>
+      {/* //! Can We Problems this is a button
+      //! does not function properly, will not upload pic.
+      //! causing a delay have to select pic twice! */}
       <Button
+        onChange={handleFileChange}
         component="label"
         sx={{
           textTransform: 'none',
@@ -17,9 +21,10 @@ export default function UploadButtons() {
         }}
       >
         Upload avatar
-        <input hidden accept="image/*" multiple type="file" />
+        <input hidden multiple type="file" />
       </Button>
       <IconButton
+        onChange={handleFileChange}
         size="small"
         aria-label="upload picture"
         component="label"

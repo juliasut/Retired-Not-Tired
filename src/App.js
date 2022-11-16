@@ -7,6 +7,7 @@ import Error from './pages/Page404/Page404';
 import CreateActivity from './pages/createActivity/CreateActivity';
 import { useLogout } from './hooks/useLogout';
 import { useAuthContext } from './hooks/useAuthContext';
+import MobileNav from './components/MobileNav.jsx';
 
 function App() {
   const { logout, isPending } = useLogout();
@@ -56,6 +57,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       )}
+      <MobileNav />
     </div>
   );
 }

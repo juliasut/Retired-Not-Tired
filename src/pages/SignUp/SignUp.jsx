@@ -1,4 +1,4 @@
-import { Grid, Box, Button, Link, Typography } from '@mui/material';
+import { Grid, Box, Button, Link, Typography, TextField } from '@mui/material';
 import Container from '@mui/material/Container';
 import { ReactComponent as BackgroundTop } from '../../assets/rectangleTop.svg';
 import { ReactComponent as BackgroundBottom } from '../../assets/rectangleBottom.svg';
@@ -22,11 +22,13 @@ const SignUp = () => {
 
   const handleFileChange = (e) => {
     setProfilePic(null);
+    console.log(e.target.files[0]);
     const file = e.target.files[0];
-    setProfilePic(e.target.files[0]);
+    // setProfilePic(e.target.files[0]);
 
     if (!file) {
       setProfilepicError('Please select a profile picture');
+      console.log(profilepicError);
       return;
     }
 
@@ -42,7 +44,6 @@ const SignUp = () => {
 
     setProfilepicError(null);
     setProfilePic(file);
-    console.log('Profile pic', profilePic);
   };
 
   const handleSubmit = (e) => {
@@ -65,31 +66,45 @@ const SignUp = () => {
       >
         <PageTitleTypography>Sign Up</PageTitleTypography>
         <FormTextField
-          id="userName"
+          // id="userName"
           label="Username"
-          name="userName"
+          // name="userName"
           autoComplete="given-name"
+          onChange={(e) => setDisplayName(e.target.value)}
+          value={displayName}
         />
         <FormTextField
-          id="email"
+          // id="email"
           label="Email"
-          name="email"
+          // name="email"
           autoComplete="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
         <FormTextField
-          name="password"
+          // name="password"
           label="Create password"
           type="password"
-          id="password"
+          // id="password"
           autoComplete="current-password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
         />
         <FormTextField
-          name="confirm-password"
+          // name="confirm-password"
           label="Confirm password"
           type="password"
-          id="confirm-password"
+          // id="confirm-password"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={confirmPassword}
         />
-        <UploadButtons />
+        <UploadButtons handleFileChange={handleFileChange} />
+        {profilePic && <Typography>{profilePic.name}</Typography>}
+        {profilepicError && (
+          <Typography variant="body2" color="error">
+            {profilepicError}
+          </Typography>
+        )}
         <Grid
           container
           direction="column"
@@ -97,7 +112,7 @@ const SignUp = () => {
           alignItems="center"
           marginY={3}
         >
- {/*dan-feat-firebase
+          {/*dan-feat-firebase
           Sign Up
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
@@ -153,8 +168,8 @@ const SignUp = () => {
             value={displayName}
             autoComplete="display-name"
           />
-          {/* //* Profile Picture */}
-          <label>
+          {/* /* Profile Picture */}
+          {/* <label>
             Profile Picture
             <TextField
               margin="normal"
@@ -168,16 +183,16 @@ const SignUp = () => {
               // label="Profile Picture"
               sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
             />
-          </label>
+          </label> */}
           <Grid
             container
             direction="column"
             justifyContent="center"
             alignItems="center"
           >
-            {profilepicError && (
+            {/* {profilepicError && (
               <Typography color="error">{profilepicError}</Typography>
-            )}
+            )} */}
             <Grid item xs>
               {!isPending && (
                 <Button
@@ -224,36 +239,37 @@ const SignUp = () => {
                 </Link>
               </Typography>
             </Grid>
+            {/* //!Will need to be removed, Check with team */}
+            {/* <Grid item xs>
+              <Button
+                type="submit"
+                variant="contained"
+                disableElevation={true}
+                sx={{
+                  mt: 2,
+                  mb: 2,
+                  width: 140,
+                  backgroundColor: '#625b71',
+                  '&:hover': {
+                    backgroundColor: '#988fad',
+                  },
+                }}
+              >
+                Sign Up
+              </Button>
 
-          <Grid item xs>
-            <Button
-              type="submit"
-              variant="contained"
-              disableElevation={true}
-              sx={{
-                mt: 2,
-                mb: 2,
-                width: 140,
-                backgroundColor: '#625b71',
-                '&:hover': {
-                  backgroundColor: '#988fad',
-                },
-              }}
-            >
-              Sign Up
-            </Button>*/}
-
+            </Grid>
+            <Grid item>
+              <Typography variant="body2" color="text.primary" align="center">
+                {'Already a member? '}
+                <Link href="/login" variant="body2" color="text.primary">
+                  {'Log In'}
+                </Link>
+              </Typography>
+            </Grid> */}
           </Grid>
-          <Grid item>
-            <Typography variant="body2" color="text.primary" align="center">
-              {'Already a member? '}
-              <Link href="/login" variant="body2" color="text.primary">
-                {'Log In'}
-              </Link>
-            </Typography>
-          </Grid>
+          <TermsAndConditionsDisclaimer />
         </Grid>
-        <TermsAndConditionsDisclaimer />
       </Box>
       <BackGroundBottom />
     </Container>
