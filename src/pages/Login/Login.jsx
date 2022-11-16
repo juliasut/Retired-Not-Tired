@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { useLogin } from '../../hooks/useLogin';
 import { Grid, Box, Button, Link, Typography, TextField } from '@mui/material';
 import Container from '@mui/material/Container';
-import { ReactComponent as BackgroundImage } from '../../assets/images/background.svg';
+import BackGroundTop from '../../components/BackGroundTop';
+import BackGroundBottom from '../../components/BackGroundBottom';
+import FormTextField from '../../components/FormTextField';
+import TermsAndConditionsDisclaimer from '../../components/TermsAndConditionsDisclaimer';
+import PageTitleTypography from '../../components/PageTitleTypography';
 
 const Login = () => {
   const { login } = useLogin();
@@ -19,39 +23,16 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <BackgroundImage
-        color="#988FAD"
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100%',
-          height: '100%',
-        }}
-      />
-      <Typography
-        component="h1"
-        variant="h5"
-        align="center"
-        sx={{ mt: 40, mb: 2 }}
-      >
-        Log In
-      </Typography>
-      <Box component="form" onSubmit={handleSubmit} noValidate>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
+      <BackGroundTop />
+      <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 35 }}>
+        <PageTitleTypography>Log in</PageTitleTypography>
+        <FormTextField
           id="email"
           label="Email"
           name="email"
           autoComplete="email"
-          autoFocus
         />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
+        <FormTextField
           name="password"
           label="Password"
           type="password"
@@ -63,6 +44,7 @@ const Login = () => {
           direction="column"
           justifyContent="center"
           alignItems="center"
+          marginY={3}
         >
           <Grid item xs>
             <Link
@@ -89,22 +71,14 @@ const Login = () => {
             <Typography variant="body2" color="text.primary" align="center">
               {'Not a member yet? '}
               <Link href="/signup" variant="body2" color="text.primary">
-                {'Sign up'}
+                {'Sign Up'}
               </Link>
             </Typography>
           </Grid>
         </Grid>
+        <TermsAndConditionsDisclaimer />
       </Box>
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        align="center"
-        sx={{ mt: 2 }}
-      >
-        {
-          'By logging in or signing up, you agree to Retired Not Tired Terms of Service and Privacy Policy, confirm that you are 18 years of age or older. '
-        }
-      </Typography>
+      <BackGroundBottom />
     </Container>
   );
 };
