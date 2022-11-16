@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Activities from '../activities/Activities';
+import CreateActivity from '../createActivity/CreateActivity';
 import "./home.css";
 import "react-calendar/dist/Calendar.css";
 // import Calendar from "react-calendar";
@@ -10,7 +12,6 @@ import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import StaticDatePickerLandscape from "../../components/Calendar";
 import Button from "../../components/Button";
-
 // import Icon from "@mui/material/Icon;
 import { database } from "../../config/firebase";
 import { useEffect, useState } from "react";
@@ -59,8 +60,15 @@ function Home() {
           </Link>
         ))}
       </div>
+
+      <Activities />
+      <Link to="/create-activity" element={<CreateActivity />}>
+        <button className="create-activity">Create Activity</button>
+      </Link>
+
       <StaticDatePickerLandscape />
       <Button />
+
     </div>
   );
 }

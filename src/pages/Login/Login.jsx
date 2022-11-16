@@ -9,20 +9,41 @@ import TermsAndConditionsDisclaimer from '../../components/TermsAndConditionsDis
 import PageTitleTypography from '../../components/PageTitleTypography';
 
 const Login = () => {
-  const { login } = useLogin();
+  const { login, isPending } = useLogin();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    setEmail(data.get('email'));
-    setPassword(data.get('password'));
     login(email, password);
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs">   
+      <Typography
+        component="h1"
+        variant="h5"
+        align="center"
+        sx={{ mt: 40, mb: 2 }}
+      >
+        Log In
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit} noValidate>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          label="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          value={email}
+          autoFocus
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
       <BackGroundTop />
       <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 35 }}>
         <PageTitleTypography>Log in</PageTitleTypography>
@@ -36,7 +57,10 @@ const Login = () => {
           name="password"
           label="Password"
           type="password"
-          id="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          value={password}
           autoComplete="current-password"
         />
         <Grid
@@ -58,14 +82,25 @@ const Login = () => {
             </Link>
           </Grid>
           <Grid item xs>
-            <Button
-              type="submit"
-              variant="contained"
-              disableElevation={true}
-              sx={{ mt: 2, mb: 2, width: 140, backgroundColor: '#625b71' }}
-            >
-              Log In
-            </Button>
+            {!isPending && (
+              <Button
+                type="submit"
+                variant="contained"
+                disableElevation={true}
+                sx={{ mt: 2, mb: 2, width: 140, backgroundColor: '#625b71' }}
+              >
+                Log In
+              </Button>
+            )}
+            {isPending && (
+              <Button
+                variant="contained"
+                disableElevation={true}
+                sx={{ mt: 2, mb: 2, width: 140, backgroundColor: '#625b71' }}
+              >
+                Loading...
+              </Button>
+            )}
           </Grid>
           <Grid item>
             <Typography variant="body2" color="text.primary" align="center">
