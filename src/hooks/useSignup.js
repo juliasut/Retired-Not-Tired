@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { authentication, storage, database } from '../config/firebase';
 import { useAuthContext } from './useAuthContext';
 
@@ -32,7 +31,6 @@ const useSignup = () => {
       await response.user.updateProfile({ displayName, photoURL: imageUrl });
 
       //* Create a user document
-      console.log(response.user.uid);
       await database.collection('users').doc(response.user.uid).set({
         online: true,
         displayName,

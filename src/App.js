@@ -4,6 +4,7 @@ import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Error from './pages/Page404/Page404';
+import CreateActivity from './pages/createActivity/CreateActivity';
 import { useLogout } from './hooks/useLogout';
 import { useAuthContext } from './hooks/useAuthContext';
 
@@ -43,10 +44,14 @@ function App() {
               )}
             </ul>
           </nav>
+
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            {user && <Route path="/" element={<Home />} />}
+            {!user && <Route path="/login" element={<Login />} />}
+            {!user && <Route path="/signup" element={<SignUp />} />}
+            {user && (
+              <Route path="/create-activity" element={<CreateActivity />} />
+            )}
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>

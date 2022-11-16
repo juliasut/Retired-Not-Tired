@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './home.css';
 import 'react-calendar/dist/Calendar.css';
-
 import Logo from '../../assets/images/retired-not-tired-just-flip-flops.png';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import Activities from '../activities/Activities';
+import CreateActivity from '../createActivity/CreateActivity';
 
 const Home = () => {
   const dummyActivities = [
@@ -47,6 +47,9 @@ const Home = () => {
         ))}
       </div>
       <Activities />
+      <Link to="/create-activity" element={<CreateActivity />}>
+        <button className="create-activity">Create Activity</button>
+      </Link>
     </div>
   );
 };

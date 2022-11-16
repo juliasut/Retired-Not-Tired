@@ -5,15 +5,12 @@ import Container from '@mui/material/Container';
 import { ReactComponent as BackgroundImage } from '../../assets/images/background.svg';
 
 const Login = () => {
-  const { login } = useLogin();
+  const { login, isPending } = useLogin();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    setEmail(data.get('email'));
-    setPassword(data.get('password'));
     login(email, password);
   };
 
@@ -42,20 +39,23 @@ const Login = () => {
           margin="normal"
           required
           fullWidth
-          id="email"
           label="Email"
-          name="email"
-          autoComplete="email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          value={email}
           autoFocus
         />
         <TextField
           margin="normal"
           required
           fullWidth
-          name="password"
           label="Password"
           type="password"
-          id="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          value={password}
           autoComplete="current-password"
         />
         <Grid
@@ -76,14 +76,25 @@ const Login = () => {
             </Link>
           </Grid>
           <Grid item xs>
-            <Button
-              type="submit"
-              variant="contained"
-              disableElevation={true}
-              sx={{ mt: 2, mb: 2, width: 140, backgroundColor: '#625b71' }}
-            >
-              Log In
-            </Button>
+            {!isPending && (
+              <Button
+                type="submit"
+                variant="contained"
+                disableElevation={true}
+                sx={{ mt: 2, mb: 2, width: 140, backgroundColor: '#625b71' }}
+              >
+                Log In
+              </Button>
+            )}
+            {isPending && (
+              <Button
+                variant="contained"
+                disableElevation={true}
+                sx={{ mt: 2, mb: 2, width: 140, backgroundColor: '#625b71' }}
+              >
+                Loading...
+              </Button>
+            )}
           </Grid>
           <Grid item>
             <Typography variant="body2" color="text.primary" align="center">
