@@ -10,14 +10,14 @@ let initState = {
 
 const firestoreReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_DOCUMENT_PENDING':
+    case 'PENDING':
       return {
         document: null,
         isPending: true,
         error: null,
         success: false,
       };
-    case 'ADD_DOCUMENT_SUCCESS':
+    case 'SUCCESS':
       return {
         // ...state,
         document: action.payload,
@@ -25,7 +25,7 @@ const firestoreReducer = (state, action) => {
         error: null,
         success: true,
       };
-    case 'ADD_DOCUMENT_ERROR':
+    case 'ERROR':
       return {
         document: null,
         isPending: false,
@@ -53,18 +53,18 @@ export const useFirestore = (collection) => {
 
   //* Add document
   const addDocument = async (document) => {
-    dispatch({ type: 'ADD_DOCUMENT_PENDING' });
+    dispatch({ type: 'PENDING' });
     try {
       const createdAt = timestamp.fromDate(new Date());
-      const addedDocument = await reference.add(...document, createdAt);
+      const addedDocument = await reference.add({ ...document, createdAt });
 
       dispatchIfMounted({
-        type: 'ADD_DOCUMENT_SUCCESS',
+        type: 'SUCCESS',
         payload: addedDocument,
       });
     } catch (error) {
       dispatchIfMounted({
-        type: 'ADD_DOCUMENT_ERROR',
+        type: 'ERROR',
         payload: error.message,
       });
     }
