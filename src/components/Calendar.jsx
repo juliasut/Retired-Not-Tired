@@ -7,7 +7,6 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 
 const isWeekend = (date) => {
   const day = date.day();
-
   return day === 0 || day === 6;
 };
 

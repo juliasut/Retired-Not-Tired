@@ -74,6 +74,7 @@ function App() {
           <MobileNav />
         </BrowserRouter>
       )}
+      <MobileNav />
     </div>
   );
 }

@@ -257,6 +257,7 @@ const SignUp = () => {
               >
                 Sign Up
               </Button>
+
             </Grid>
             <Grid item>
               <Typography variant="body2" color="text.primary" align="center">
