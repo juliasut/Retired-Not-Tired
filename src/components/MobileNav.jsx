@@ -8,12 +8,16 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import { Menu, MenuItem } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
 
 const MobileNav = () => {
+  const { logout } = useLogout();
   const [value, setValue] = useState('home');
   const [anchorEl, setAncorEl] = useState(null);
   const [open, setOpen] = useState(false);
-  const handleClose = () => {
+
+  const handleClose = async () => {
     setAncorEl(null);
     setOpen(false);
   };
@@ -45,7 +49,10 @@ const MobileNav = () => {
           label="Home"
           value="home"
           icon={<HomeOutlinedIcon />}
+          component={Link}
+          to="/"
         />
+
         <BottomNavigationAction
           sx={{
             '&:hover': {
@@ -55,6 +62,8 @@ const MobileNav = () => {
           label="Activities"
           value="activities"
           icon={<FavoriteBorderOutlinedIcon />}
+          component={Link}
+          to="/activity-detail"
         />
         <BottomNavigationAction
           sx={{
@@ -65,6 +74,8 @@ const MobileNav = () => {
           label="Messages"
           value="messages"
           icon={<EmailOutlinedIcon />}
+          component={Link}
+          to="/messages"
         />
         <BottomNavigationAction
           sx={{
@@ -75,6 +86,8 @@ const MobileNav = () => {
           label="Friends"
           value="friends"
           icon={<GroupOutlinedIcon />}
+          component={Link}
+          to="/friends"
         />
         <BottomNavigationAction
           onClick={handleClick}
@@ -88,7 +101,9 @@ const MobileNav = () => {
           icon={<ListOutlinedIcon />}
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/profile">
+            Profile
+          </MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
           <MenuItem onClick={handleClose}>Logout</MenuItem>
         </Menu>

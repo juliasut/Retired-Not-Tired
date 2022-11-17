@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import useActivities from '../../hooks/useActivities';
+import { useNavigate } from 'react-router-dom';
+import { useFirestore } from '../../hooks/useFirestore';
 
-const CreatActivity = () => {
+const CreatActivity = ({ uid }) => {
+  const navigate = useNavigate();
+  const { addDocument, response } = useFirestore('activities');
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
@@ -11,20 +14,11 @@ const CreatActivity = () => {
   const [description, setDescription] = useState('');
   const [comments, setComments] = useState([]);
 
-  const { createActivity, error, isPending } = useActivities();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(title);
-    // console.log(location);
-    // console.log(date);
-    // console.log(time);
-    // console.log(contact);
-    // console.log(contactNumber);
-    // console.log(description);
-    // console.log(comments);
 
     const activity = {
+      uid,
       title,
       location,
       date,
@@ -35,8 +29,21 @@ const CreatActivity = () => {
       comments,
     };
 
-    createActivity(activity);
+    await addDocument(activity);
+
+    if (!response.error) {
+      setTitle('');
+      setLocation('');
+      setDate('');
+      setTime('');
+      setContact('');
+      setContactNumber('');
+      setDescription('');
+      setComments([]);
+      navigate('/activities');
+    }
   };
+
   return (
     <div>
       <h1>Create Activity</h1>

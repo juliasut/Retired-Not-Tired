@@ -1,3 +1,5 @@
+//! Going to delete this file soon as I done think I need it!
+
 import { database } from '../config/firebase';
 import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { useState } from 'react';
@@ -26,7 +28,7 @@ export const useEvents = () => {
   const [events, setEvents] = useState(null);
 
   const { data, isLoading, isError, status } = useQuery(
-    ['activites'],
+    ['actiyvites'],
     fetchEvents,
     {
       refetchOnWindowFocus: true,
