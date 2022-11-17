@@ -21,7 +21,7 @@ const MobileNav = () => {
     setAncorEl(null);
     setOpen(false);
   };
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     setAncorEl(e.currentTarget);
     setOpen(true);
   };
@@ -105,7 +105,7 @@ const MobileNav = () => {
             Profile
           </MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={logout}>Logout</MenuItem>
         </Menu>
       </BottomNavigation>
     </Paper>

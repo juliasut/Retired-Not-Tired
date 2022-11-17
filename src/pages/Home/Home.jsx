@@ -19,10 +19,11 @@ import { useEffect, useState } from 'react';
 function Home() {
   const [details, setDetails] = useState([]);
   useEffect(() => {
-    fetch('db.json')
+    fetch('http://localhost:3000/activities')
       .then((response) => response.json())
       .then((json) => setDetails(json));
   }, []);
+  console.log(details);
 
   // const dummyActivities = [
   //   { id: 1, title: "swimming", date: new Date() },
@@ -55,7 +56,7 @@ function Home() {
               key={activity.id}
             >
               <p>{activity.title}</p>
-              <p>{format(activity.date, 'dd-MM-yyyy')}</p>
+              <p>{format(activity.date, 'MM-dd-yyyy')}</p>
             </Card>
           </Link>
         ))}
