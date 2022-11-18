@@ -1,12 +1,17 @@
 import { Grid, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function BasicButtons() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('create-activity');
+  };
+
   return (
     <Grid item xs>
       <Button
-        onClick={() => {
-          alert('clicked');
-        }}
+        onClick={handleClick}
         type="submit"
         variant="contained"
         disableElevation={true}
