@@ -8,10 +8,11 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import { Menu, MenuItem } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 
 const MobileNav = () => {
+  const navigate = useNavigate();
   const { logout } = useLogout();
   const [value, setValue] = useState('home');
   const [anchorEl, setAncorEl] = useState(null);
@@ -25,6 +26,14 @@ const MobileNav = () => {
     setAncorEl(e.currentTarget);
     setOpen(true);
   };
+
+  const handleLogout = (e) => {
+    logout();
+    setTimeout(() => {
+      navigate('/login'); //? Redirect to home page
+    }, 2000);
+  };
+
   return (
     <Paper
       sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
@@ -104,8 +113,10 @@ const MobileNav = () => {
           <MenuItem onClick={handleClose} component={Link} to="/profile">
             Profile
           </MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={logout}>Logout</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/update-profile">
+            My account
+          </MenuItem>
+          <MenuItem onClick={(e) => handleLogout(e)}>Logout</MenuItem>
         </Menu>
       </BottomNavigation>
     </Paper>

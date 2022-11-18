@@ -8,7 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 import Logo from '../../assets/images/retired-not-tired-just-flip-flops.png';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { Link } from 'react-router-dom';
 import StaticDatePickerLandscape from '../../components/Calendar';
 import Button from '../../components/Button';
@@ -18,11 +18,11 @@ import { useEffect, useState } from 'react';
 
 function Home() {
   const [details, setDetails] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:3000/activities')
-      .then((response) => response.json())
-      .then((json) => setDetails(json));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/activities')
+  //     .then((response) => response.json())
+  //     .then((json) => setDetails(json));
+  // }, []);
   console.log(details);
 
   // const dummyActivities = [
@@ -56,19 +56,14 @@ function Home() {
               key={activity.id}
             >
               <p>{activity.title}</p>
-              <p>{format(activity.date, 'MM-dd-yyyy')}</p>
+              <p>{format(parseISO(activity.date), 'MM-dd-yyyy')}</p>
             </Card>
           </Link>
         ))}
       </div>
-
-      <Activities />
-      <Link to="/create-activity" element={<CreateActivity />}>
-        <button className="create-activity">Create Activity</button>
-      </Link>
-
       <StaticDatePickerLandscape />
       <Button />
+      <Activities />
     </div>
   );
 }
