@@ -46,7 +46,10 @@ function App() {
             )}
             {user && <Route path="/activities" element={<Activities />} />}
             {user && (
-              <Route path="/activity-detail" element={<DetailedActivity />} />
+              <Route
+                path="/activity-detail/:id"
+                element={<DetailedActivity />}
+              />
             )}
             {user && (
               <Route path="/profile" element={<Profile user={user} />} />
@@ -54,7 +57,10 @@ function App() {
             {user && <Route path="/messages" element={<Messages />} />}
             {user && <Route path="/friends" element={<Friends />} />}
             {user && (
-              <Route path="/update-profile" element={<UpdateProfile />} />
+              <Route
+                path="/update-profile"
+                element={<UpdateProfile user={user} />}
+              />
             )}
 
             <Route path="*" element={<Error />} />
