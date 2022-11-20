@@ -5,13 +5,12 @@ import {
   CardContent,
   CardActions,
   IconButton,
-  Typography,
   Box,
+  Button,
   Stack,
+  Typography,
 } from '@mui/material';
 import BackGroundSide from '../components/BackGroundSide';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import Button from '../components/Button';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const ActivityCard = (props) => {
@@ -79,9 +78,9 @@ const ActivityCard = (props) => {
               Added by: {activity.organizer}
             </Typography>
             <Button
-              size="small"
               sx={{
-                height: '30px',
+                height: '23px',
+                color: '#fff',
                 backgroundColor: '#988fad',
                 '&:hover': { backgroundColor: '#624b71' },
               }}
