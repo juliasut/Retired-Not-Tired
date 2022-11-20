@@ -15,7 +15,7 @@
 }
 .nav ul li a {
   text-decoration: none;
-  color: #624b71;
+  color: #625b71;
   font-size: 1.2rem;
   font-weight: bold;
   padding: 10px;
@@ -33,6 +33,6 @@
 }
 
 .svg-path:hover {
-  fill: #624b71;
+  fill: #625b71;
   transition: fill 0.2s ease-in-out;
 }

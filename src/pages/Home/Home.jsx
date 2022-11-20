@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Activities from '../Activities/Activities';
-import CreateActivity from '../CreateActivity/CreateActivity';
+// import Activities from '../Activities/Activities';
+// import CreateActivity from '../CreateActivity/CreateActivity';
 import './home.css';
 import 'react-calendar/dist/Calendar.css';
 // import Calendar from "react-calendar";
@@ -11,7 +11,7 @@ import Card from '@mui/material/Card';
 import { format, parseISO } from 'date-fns';
 import { Link } from 'react-router-dom';
 import StaticDatePickerLandscape from '../../components/Calendar';
-import Button from '../../components/Button';
+import AddActivity from '../../components/AddActivity';
 // import Icon from "@mui/material/Icon;
 
 import { useEffect, useState } from 'react';
@@ -62,8 +62,8 @@ function Home() {
         ))}
       </div>
       <StaticDatePickerLandscape />
-      <Button />
-      <Activities />
+      <AddActivity />
+      {/* <Activities /> */}
     </div>
   );
 }
