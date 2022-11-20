@@ -1,10 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Activities from '../activities/Activities';
-import CreateActivity from '../createActivity/CreateActivity';
+import Activities from "../activities/Activities";
+import CreateActivity from "../createActivity/CreateActivity";
 import "./home.css";
 import "react-calendar/dist/Calendar.css";
-// import Calendar from "react-calendar";
-// import CalendarPicker from "@mui/x-date-pickers-pro/CalendarPicker";
 import Logo from "../../assets/images/retired-not-tired-just-flip-flops.png";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
@@ -68,7 +66,6 @@ function Home() {
 
       <StaticDatePickerLandscape />
       <Button />
-
     </div>
   );
 }

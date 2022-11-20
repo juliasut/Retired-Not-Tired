@@ -2,289 +2,289 @@
   "activities": [
     {
       "id": "1",
-      "Name": "Dancing to the Oldies",
-      "Location": {
+      "name": "Dancing to the Oldies",
+      "location": {
         "street": "123 Main st",
         "city": "San Jose",
         "state": "California",
         "zip code": 95110
       },
-      "Date": "12.14.2022",
-      "Time": "17:00",
-      "Name of Organizer": "Spencer Rees",
-      "Contact Number": "301- 555-1212",
-      "Description": "Lots of jammin'n going on here. free up your mind and loosen up the muscles and lets dance together as the beat drops high, join us, for it gonna be the best dance event ever"
+      "date": "12.14.2022",
+      "time": "17:00",
+      "name of organizer": "Spencer Rees",
+      "contact number": "301- 555-1212",
+      "description": "Lots of jammin'n going on here. free up your mind and loosen up the muscles and lets dance together as the beat drops high, join us, for it gonna be the best dance event ever"
     },
     {
       "id": "2",
-      "Name": "Aqua Aerobis at YMCA",
-      "Location": {
+      "name": "Aqua Aerobis at YMCA",
+      "location": {
         "street": "8459 Redux Drive",
         "city": "San Jose",
         "state": "California",
         "zip code": 95110
       },
-      "Date": "12.15.2022",
-      "Time": "14:00",
-      "Name of Organizer": "Iuliia Sutygina",
-      "Contact Number": "408- 555-3406",
-      "Description": "Exercising in water provides a supportive environment for your body. The buoyancy of the water reduces your weight on impact, resulting in much less strain on your muscles and joints. This makes aqua aerobics a good choice of low impact fitness class for those new to exercise, those who can't move easily, and those who want to get fit and lose weight."
+      "date": "12.15.2022",
+      "time": "14:00",
+      "name of organizer": "Iuliia Sutygina",
+      "contact number": "408- 555-3406",
+      "description": "Exercising in water provides a supportive environment for your body. The buoyancy of the water reduces your weight on impact, resulting in much less strain on your muscles and joints. This makes aqua aerobics a good choice of low impact fitness class for those new to exercise, those who can't move easily, and those who want to get fit and lose weight."
     },
     {
       "id": "4",
-      "Name": "Bay Area Ridge Trails- Presidio to Marin Headlands",
-      "Location": {
+      "name": "Bay Area Ridge Trails- Presidio to Marin Headlands",
+      "location": {
         "street": "54600 Northern Marin Drive",
         "city": "San Jose",
         "state": "California",
         "zip code": 95113
       },
-      "Date": "12.20.2022",
-      "Time": "08:00-14:00",
-      "Name of Organizer": "Tami Gaertner",
-      "Contact Number": "408-323-7814",
-      "Description": "The star to this stretch of trail is none other than San Francisco’s Golden Gate Bridge. One of the less strenuous paths, this short walk also is accessible by wheelchair. As with any bridge, wind conditions are unpredictable, so be sure to carry an extra layer of clothing (scarves or pullovers) to confront extra breezy day."
+      "date": "12.20.2022",
+      "time": "08:00-14:00",
+      "name of organizer": "Tami Gaertner",
+      "contact number": "408-323-7814",
+      "description": "The star to this stretch of trail is none other than San Francisco’s Golden Gate Bridge. One of the less strenuous paths, this short walk also is accessible by wheelchair. As with any bridge, wind conditions are unpredictable, so be sure to carry an extra layer of clothing (scarves or pullovers) to confront extra breezy day."
     },
 
     {
       "id": "5",
-      "Name": "Sip Sip Hooray: cooWine Tasting",
-      "Location": {
+      "name": "Sip Sip Hooray: cooWine Tasting",
+      "location": {
         "street": "3787 Caberne Lane",
         "city": "San Jose",
         "state": "California",
         "zip code": 95134
       },
-      "Date": "12.18.2022",
-      "Time": "19:00",
-      "Name of Organizer": "Dan Rees",
-      "Contact Number": "301- 555-2343",
-      "Description": "Come and taste some wine  where you sample different bottles of wine, compare vintages and regional varieties, and enjoy some lively discussions. "
+      "date": "12.18.2022",
+      "time": "19:00",
+      "name of organizer": "Dan Rees",
+      "contact number": "301- 555-2343",
+      "description": "Come and taste some wine  where you sample different bottles of wine, compare vintages and regional varieties, and enjoy some lively discussions. "
     },
     {
       "id": "6",
-      "Name": "Cooking for 2",
-      "Location": {
+      "name": "Cooking for 2",
+      "location": {
         "street": "3787 Gordon Ramsey Lane",
         "city": "San Jose",
         "state": "California",
         "zip code": 95134
       },
-      "Date": "12.18.2022",
-      "Time": "17:00",
-      "Name of Organizer": "TBA",
-      "Contact Number": "301- 555-7583",
-      "Description": "Come and learn to cook for twogit "
+      "date": "12.18.2022",
+      "time": "17:00",
+      "name of organizer": "TBA",
+      "contact number": "301- 555-7583",
+      "description": "Come and learn to cook for twogit "
     },
     {
       "id": "7",
-      "Name": "Chess Club",
-      "Location": {
+      "name": "Chess Club",
+      "location": {
         "street": "6783 Bishop Lane",
         "city": "San Jose",
         "state": "California",
         "zip code": 97632
       },
-      "Date": "12.10.2022",
-      "Time": "17:00",
-      "Name of Organizer": "Pond Castle",
-      "Contact Number": "408- 555-8893",
-      "Description": "Like the name suggests, Chess Club is a club where people of all experience and skill level come to play. After a short lesson, members play against each other, sometimes matched against each other based on skill, but most times you play who you want to play. All boards, clocks, and pieces are provided. We also participate in tournaments against other clubs."
+      "date": "12.10.2022",
+      "time": "17:00",
+      "name of organizer": "Pond Castle",
+      "contact number": "408- 555-8893",
+      "description": "Like the name suggests, Chess Club is a club where people of all experience and skill level come to play. After a short lesson, members play against each other, sometimes matched against each other based on skill, but most times you play who you want to play. All boards, clocks, and pieces are provided. We also participate in tournaments against other clubs."
     },
     {
       "id": "8",
-      "Name": "Skillful Senior: Computers for Beginners",
-      "Location": {
+      "name": "Skillful Senior: Computers for Beginners",
+      "location": {
         "street": " 1001 Dos Drive",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.09.2022",
-      "Time": "17:00",
-      "Name of Organizer": "Steve Wozniak",
-      "Contact Number": "408- 555-9890",
-      "Description": "offers a “quick, easy, and fun” interface that helps seniors learn computer basics. The site is designed for beginner to intermediate users and focuses on basic computer skills, including how to use a mouse, typing techniques, and computer ergonomics. This means tips on the proper ways to hold a mouse and how to sit in front of a computer to avoid eye or neck strain. By mastering these basic skills, you can use a wide range of programs that enable you to connect with your doctor, join virtual events, or video calls with loved ones."
+      "date": "12.09.2022",
+      "time": "17:00",
+      "name of organizer": "Steve Wozniak",
+      "contact number": "408- 555-9890",
+      "description": "offers a “quick, easy, and fun” interface that helps seniors learn computer basics. The site is designed for beginner to intermediate users and focuses on basic computer skills, including how to use a mouse, typing techniques, and computer ergonomics. This means tips on the proper ways to hold a mouse and how to sit in front of a computer to avoid eye or neck strain. By mastering these basic skills, you can use a wide range of programs that enable you to connect with your doctor, join virtual events, or video calls with loved ones."
     },
     {
       "id": "9",
-      "Name": "Bingo Night",
-      "Location": {
+      "name": "Bingo Night",
+      "location": {
         "street": " 87384 Game street",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.21.2022",
-      "Time": "17:00",
-      "Name of Organizer": "Sal Goodman",
-      "Contact Number": "408- 555- 9093",
-      "Description": "Come play bingo and socialize with your friends or meet new friends.Bingo cards will be available at $2 per card. Various types of bingo will be played including four corner, diamond, butterfly and more. Persons will also be able to win prizes.  Food and drinks will be on sale. "
+      "date": "12.21.2022",
+      "time": "17:00",
+      "name of organizer": "Sal Goodman",
+      "contact number": "408- 555- 9093",
+      "description": "Come play bingo and socialize with your friends or meet new friends.Bingo cards will be available at $2 per card. Various types of bingo will be played including four corner, diamond, butterfly and more. Persons will also be able to win prizes.  Food and drinks will be on sale. "
     },
     {
       "id": "10",
-      "Name": "Social Mixer",
-      "Location": {
+      "name": "Social Mixer",
+      "location": {
         "street": " 1001 Facebook Square",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.07.2022",
-      "Time": "18:00",
-      "Name of Organizer": "Mark Zuckerberg",
-      "Contact Number": "408- 555-9890",
-      "Description": "Social mixer"
+      "date": "12.07.2022",
+      "time": "18:00",
+      "name of organizer": "Mark Zuckerberg",
+      "contact number": "408- 555-9890",
+      "description": "Social mixer"
     },
     {
       "id": "11",
-      "Name": "Learn how to Paint",
-      "Location": {
+      "name": "Learn how to Paint",
+      "location": {
         "street": " 1890 Van Gogh Avenue",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.22.2022",
-      "Time": "19:00",
-      "Name of Organizer": "Claude Monet",
-      "Contact Number": "408- 555-9201",
-      "Description": "Lean how to paint"
+      "date": "12.22.2022",
+      "time": "19:00",
+      "name of organizer": "Claude Monet",
+      "contact number": "408- 555-9201",
+      "description": "Lean how to paint"
     },
     {
       "id": "12",
-      "Name": "Santa Maria Horseback Ride",
-      "Location": {
+      "name": "Santa Maria Horseback Ride",
+      "location": {
         "street": " 89812 Seabiscuit Drive",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.09.2022",
-      "Time": "10:00",
-      "Name of Organizer": "Red Pollard",
-      "Contact Number": "408- 555-1010",
-      "Description": "Horesback riding on some open trails"
+      "date": "12.09.2022",
+      "time": "10:00",
+      "name of organizer": "Red Pollard",
+      "contact number": "408- 555-1010",
+      "description": "Horesback riding on some open trails"
     },
     {
       "id": "13",
-      "Name": "Beer Tasting",
-      "Location": {
+      "name": "Beer Tasting",
+      "location": {
         "street": " 3398 Budwiser Drive",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.15.2022",
-      "Time": "19:00",
-      "Name of Organizer": "Adolphus Bush",
-      "Contact Number": "408- 555-2673",
-      "Description": "Beer tasting"
+      "date": "12.15.2022",
+      "time": "19:00",
+      "name of organizer": "Adolphus Bush",
+      "contact number": "408- 555-2673",
+      "description": "Beer tasting"
     },
     {
       "id": "14",
-      "Name": "Nutcracker Ballet",
-      "Location": {
+      "name": "Nutcracker Ballet",
+      "location": {
         "street": " 3398 Tchaikovsky Place ",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.24.2022",
-      "Time": "19:00",
-      "Name of Organizer": "Margot Fonteyn",
-      "Contact Number": "408- 555-2424",
-      "Description": "Nutcracke Ballet"
+      "date": "12.24.2022",
+      "time": "19:00",
+      "name of organizer": "Margot Fonteyn",
+      "contact number": "408- 555-2424",
+      "description": "Nutcracke Ballet"
     },
     {
       "id": "15",
-      "Name": "Christmas Concert",
-      "Location": {
+      "name": "Christmas Concert",
+      "location": {
         "street": " 2525 Marley Court",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.22.2022",
-      "Time": "19:00",
-      "Name of Organizer": "Ebenezer Scrooge",
-      "Contact Number": "408- 555-2525",
-      "Description": "Experience the magic of Christmas and let yourself be moved by traditional Christmas songs and melodies by W. A. ​​Mozart, F. Mendelssohn and G. F. Haendel, interpreted by the superb voices of soprano Aleksandra Buczek and tenor Emil Alekperov. We look forward to seeing you for this exciting concert in the magnificent hall of the Caravita Church in the heart of San Jose."
+      "date": "12.22.2022",
+      "time": "19:00",
+      "name of organizer": "Ebenezer Scrooge",
+      "contact number": "408- 555-2525",
+      "description": "Experience the magic of Christmas and let yourself be moved by traditional Christmas songs and melodies by W. A. ​​Mozart, F. Mendelssohn and G. F. Haendel, interpreted by the superb voices of soprano Aleksandra Buczek and tenor Emil Alekperov. We look forward to seeing you for this exciting concert in the magnificent hall of the Caravita Church in the heart of San Jose."
     },
     {
       "id": "16",
-      "Name": "Group Tennis",
-      "Location": {
+      "name": "Group Tennis",
+      "location": {
         "street": " 4938 Monroe Avenue",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.13.2022",
-      "Time": "09:00-12:00",
-      "Name of Organizer": "Billy Jean King",
-      "Contact Number": "408- 555-1920",
-      "Description": "Socialize with opponents and partners is a huge benefit of the game! You will be around others who share similar interests and goals, which is very physiologically rewarding. Its a great way for you to make new friends with common interests."
+      "date": "12.13.2022",
+      "time": "09:00-12:00",
+      "name of organizer": "Billy Jean King",
+      "contact number": "408- 555-1920",
+      "description": "Socialize with opponents and partners is a huge benefit of the game! You will be around others who share similar interests and goals, which is very physiologically rewarding. Its a great way for you to make new friends with common interests."
     },
     {
       "id": "17",
-      "Name": "SF49rs",
-      "Location": {
+      "name": "SF49rs",
+      "location": {
         "street": " LEVI'S® STADIUM 4900 Marie P DeBartolo Way",
         "city": "Santa Clara",
         "state": "California",
         "zip code": 95054
       },
-      "Date": "12.13.2022",
-      "Time": "18:00-23:00",
-      "Name of Organizer": "Joe Montana",
-      "Contact Number": "408- 555-4949",
-      "Description": "Playoff's against the LA Chargers"
+      "date": "12.13.2022",
+      "time": "18:00-23:00",
+      "name of organizer": "Joe Montana",
+      "contact number": "408- 555-4949",
+      "description": "Playoff's against the LA Chargers"
     },
     {
       "id": "18",
-      "Name": "Karaoke Night",
-      "Location": {
+      "name": "Karaoke Night",
+      "location": {
         "street": "27891 Runaway Lane",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.27.2022",
-      "Time": "10:00- closing",
-      "Name of Organizer": "Jon Bon Jovi",
-      "Contact Number": "408- 555-3932",
-      "Description": "Either you sing in the shower or in front of an audience it's a really good way to express yourself. Music lets us connect with each other and improve our mood.Join us and don't forget by the end of the night we will all be together and sing the same song ,hanging all together like a family"
+      "date": "12.27.2022",
+      "time": "10:00- closing",
+      "name of organizer": "Jon Bon Jovi",
+      "contact number": "408- 555-3932",
+      "description": "Either you sing in the shower or in front of an audience it's a really good way to express yourself. Music lets us connect with each other and improve our mood.Join us and don't forget by the end of the night we will all be together and sing the same song ,hanging all together like a family"
     },
     {
       "id": "19",
-      "Name": "Casino night",
-      "Location": {
+      "name": "Casino night",
+      "location": {
         "street": "938192 Bond Court",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
-      "Date": "12.27.2022",
-      "Time": "20:00- 01:00",
-      "Name of Organizer": "Le Chiffre",
-      "Contact Number": "408- 555-8763",
-      "Description": "Casion Night-Along with cocktails and munchies, this will be an evening of innocent fun at the poker, blackjack and roulette tables"
+      "date": "12.27.2022",
+      "time": "20:00- 01:00",
+      "name of organizer": "Le Chiffre",
+      "contact number": "408- 555-8763",
+      "description": "Casion Night-Along with cocktails and munchies, this will be an evening of innocent fun at the poker, blackjack and roulette tables"
     },
     {
       "id": "20",
-      "Name": "Woodworking Class",
-      "Location": {
+      "name": "Woodworking Class",
+      "location": {
         "street": "3746 Birch Tree Place",
         "city": "San Jose",
         "state": "California",
         "zip code": 93847
       },
       "Date": "12.20.2022",
-      "Time": "13:00-17:00",
-      "Name of Organizer": "Ron Swanson",
-      "Contact Number": "408- 555-1728",
-      "Description": "This class provides a foundation for beginning woodworkers. Students will learn and practice workshop fundamentals during the five class sessions. Each class session is four hours."
+      "time": "13:00-17:00",
+      "name of organizer": "Ron Swanson",
+      "contact number": "408- 555-1728",
+      "description": "This class provides a foundation for beginning woodworkers. Students will learn and practice workshop fundamentals during the five class sessions. Each class session is four hours."
     }
   ]
 }
