@@ -8,19 +8,32 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import { Menu, MenuItem } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
 
 const MobileNav = () => {
+  const navigate = useNavigate();
+  const { logout } = useLogout();
   const [value, setValue] = useState('home');
   const [anchorEl, setAncorEl] = useState(null);
   const [open, setOpen] = useState(false);
-  const handleClose = () => {
+
+  const handleClose = async () => {
     setAncorEl(null);
     setOpen(false);
   };
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     setAncorEl(e.currentTarget);
     setOpen(true);
   };
+
+  const handleLogout = (e) => {
+    logout();
+    setTimeout(() => {
+      navigate('/login'); //? Redirect to home page
+    }, 2000);
+  };
+
   return (
     <Paper
       sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
@@ -45,7 +58,10 @@ const MobileNav = () => {
           label="Home"
           value="home"
           icon={<HomeOutlinedIcon />}
+          component={Link}
+          to="/"
         />
+
         <BottomNavigationAction
           sx={{
             '&:hover': {
@@ -55,6 +71,8 @@ const MobileNav = () => {
           label="Activities"
           value="activities"
           icon={<FavoriteBorderOutlinedIcon />}
+          component={Link}
+          to="/activities"
         />
         <BottomNavigationAction
           sx={{
@@ -65,6 +83,8 @@ const MobileNav = () => {
           label="Messages"
           value="messages"
           icon={<EmailOutlinedIcon />}
+          component={Link}
+          to="/messages"
         />
         <BottomNavigationAction
           sx={{
@@ -75,6 +95,8 @@ const MobileNav = () => {
           label="Friends"
           value="friends"
           icon={<GroupOutlinedIcon />}
+          component={Link}
+          to="/friends"
         />
         <BottomNavigationAction
           onClick={handleClick}
@@ -88,9 +110,13 @@ const MobileNav = () => {
           icon={<ListOutlinedIcon />}
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/profile">
+            Profile
+          </MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/update-profile">
+            My account
+          </MenuItem>
+          <MenuItem onClick={(e) => handleLogout(e)}>Logout</MenuItem>
         </Menu>
       </BottomNavigation>
     </Paper>

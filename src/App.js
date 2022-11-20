@@ -1,16 +1,23 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
+
+//? Pages import
 import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Error from './pages/Page404/Page404';
-import CreateActivity from './pages/createActivity/CreateActivity';
-import { useLogout } from './hooks/useLogout';
-import { useAuthContext } from './hooks/useAuthContext';
-import MobileNav from './components/MobileNav.jsx';
+import MobileNav from './components/MobileNav';
+import Profile from './pages/Profile/Profile';
+import Messages from './pages/Messages/Messages';
+import Friends from './pages/Friends/Friends';
+import Avatar from './components/Avatar';
+import UpdateProfile from './pages/MyAccount/UpdateProfile';
+import DetailedActivity from './pages/DetailedActivity/DetailedActivity';
+import CreateActivity from './pages/CreateActivity/CreateActivity';
+import Activities from './pages/Activities/Activities';
 
 function App() {
-  const { logout, isPending } = useLogout();
   const { user, authIsReady } = useAuthContext();
 
   return (
@@ -19,29 +26,10 @@ function App() {
         <BrowserRouter>
           <nav className="nav">
             <ul>
-              <li>
-                <Link to={'/'}>Home</Link>
-              </li>
-              {!user && (
-                <>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to={'/signup'}>Signup</Link>
-                  </li>
-                </>
-              )}
               {user && (
-                <>
-                  <li>
-                    {!isPending && <Link onClick={logout}>Sign Out</Link>}
-                    {isPending && <Link disabled>Logging Out...</Link>}
-                  </li>
-                  <li>
-                    <h3>hello {user.displayName}</h3>{' '}
-                  </li>
-                </>
+                <li>
+                  <Avatar user={user} />
+                </li>
               )}
             </ul>
           </nav>
@@ -51,13 +39,35 @@ function App() {
             {!user && <Route path="/login" element={<Login />} />}
             {!user && <Route path="/signup" element={<SignUp />} />}
             {user && (
-              <Route path="/create-activity" element={<CreateActivity />} />
+              <Route
+                path="/create-activity"
+                element={<CreateActivity uid={user.uid} />}
+              />
             )}
+            {user && <Route path="/activities" element={<Activities />} />}
+            {user && (
+              <Route
+                path="/activity-detail/:id"
+                element={<DetailedActivity />}
+              />
+            )}
+            {user && (
+              <Route path="/profile" element={<Profile user={user} />} />
+            )}
+            {user && <Route path="/messages" element={<Messages />} />}
+            {user && <Route path="/friends" element={<Friends />} />}
+            {user && (
+              <Route
+                path="/update-profile"
+                element={<UpdateProfile user={user} />}
+              />
+            )}
+
             <Route path="*" element={<Error />} />
           </Routes>
+          <MobileNav />
         </BrowserRouter>
       )}
-      <MobileNav />
     </div>
   );
 }

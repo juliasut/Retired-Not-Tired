@@ -8,24 +8,38 @@ let initState = {
   success: null,
 };
 
+//* Reducer function to update state based on action type and payload
 const firestoreReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_DOCUMENT_PENDING':
+    case 'PENDING':
       return {
         document: null,
         isPending: true,
         error: null,
         success: false,
       };
-    case 'ADD_DOCUMENT_SUCCESS':
+    case 'SUCCESS':
       return {
-        // ...state,
         document: action.payload,
         isPending: false,
         error: null,
         success: true,
       };
-    case 'ADD_DOCUMENT_ERROR':
+    case 'DELETED_DOCUMENT':
+      return {
+        document: null,
+        isPending: false,
+        error: null,
+        success: true,
+      };
+    case 'UPDATED_DOCUMENT':
+      return {
+        document: action.payload,
+        isPending: false,
+        error: null,
+        success: true,
+      };
+    case 'ERROR':
       return {
         document: null,
         isPending: false,
@@ -53,28 +67,58 @@ export const useFirestore = (collection) => {
 
   //* Add document
   const addDocument = async (document) => {
-    dispatch({ type: 'ADD_DOCUMENT_PENDING' });
+    dispatch({ type: 'PENDING' });
     try {
       const createdAt = timestamp.fromDate(new Date());
-      const addedDocument = await reference.add(...document, createdAt);
+      const addedDocument = await reference.add({ ...document, createdAt });
 
       dispatchIfMounted({
-        type: 'ADD_DOCUMENT_SUCCESS',
+        type: 'SUCCESS',
         payload: addedDocument,
       });
     } catch (error) {
       dispatchIfMounted({
-        type: 'ADD_DOCUMENT_ERROR',
+        type: 'ERROR',
         payload: error.message,
       });
     }
   };
 
-  //* Delete document
-  const deleteDocument = async (id) => {};
+  //* Delete document by id
+  const deleteDocument = async (id) => {
+    dispatch({ type: 'PENDING' });
+
+    try {
+      await reference.doc(id).delete();
+      dispatchIfMounted({ type: 'DELETED_DOCUMENT' });
+    } catch (error) {
+      dispatchIfMounted({
+        type: 'ERROR',
+        payload: error.message,
+      });
+    }
+  };
 
   //* Update document
-  const updateDocument = async (document) => {};
+  const updateDocument = async (document, updates) => {
+    console.log(document.uid);
+    dispatch({ type: 'PENDING' });
+    try {
+      const updatedDocument = await reference.doc(document).update({ updates });
+
+      dispatchIfMounted({
+        type: 'UPDATED_DOCUMENT',
+        payload: updatedDocument,
+      });
+      return updatedDocument;
+    } catch (error) {
+      dispatchIfMounted({
+        type: 'ERROR',
+        payload: error.message,
+      });
+      return null;
+    }
+  };
 
   //* Clean up function
   useEffect(() => {

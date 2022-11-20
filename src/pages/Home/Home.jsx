@@ -3,6 +3,8 @@ import Activities from "../activities/Activities";
 import CreateActivity from "../createActivity/CreateActivity";
 import "./home.css";
 import "react-calendar/dist/Calendar.css";
+// import Calendar from "react-calendar";
+// import CalendarPicker from "@mui/x-date-pickers-pro/CalendarPicker";
 import Logo from "../../assets/images/retired-not-tired-just-flip-flops.png";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
@@ -11,16 +13,17 @@ import { Link } from "react-router-dom";
 import StaticDatePickerLandscape from "../../components/Calendar";
 import Button from "../../components/Button";
 // import Icon from "@mui/material/Icon;
-import { database } from "../../config/firebase";
+
 import { useEffect, useState } from "react";
 
 function Home() {
   const [details, setDetails] = useState([]);
-  useEffect(() => {
-    fetch("db.json")
-      .then((response) => response.json())
-      .then((json) => setDetails(json));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/activities')
+  //     .then((response) => response.json())
+  //     .then((json) => setDetails(json));
+  // }, []);
+  console.log(details);
 
   // const dummyActivities = [
   //   { id: 1, title: "swimming", date: new Date() },
@@ -53,17 +56,11 @@ function Home() {
               key={activity.id}
             >
               <p>{activity.title}</p>
-              <p>{format(activity.date, "dd-MM-yyyy")}</p>
+              <p>{format(parseISO(activity.date), "MM-dd-yyyy")}</p>
             </Card>
           </Link>
         ))}
       </div>
-
-      <Activities />
-      <Link to="/create-activity" element={<CreateActivity />}>
-        <button className="create-activity">Create Activity</button>
-      </Link>
-
       <StaticDatePickerLandscape />
       <Button />
     </div>
