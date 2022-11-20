@@ -1,19 +1,12 @@
-import { Grid, Button } from '@mui/material';
+import { Button } from '@mui/material';
 
-export default function BasicButtons() {
+export default function BasicButtons(props) {
   return (
-    <Grid item xs>
-      <Button
-        onClick={() => {
-          alert('clicked');
-        }}
-        type="submit"
-        variant="contained"
-        disableElevation={true}
-        sx={{ mt: 2, mb: 2, width: 200, backgroundColor: '#625b71' }}
-      >
-        Share an activity
-      </Button>
-    </Grid>
+    <Button
+      variant="contained"
+      disableElevation={true}
+      sx={{ mt: 2, mb: 2, backgroundColor: '#625b71', }}
+      {...props}
+    />
   );
 }
