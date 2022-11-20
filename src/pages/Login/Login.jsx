@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLogin } from '../../hooks/useLogin';
-import { Grid, Box, Button, Link, Typography, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Grid, Box, Button, Link, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import BackGroundTop from '../../components/BackGroundTop';
 import BackGroundBottom from '../../components/BackGroundBottom';
@@ -9,13 +10,19 @@ import TermsAndConditionsDisclaimer from '../../components/TermsAndConditionsDis
 import PageTitleTypography from '../../components/PageTitleTypography';
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const { login, isPending } = useLogin();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    await login(email, password);
+
+    setTimeout(() => {
+      navigate('/'); //? Redirect to home page
+    }, 2000);
   };
 
   return (

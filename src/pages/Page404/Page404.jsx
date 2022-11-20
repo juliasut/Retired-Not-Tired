@@ -1,7 +1,26 @@
 import { Box, Button, CardMedia, Link, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const Error = () => {
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+
+  //? Redirects user
+  useEffect(() => {
+    setTimeout(() => {
+      if (user) {
+        //? Redirect to home page if a user is signed in
+        navigate('/');
+      } else {
+        //? Redirect to login page if no user is signed in
+        navigate('/login');
+      }
+    }, 5000);
+  }, [navigate, user]);
+
   return (
     <Container
       component="main"
@@ -29,7 +48,7 @@ const Error = () => {
           404
         </Typography>
         <Typography variant="h6" component="h2" align="center" gutterBottom>
-          That page does not seem to exist Tami...
+          Please wait while we redirect you...
         </Typography>
         <CardMedia
           component="iframe"

@@ -1,6 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useLogout } from './hooks/useLogout';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 
 //? Pages import
@@ -12,11 +11,12 @@ import MobileNav from './components/MobileNav';
 import Profile from './pages/Profile/Profile';
 import Messages from './pages/Messages/Messages';
 import Friends from './pages/Friends/Friends';
+import Avatar from './components/Avatar';
+import UpdateProfile from './pages/MyAccount/UpdateProfile';
 import DetailedActivity from './pages/DetailedActivity/DetailedActivity';
 import CreateActivity from './pages/CreateActivity/CreateActivity';
 
 function App() {
-  const { logout, isPending } = useLogout();
   const { user, authIsReady } = useAuthContext();
 
   return (
@@ -25,29 +25,10 @@ function App() {
         <BrowserRouter>
           <nav className="nav">
             <ul>
-              <li>
-                <Link to={'/'}>Home</Link>
-              </li>
-              {!user && (
-                <>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to={'/signup'}>Signup</Link>
-                  </li>
-                </>
-              )}
               {user && (
-                <>
-                  <li>
-                    {!isPending && <Link onClick={logout}>Sign Out</Link>}
-                    {isPending && <Link disabled>Logging Out...</Link>}
-                  </li>
-                  <li>
-                    <h3>hello {user.displayName}</h3>{' '}
-                  </li>
-                </>
+                <li>
+                  <Avatar user={user} />
+                </li>
               )}
             </ul>
           </nav>
@@ -62,13 +43,18 @@ function App() {
                 element={<CreateActivity uid={user.uid} />}
               />
             )}
-
             {user && (
               <Route path="/activity-detail" element={<DetailedActivity />} />
             )}
-            {user && <Route path="/profile" element={<Profile />} />}
+            {user && (
+              <Route path="/profile" element={<Profile user={user} />} />
+            )}
             {user && <Route path="/messages" element={<Messages />} />}
             {user && <Route path="/friends" element={<Friends />} />}
+            {user && (
+              <Route path="/update-profile" element={<UpdateProfile />} />
+            )}
+
             <Route path="*" element={<Error />} />
           </Routes>
           <MobileNav />

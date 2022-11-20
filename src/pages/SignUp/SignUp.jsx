@@ -1,8 +1,9 @@
-import { Grid, Box, Button, Link, Typography, TextField } from '@mui/material';
+import { Grid, Box, Button, Link, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import { ReactComponent as BackgroundTop } from '../../assets/rectangleTop.svg';
 import { ReactComponent as BackgroundBottom } from '../../assets/rectangleBottom.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useSignup from '../../hooks/useSignup';
 import UploadButtons from '../../components/UploadButton';
 import BackGroundTop from '../../components/BackGroundTop';
@@ -12,6 +13,7 @@ import TermsAndConditionsDisclaimer from '../../components/TermsAndConditionsDis
 import PageTitleTypography from '../../components/PageTitleTypography';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const { signup, isPending } = useSignup();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +26,6 @@ const SignUp = () => {
     setProfilePic(null);
     console.log(e.target.files[0]);
     const file = e.target.files[0];
-    // setProfilePic(e.target.files[0]);
 
     if (!file) {
       setProfilepicError('Please select a profile picture');
@@ -49,6 +50,9 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(email, password, displayName, profilePic);
+    setTimeout(() => {
+      navigate('/'); //? Redirect to home page
+    }, 2000);
   };
 
   return (
@@ -66,35 +70,27 @@ const SignUp = () => {
       >
         <PageTitleTypography>Sign Up</PageTitleTypography>
         <FormTextField
-          // id="userName"
           label="Username"
-          // name="userName"
           autoComplete="given-name"
           onChange={(e) => setDisplayName(e.target.value)}
           value={displayName}
         />
         <FormTextField
-          // id="email"
           label="Email"
-          // name="email"
           autoComplete="email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <FormTextField
-          // name="password"
           label="Create password"
           type="password"
-          // id="password"
           autoComplete="current-password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
         <FormTextField
-          // name="confirm-password"
           label="Confirm password"
           type="password"
-          // id="confirm-password"
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword}
         />
@@ -112,87 +108,12 @@ const SignUp = () => {
           alignItems="center"
           marginY={3}
         >
-          {/*dan-feat-firebase
-          Sign Up
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate>
-          <TextField
-            margin="normal"
-            color="secondary"
-            required
-            fullWidth
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            value={email}
-            label="Email"
-            autoFocus
-            sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-          />
-          <TextField
-            margin="normal"
-            color="secondary"
-            required
-            fullWidth
-            label="Create password"
-            id="password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            value={password}
-            type="password"
-            sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-          />
-          <TextField
-            margin="normal"
-            color="secondary"
-            required
-            fullWidth
-            label="Confirm password"
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-            }}
-            value={confirmPassword}
-            type="password"
-            sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-          />
-          <TextField
-            margin="normal"
-            color="secondary"
-            required
-            fullWidth
-            label="Display Name"
-            onChange={(e) => {
-              setDisplayName(e.target.value);
-            }}
-            value={displayName}
-            autoComplete="display-name"
-          />
-          {/* /* Profile Picture */}
-          {/* <label>
-            Profile Picture
-            <TextField
-              margin="normal"
-              color="secondary"
-              required
-              fullWidth
-              type="file"
-              onChange={(e) => {
-                handleFileChange(e);
-              }}
-              // label="Profile Picture"
-              sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-            />
-          </label> */}
           <Grid
             container
             direction="column"
             justifyContent="center"
             alignItems="center"
           >
-            {/* {profilepicError && (
-              <Typography color="error">{profilepicError}</Typography>
-            )} */}
             <Grid item xs>
               {!isPending && (
                 <Button
@@ -239,34 +160,6 @@ const SignUp = () => {
                 </Link>
               </Typography>
             </Grid>
-            {/* //!Will need to be removed, Check with team */}
-            {/* <Grid item xs>
-              <Button
-                type="submit"
-                variant="contained"
-                disableElevation={true}
-                sx={{
-                  mt: 2,
-                  mb: 2,
-                  width: 140,
-                  backgroundColor: '#625b71',
-                  '&:hover': {
-                    backgroundColor: '#988fad',
-                  },
-                }}
-              >
-                Sign Up
-              </Button>
-
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" color="text.primary" align="center">
-                {'Already a member? '}
-                <Link href="/login" variant="body2" color="text.primary">
-                  {'Log In'}
-                </Link>
-              </Typography>
-            </Grid> */}
           </Grid>
           <TermsAndConditionsDisclaimer />
         </Grid>

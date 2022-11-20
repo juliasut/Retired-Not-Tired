@@ -25,7 +25,7 @@ const fetchEvents = async () => {
 };
 
 export const useEvents = () => {
-  const [events, setEvents] = useState(null);
+  const [activities, setEvents] = useState(null);
 
   const { data, isLoading, isError, status } = useQuery(
     ['actiyvites'],
@@ -45,7 +45,7 @@ export const useEvents = () => {
     }
   );
 
-  return { events, isError, isLoading, status };
+  return { activities, isError, isLoading, status };
 };
 
 export default useEvents;
