@@ -40,7 +40,7 @@ const CreatActivity = ({ uid }) => {
       setContactNumber('');
       setDescription('');
       setComments([]);
-      navigate('/activities');
+      // navigate('/activities');
     }
   };
 
