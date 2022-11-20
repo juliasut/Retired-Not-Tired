@@ -72,7 +72,7 @@ const MobileNav = () => {
           value="activities"
           icon={<FavoriteBorderOutlinedIcon />}
           component={Link}
-          to="/activity-detail"
+          to="/activities"
         />
         <BottomNavigationAction
           sx={{
