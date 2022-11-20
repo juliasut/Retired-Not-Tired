@@ -35,7 +35,7 @@ function App() {
           </nav>
 
           <Routes>
-            {user && <Route path="/" element={<Home />} />}
+            {user && <Route path="/" element={<Home user={user} />} />}
             {!user && <Route path="/login" element={<Login />} />}
             {!user && <Route path="/signup" element={<SignUp />} />}
             {user && (
