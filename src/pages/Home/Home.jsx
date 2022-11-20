@@ -16,7 +16,7 @@ import AddActivity from '../../components/AddActivity';
 
 import { useEffect, useState } from 'react';
 
-function Home() {
+function Home({ user }) {
   const [details, setDetails] = useState([]);
   // useEffect(() => {
   //   fetch('http://localhost:3000/activities')
@@ -63,7 +63,6 @@ function Home() {
       </div>
       <StaticDatePickerLandscape />
       <AddActivity />
-      {/* <Activities /> */}
     </div>
   );
 }
