@@ -15,6 +15,7 @@ import Avatar from './components/Avatar';
 import UpdateProfile from './pages/MyAccount/UpdateProfile';
 import DetailedActivity from './pages/DetailedActivity/DetailedActivity';
 import CreateActivity from './pages/CreateActivity/CreateActivity';
+import Activities from './pages/Activities/Activities';
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -43,6 +44,7 @@ function App() {
                 element={<CreateActivity uid={user.uid} />}
               />
             )}
+            {user && <Route path="/activities" element={<Activities />} />}
             {user && (
               <Route path="/activity-detail" element={<DetailedActivity />} />
             )}
