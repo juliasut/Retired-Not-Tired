@@ -17,7 +17,8 @@ import Logo from '../assets/images/retired-not-tired-just-flip-flops.png';
 
 function AddActivity() {
   const [dialog, setDialog] = useState(false);
-  const [value, setValue] = useState(dayjs('2014-08-18T21:11:54'));
+  const [value, setValue] = useState(dayjs());
+  // '2022-12-20T16:00:00' - time format
   const handleChange = (newValue) => {
     setValue(newValue);
   };
@@ -88,9 +89,9 @@ function AddActivity() {
         onClick={() => setDialog(true)}
         variant="contained"
         disableElevation={true}
-        sx={{ mt: 2, mb: 2, width: 200, backgroundColor: '#625b71' }}
+        sx={{ mt: 2, mb: 2, width: 300, backgroundColor: '#625b71', '&:hover': { backgroundColor: '#988fad' } }}
       >
-        Add Activity
+        Share an Activity
       </Button>
     </LocalizationProvider>
   );
