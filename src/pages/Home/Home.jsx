@@ -8,7 +8,7 @@ import { format, parseISO } from 'date-fns';
 import { Link } from 'react-router-dom';
 import StaticDatePickerLandscape from '../../components/Calendar';
 import AddActivity from '../../components/AddActivity';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function Home({ user }) {
   const [details, setDetails] = useState([]);
