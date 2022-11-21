@@ -48,8 +48,6 @@ function AddActivity() {
     description,
     comments,
   };
-  console.log(time);
-  console.log(date);
 
   async function handleCloseDialog() {
     await addDocument(activity);
@@ -91,7 +89,7 @@ function AddActivity() {
             margin="dense"
             name="location"
             label="Where?"
-            onChange={handleChange}
+            onChange={(e) => setLocation(e.target.value)}
             value={location}
             fullWidth
             required
