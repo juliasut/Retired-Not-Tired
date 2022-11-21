@@ -33,6 +33,8 @@ function AddActivity() {
 
   const handleChange = (newValue) => {
     setValue(newValue);
+    setTime(value.locale('en').format('LT'));
+    setDate(value.locale('en').format('ddd DD MMM YYYY'));
   };
 
   const activity = {
@@ -45,14 +47,24 @@ function AddActivity() {
     contactNumber,
     description,
     comments,
-    value,
   };
+  console.log(time);
+  console.log(date);
 
   async function handleCloseDialog() {
-    // await addDocument(activity);
-    console.log(activity);
+    await addDocument(activity);
 
-    await setDialog(false);
+    (await response.error) ? console.log('error') : setDialog(false);
+  }
+
+  if (response.error) {
+    console.log(response.error);
+
+    return (
+      <div>
+        <h1>Something went wrong</h1>
+      </div>
+    );
   }
 
   return (
@@ -87,14 +99,14 @@ function AddActivity() {
           <MobileDatePicker
             label="When?"
             inputFormat="MM/DD/YYYY"
-            value={value}
             onChange={handleChange}
+            value={value}
             renderInput={(params) => <TextField margin="dense" {...params} />}
           />
           <TimePicker
             label="At what time?"
+            onChange={handleChange}
             value={value}
-            onChange={(e) => handleChange(e.target.value)}
             renderInput={(params) => <TextField margin="dense" {...params} />}
           />
           <TextField
