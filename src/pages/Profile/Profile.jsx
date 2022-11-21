@@ -9,10 +9,7 @@ const Profile = ({ user }) => {
       <h1>Profile Update Page</h1>
       {document && (
         <>
-          <div className="online">
-            {' '}
-            online: {document.online ? 'yes' : 'no'}
-          </div>
+          <div className="online">online: {document.online ? 'yes' : 'no'}</div>
           <div>
             <img
               src={document.photoURL || 'https://via.placeholder.com/150'}

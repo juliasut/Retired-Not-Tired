@@ -1,44 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Activities from "../activities/Activities";
-import CreateActivity from "../createActivity/CreateActivity";
 import "./home.css";
 import "react-calendar/dist/Calendar.css";
-// import Calendar from "react-calendar";
-// import CalendarPicker from "@mui/x-date-pickers-pro/CalendarPicker";
 import Logo from "../../assets/images/retired-not-tired-just-flip-flops.png";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { Link } from "react-router-dom";
 import StaticDatePickerLandscape from "../../components/Calendar";
-import Button from "../../components/Button";
-// import Icon from "@mui/material/Icon;
-
+import AddActivity from "../../components/AddActivity";
 import { useEffect, useState } from "react";
 
-function Home() {
+function Home({ user }) {
   const [details, setDetails] = useState([]);
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/activities')
-  //     .then((response) => response.json())
-  //     .then((json) => setDetails(json));
-  // }, []);
+
   console.log(details);
 
-  // const dummyActivities = [
-  //   { id: 1, title: "swimming", date: new Date() },
-  //   { id: 2, title: "golf", date: new Date() },
-  //   { id: 3, title: "bingo", date: new Date() },
-  //   { id: 4, title: "boxing", date: new Date() },
-  // ];
-  // pass in db.json here, the pass it into props in the detailed activey page
   return (
     <div className="container">
       <Typography variant="h4" component="h3" align="center" gutterBottom>
         Stay Active
       </Typography>
       <Typography variant="h3" component="h1" align="center" gutterBottom>
-        Retrired Not Tired
+        Retired Not Tired
       </Typography>
       <img className="logo" src={Logo} alt="Retirement flip flop" />
       <Typography variant="h3" component="h2" align="center" gutterBottom>
@@ -62,7 +45,7 @@ function Home() {
         ))}
       </div>
       <StaticDatePickerLandscape />
-      <Button />
+      <AddActivity />
     </div>
   );
 }

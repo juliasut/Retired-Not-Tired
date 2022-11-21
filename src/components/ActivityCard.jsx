@@ -14,19 +14,19 @@ import BackGroundSide from '../components/BackGroundSide';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Link, useNavigate } from 'react-router-dom';
 
-const ActivityCard = (props) => {
+const ActivityCard = ({ activity }) => {
   // const activity = {
-    //   id: '1',
-    //   title: 'Dancing to the Oldies',
-    //   location: '123 Main st San Jose, California',
-    //   date: '12.14.2022',
-    //   time: '17:00',
-    //   contact: 'Spencer Rees',
-    //   'contact-number': '301- 555-1212',
-    //   description: "Let's dance together as the beat drops high",
-    // };
-    const { title, description, contact } = props;
-    const navigate = useNavigate();
+  //   id: '1',
+  //   title: 'Dancing to the Oldies',
+  //   location: '123 Main st San Jose, California',
+  //   date: '12.14.2022',
+  //   time: '17:00',
+  //   contact: 'Spencer Rees',
+  //   'contact-number': '301- 555-1212',
+  //   description: "Let's dance together as the beat drops high",
+  // };
+  // const { title, description, contact } = props;
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -50,13 +50,13 @@ const ActivityCard = (props) => {
         }}
       >
         <CardHeader
-          title={title}
+          title={activity.title}
           titleTypographyProps={{ variant: 'body1' }}
           sx={{ pb: 0.6 }}
         />
         <CardContent sx={{ pt: 0, width: '200px' }}>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>
-            {description.slice(0, 44)}
+            {activity.description.slice(0, 44)}
           </Typography>
         </CardContent>
         <CardActions disableSpacing sx={{ py: 0, pl: 2.5 }}>
@@ -64,7 +64,7 @@ const ActivityCard = (props) => {
             <Avatar
               sx={{ bgcolor: '#ffab3d', width: 18, height: 18 }}
               aria-label="activity"
-              alt={contact}
+              alt={activity.contact}
               src=""
             >
               S
@@ -74,7 +74,7 @@ const ActivityCard = (props) => {
               color="text.secondary"
               sx={{ lineHeight: '13px', fontSize: '12px' }}
             >
-              Added by: {contact}
+              Added by: {activity.contact}
             </Typography>
             <Button
               sx={{
@@ -83,7 +83,7 @@ const ActivityCard = (props) => {
                 backgroundColor: '#988fad',
                 '&:hover': { backgroundColor: '#625b71' },
               }}
-              onClick={() => navigate('/activity-detail')}
+              onClick={() => navigate(`{/activity-detail/${activity.id}}`)}
             >
               <Typography sx={{ fontSize: '10px', textTransform: 'none' }}>
                 More Info
@@ -91,7 +91,7 @@ const ActivityCard = (props) => {
             </Button>
           </Stack>
         </CardActions>
-        {/* <IconButton
+        <IconButton
           aria-label="add to favorites"
           sx={{
             position: 'absolute',
@@ -101,7 +101,7 @@ const ActivityCard = (props) => {
           }}
         >
           <FavoriteBorderIcon />
-        </IconButton> */}
+        </IconButton>
       </Card>
       <BackGroundSide />
     </Box>

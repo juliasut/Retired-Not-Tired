@@ -29,8 +29,7 @@ function DetailedActivity() {
               <p>Start Date : {document.startDate} </p>
               <p>Start Time : {document.startTime}</p>
               <p>Contact : {document.contact}</p>
-              <p>Details : {document.details}</p>
-              <p>Contact Number: {document.contactNmuber}</p>
+              <p>Contact Number: {document.contactNumber}</p>
               <p>Description: {document.description}</p>
             </div>
           </>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAuthContext } from '../hooks/useAuthContext';
 import {
   Button,
   Dialog,
@@ -14,17 +15,44 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Logo from '../assets/images/retired-not-tired-just-flip-flops.png';
+import { useFirestore } from '../hooks/useFirestore';
 
 function AddActivity() {
+  const { user } = useAuthContext();
+  const { addDocument, response } = useFirestore('activities');
   const [dialog, setDialog] = useState(false);
   const [value, setValue] = useState(dayjs());
-  // '2022-12-20T16:00:00' - time format
+  const [title, setTitle] = useState('');
+  const [location, setLocation] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [contact, setContact] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [description, setDescription] = useState('');
+  const [comments, setComments] = useState([]);
+
   const handleChange = (newValue) => {
     setValue(newValue);
   };
 
-  function handleCloseDialog() {
-    setDialog(false);
+  const activity = {
+    uid: user.uid,
+    title,
+    location,
+    date,
+    time,
+    contact,
+    contactNumber,
+    description,
+    comments,
+    value,
+  };
+
+  async function handleCloseDialog() {
+    // await addDocument(activity);
+    console.log(activity);
+
+    await setDialog(false);
   }
 
   return (
@@ -42,6 +70,8 @@ function AddActivity() {
             margin="dense"
             name="activity-name"
             label="What is happening?"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
             fullWidth
             required
           />
@@ -49,6 +79,8 @@ function AddActivity() {
             margin="dense"
             name="location"
             label="Where?"
+            onChange={handleChange}
+            value={location}
             fullWidth
             required
           />
@@ -62,13 +94,24 @@ function AddActivity() {
           <TimePicker
             label="At what time?"
             value={value}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e.target.value)}
             renderInput={(params) => <TextField margin="dense" {...params} />}
           />
           <TextField
             margin="dense"
             name="organizer"
             label="Who is organizing?"
+            onChange={(e) => setContact(e.target.value)}
+            value={contact}
+            fullWidth
+            required
+          />
+          <TextField
+            margin="dense"
+            name="organizer"
+            label="What's their number?"
+            onChange={(e) => setContactNumber(e.target.value)}
+            value={contactNumber}
             fullWidth
             required
           />
@@ -76,6 +119,8 @@ function AddActivity() {
             margin="dense"
             name="description"
             label="Tell us the details too.."
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
             fullWidth
             required
           />
@@ -89,7 +134,13 @@ function AddActivity() {
         onClick={() => setDialog(true)}
         variant="contained"
         disableElevation={true}
-        sx={{ mt: 2, mb: 2, width: 300, backgroundColor: '#625b71', '&:hover': { backgroundColor: '#988fad' } }}
+        sx={{
+          mt: 2,
+          mb: 2,
+          width: 300,
+          backgroundColor: '#625b71',
+          '&:hover': { backgroundColor: '#988fad' },
+        }}
       >
         Share an Activity
       </Button>
