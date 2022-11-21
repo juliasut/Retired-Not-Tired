@@ -44,8 +44,8 @@ function Home({ user }) {
           </Link>
         ))}
       </div>
-      <StaticDatePickerLandscape />
       <AddActivity />
+      <StaticDatePickerLandscape />
     </div>
   );
 }
