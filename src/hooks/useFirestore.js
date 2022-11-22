@@ -104,8 +104,8 @@ export const useFirestore = (collection) => {
     console.log(document.uid);
     dispatch({ type: 'PENDING' });
     try {
-      const updatedDocument = await reference.doc(document).update({ updates });
-
+      const updatedDocument = await reference.doc(document).update(updates);
+      console.log(updates);
       dispatchIfMounted({
         type: 'UPDATED_DOCUMENT',
         payload: updatedDocument,
