@@ -20,6 +20,7 @@ function DetailedActivity() {
     //? add comments the activity with the users id
 
     const commentToAdd = {
+      user: user.uid,
       displayName: user.displayName,
       photo: user.photoURL,
       comment,
@@ -31,7 +32,7 @@ function DetailedActivity() {
       comments: [...document.comments, commentToAdd],
     });
 
-    if (response.success) {
+    if (!response.error) {
       setComment('');
     }
   };
@@ -70,6 +71,24 @@ function DetailedActivity() {
         </label>
         <button>Submit Comment</button>
       </form>
+      <div>
+        {document &&
+          document.comments.map((comment) => (
+            <div
+              key={comment.id}
+              style={{
+                border: '1px solid black',
+                width: '50%',
+                margin: '10px auto',
+              }}
+            >
+              <p>{comment.displayName}</p>
+              <p>{comment.comment}</p>
+              <img src={comment.photo} alt="" />
+              <p>{comment.createdAt.toDate().toLocaleString()}</p>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
