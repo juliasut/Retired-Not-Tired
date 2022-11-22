@@ -4,6 +4,10 @@ import { useDocuments } from '../../hooks/useDocuments';
 const Profile = ({ user }) => {
   const { document, error } = useDocuments('users', user.uid);
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div>
       <h1>Profile Update Page</h1>
@@ -16,7 +20,7 @@ const Profile = ({ user }) => {
               alt="avatar"
             />
             <p>Name : {document.updates.name}</p>
-            <p>Email : {document.updates.email}</p>
+            <p>Email : {user.email}</p>
             <p>DOB : {document.updates.dob}</p>
             <p>About me : {document.updates.bio}</p>
             <p>Street : {document.updates.street}</p>

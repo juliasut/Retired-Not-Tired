@@ -2,12 +2,12 @@ import './updateProfile.css';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useDocuments } from '../../hooks/useDocuments';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = ({ user }) => {
   const { updateDocument, response } = useFirestore('users');
   const { document, error } = useDocuments('users', user.uid);
-
-  console.log({ document });
+  const navigate = useNavigate();
 
   const [name, setName] = useState();
   const [email, setEmail] = useState(user.email);
@@ -19,12 +19,8 @@ const Profile = ({ user }) => {
   const [zip, setZip] = useState('');
   const [activities, setActivities] = useState('');
 
-  console.log({ street });
-
   const handleUpdate = async (e) => {
     e.preventDefault();
-
-    console.log(name, email, dob, bio, street, city, state, zip, activities);
 
     await updateDocument(user.uid, {
       name,
@@ -46,9 +42,12 @@ const Profile = ({ user }) => {
       setCity('');
       setState('');
       setZip('');
+
+      setTimeout(() => {
+        navigate('/profile');
+      }, 2000);
     }
   };
-  console.log(user.displayName);
 
   useEffect(() => {
     if (document) {

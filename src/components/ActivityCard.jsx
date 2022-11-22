@@ -12,20 +12,9 @@ import {
 } from '@mui/material';
 import BackGroundSide from '../components/BackGroundSide';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ActivityCard = ({ activity }) => {
-  // const activity = {
-  //   id: '1',
-  //   title: 'Dancing to the Oldies',
-  //   location: '123 Main st San Jose, California',
-  //   date: '12.14.2022',
-  //   time: '17:00',
-  //   contact: 'Spencer Rees',
-  //   'contact-number': '301- 555-1212',
-  //   description: "Let's dance together as the beat drops high",
-  // };
-  // const { title, description, contact } = props;
   const navigate = useNavigate();
 
   return (
@@ -56,7 +45,7 @@ const ActivityCard = ({ activity }) => {
         />
         <CardContent sx={{ pt: 0, width: '200px' }}>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>
-            {activity.description.slice(0, 44)}
+            {activity.description.slice(0, 40)}
           </Typography>
         </CardContent>
         <CardActions disableSpacing sx={{ py: 0, pl: 2.5 }}>
