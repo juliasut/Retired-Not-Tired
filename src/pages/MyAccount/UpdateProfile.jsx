@@ -7,8 +7,6 @@ const Profile = ({ user }) => {
   const { updateDocument, response } = useFirestore('users');
   const { document, error } = useDocuments('users', user.uid);
 
-  console.log({ document });
-
   const [name, setName] = useState();
   const [email, setEmail] = useState(user.email);
   const [dob, setDob] = useState('');
@@ -19,12 +17,8 @@ const Profile = ({ user }) => {
   const [zip, setZip] = useState('');
   const [activities, setActivities] = useState('');
 
-  console.log({ street });
-
   const handleUpdate = async (e) => {
     e.preventDefault();
-
-    console.log(name, email, dob, bio, street, city, state, zip, activities);
 
     await updateDocument(user.uid, {
       name,
@@ -48,17 +42,24 @@ const Profile = ({ user }) => {
       setZip('');
     }
   };
-  console.log(user.displayName);
 
   useEffect(() => {
-    if (document) {
-      setName(document.updates.name);
-      setDob(document.updates.dob);
-      setBio(document.updates.bio);
-      setStreet(document.updates.street);
-      setCity(document.updates.city);
-      setState(document.updates.state);
-      setZip(document.updates.zip);
+    if (!document) {
+      setName('');
+      setDob('');
+      setBio('');
+      setStreet('');
+      setCity('');
+      setState('');
+      setZip('');
+    } else {
+      setName(document.name);
+      setDob(document.dob);
+      setBio(document.bio);
+      setStreet(document.street);
+      setCity(document.city);
+      setState(document.state);
+      setZip(document.zip);
     }
   }, [document]);
 
@@ -87,7 +88,6 @@ const Profile = ({ user }) => {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
-            {/* //todo figure this one out!! */}
             <label>DOB:</label>
             <input
               type="date"
@@ -105,7 +105,6 @@ const Profile = ({ user }) => {
               value={bio}
             ></textarea>
             <label>Address:</label>
-            {/* <input type="text" name="address" onChange={(e) => handleUpdate(e.target.value)} value={}/> */}
             <label>Street:</label>
             <input
               type="text"
