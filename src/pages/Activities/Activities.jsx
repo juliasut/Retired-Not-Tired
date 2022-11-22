@@ -9,8 +9,7 @@ const Activities = () => {
       <h1>Activities</h1>
       <p>Activities page body content</p>
       {error && <p>{error}</p>}
-      {/* {documents && <ActivityCard activity={documents} />} */}
-      {documents && <ActivitiesList activity={documents} />}
+      {documents && <ActivitiesList activities={documents} />}
     </div>
   );
 };
