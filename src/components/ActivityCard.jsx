@@ -41,13 +41,21 @@ const ActivityCard = ({ activity }) => {
           titleTypographyProps={{ variant: 'body1', color: 'textColor.main' }}
           sx={{ pb: 0.6 }}
         />
-        <CardContent sx={{ pt: 0, width: '200px' }}>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>
-            {activity.description.slice(0, 40)}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing sx={{ py: 0, pl: 2.5 }}>
-          <Stack direction="row" spacing={1}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ width: '70%', mx: '9%', mb: '5px' }}
+        >
+          {description.slice(0, 57)}
+        </Typography>
+        <Stack
+          direction="row"
+          spacing={0.7}
+          justifyContent="space-between"
+          width="85%"
+          mx="10%"
+        >
+          <Stack direction="row" spacing={1.5}>
             <Avatar
               sx={{ bgcolor: '#ffab3d', width: 18, height: 18 }}
               aria-label="activity"
