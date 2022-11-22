@@ -1,7 +1,5 @@
 import { Grid, Box, Button, Link, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
-import { ReactComponent as BackgroundTop } from '../../assets/rectangleTop.svg';
-import { ReactComponent as BackgroundBottom } from '../../assets/rectangleBottom.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSignup from '../../hooks/useSignup';
