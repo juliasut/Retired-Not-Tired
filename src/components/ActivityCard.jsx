@@ -2,8 +2,6 @@ import {
   Avatar,
   Card,
   CardHeader,
-  CardContent,
-  CardActions,
   IconButton,
   Box,
   Button,
@@ -16,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ActivityCard = ({ activity }) => {
   const navigate = useNavigate();
+  const { title, description, contact, id } = activity;
 
   return (
     <Box
@@ -26,7 +25,7 @@ const ActivityCard = ({ activity }) => {
         overflow: 'hidden',
         position: 'relative',
         boxShadow: '0px 0.916602px 3.816602px rgba(0, 0, 0, 0.16)',
-        my: 1.5,
+        my: 2.5,
       }}
     >
       <Card
@@ -34,13 +33,12 @@ const ActivityCard = ({ activity }) => {
           border: '1.3px solid #030109',
           height: '100%',
           width: '100%',
-          borderRadius: '6.7px',
           paddingLeft: '38px',
         }}
       >
         <CardHeader
-          title={activity.title}
-          titleTypographyProps={{ variant: 'body1' }}
+          title={title}
+          titleTypographyProps={{ variant: 'body1', color: 'textColor.main' }}
           sx={{ pb: 0.6 }}
         />
         <CardContent sx={{ pt: 0, width: '200px' }}>
@@ -53,33 +51,26 @@ const ActivityCard = ({ activity }) => {
             <Avatar
               sx={{ bgcolor: '#ffab3d', width: 18, height: 18 }}
               aria-label="activity"
-              alt={activity.contact}
+              alt={contact}
               src=""
             >
               S
             </Avatar>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: '13px', fontSize: '12px' }}
-            >
-              Added by: {activity.contact}
+            <Typography variant="caption" color="textColor.misc">
+              Added by: {contact}
             </Typography>
-            <Button
-              sx={{
-                height: '23px',
-                color: '#fff',
-                backgroundColor: '#988fad',
-                '&:hover': { backgroundColor: '#625b71' },
-              }}
-              onClick={() => navigate(`{/activity-detail/${activity.id}}`)}
-            >
-              <Typography sx={{ fontSize: '10px', textTransform: 'none' }}>
-                More Info
-              </Typography>
-            </Button>
           </Stack>
-        </CardActions>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ height: '25px' }}
+            onClick={() => navigate(`/activity-detail/${id}`)}
+          >
+            <Typography sx={{ fontSize: '11px', textTransform: 'none' }}>
+              More Info
+            </Typography>
+          </Button>
+        </Stack>
         <IconButton
           aria-label="add to favorites"
           sx={{
