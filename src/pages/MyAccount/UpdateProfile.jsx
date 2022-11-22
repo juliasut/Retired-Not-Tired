@@ -1,7 +1,7 @@
 import './updateProfile.css';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useDocuments } from '../../hooks/useDocuments';
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 const Profile = ({ user }) => {
   const { updateDocument, response } = useFirestore('users');
@@ -9,14 +9,14 @@ const Profile = ({ user }) => {
 
   console.log({ document });
 
-  const [name, setName] = useState(user && user.displayName);
-  const [email, setEmail] = useState(user.email || '');
-  const [dob, setDob] = useState(document && document.updates.dob);
-  const [bio, setBio] = useState(document && document.updates.bio);
-  const [street, setStreet] = useState(document && document.updates.street);
-  const [city, setCity] = useState(document && document.updates.city);
-  const [state, setState] = useState(document && document.updates.state);
-  const [zip, setZip] = useState(document && document.updates.zip);
+  const [name, setName] = useState();
+  const [email, setEmail] = useState(user.email);
+  const [dob, setDob] = useState('');
+  const [bio, setBio] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zip, setZip] = useState('');
   const [activities, setActivities] = useState('');
 
   console.log({ street });
@@ -24,34 +24,48 @@ const Profile = ({ user }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const updates = {
-      update: [name, email, dob, bio, street, city, state, zip, activities],
-    };
+    console.log(name, email, dob, bio, street, city, state, zip, activities);
 
-    // await updateDocument(user.uid, {
-    //   name,
-    //   dob,
-    //   bio,
-    //   street,
-    //   city,
-    //   state,
-    //   zip,
-    //   activities,
-    // });
+    await updateDocument(user.uid, {
+      name,
+      dob,
+      bio,
+      street,
+      city,
+      state,
+      zip,
+      activities,
+    });
 
-    //   if (!response.error) {
-    //     setName('');
-    //     setEmail('');
-    //     setDob('');
-    //     setBio('');
-    //     setStreet('');
-    //     setCity('');
-    //     setState('');
-    //     setZip('');
-    //     setActivities([]);
-    //   }
+    if (!response.error) {
+      setName('');
+      setEmail('');
+      setDob('');
+      setBio('');
+      setStreet('');
+      setCity('');
+      setState('');
+      setZip('');
+    }
   };
   console.log(user.displayName);
+
+  useEffect(() => {
+    if (document) {
+      setName(document.updates.name);
+      setDob(document.updates.dob);
+      setBio(document.updates.bio);
+      setStreet(document.updates.street);
+      setCity(document.updates.city);
+      setState(document.updates.state);
+      setZip(document.updates.zip);
+    }
+  }, [document]);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div>
       <h1>Profile Update Page</h1>

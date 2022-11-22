@@ -1,8 +1,9 @@
-import BackGroundTop from "../../components/BackGroundTop";
-import BackGroundBottom from "../../components/BackGroundBottom";
-import { Typography, Button, Container, Grid } from "@mui/material";
-import React from "react";
-import LandingPage from "../../assets/images/retired-not-tired-big-flip-flop.png";
+import BackGroundTop from '../../components/BackGroundTop';
+import BackGroundBottom from '../../components/BackGroundBottom';
+import { Typography, Button, Container, Grid } from '@mui/material';
+import React from 'react';
+import LandingPage from '../../assets/images/retired-not-tired-big-flip-flop.png';
+import { Link } from 'react-router-dom';
 
 export default function Landing() {
   return (
@@ -16,8 +17,18 @@ export default function Landing() {
           Connect and Help Members in Your Community Stay Active
         </Typography>
       </div>
-      <img className="landing-page" src={LandingPage} alt="Retirement Big Logo Flip Flop" />
-      <Grid container direction="column" justifyContent="center" alignItems="center" marginY={3}>
+      <img
+        className="landing-page"
+        src={LandingPage}
+        alt="Retirement Big Logo Flip Flop"
+      />
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        marginY={3}
+      >
         <Button
           type="submit"
           variant="contained"
@@ -26,11 +37,13 @@ export default function Landing() {
             mt: 2,
             mb: 2,
             width: 140,
-            backgroundColor: "#625b71",
-            "&:hover": {
-              backgroundColor: "#988fad",
+            backgroundColor: '#625b71',
+            '&:hover': {
+              backgroundColor: '#988fad',
             },
           }}
+          to="/signup"
+          component={Link}
         >
           Sign Up
         </Button>
@@ -42,11 +55,13 @@ export default function Landing() {
             mt: 2,
             mb: 2,
             width: 140,
-            backgroundColor: "#625b71",
-            "&:hover": {
-              backgroundColor: "#988fad",
+            backgroundColor: '#625b71',
+            '&:hover': {
+              backgroundColor: '#988fad',
             },
           }}
+          to="/login"
+          component={Link}
         >
           Log In
         </Button>
