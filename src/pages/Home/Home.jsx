@@ -32,20 +32,20 @@ function Home({ user }) {
           <Link to={`/activity/${activity.id}`}>
             <Card
               sx={{
-                display: 'inline-block',
-                mx: '2px',
-                transform: 'scale(0.8)',
+                display: "inline-block",
+                mx: "2px",
+                transform: "scale(0.8)",
               }}
               key={activity.id}
             >
               <p>{activity.title}</p>
-              <p>{format(parseISO(activity.date), 'MM-dd-yyyy')}</p>
+              <p>{format(parseISO(activity.date), "MM-dd-yyyy")}</p>
             </Card>
           </Link>
         ))}
       </div>
-      <StaticDatePickerLandscape />
       <AddActivity />
+      <StaticDatePickerLandscape />
     </div>
   );
 }
