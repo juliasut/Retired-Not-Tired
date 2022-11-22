@@ -40,7 +40,7 @@ function AddActivity() {
   const activity = {
     uid: user.uid,
     title,
-    location,
+    location: location.replaceAll(', ', ' '),
     date,
     time,
     contact,
@@ -51,7 +51,6 @@ function AddActivity() {
 
   async function handleCloseDialog() {
     await addDocument(activity);
-
     (await response.error) ? console.log('error') : setDialog(false);
   }
 
