@@ -31,6 +31,17 @@ function AddActivity() {
   const [description, setDescription] = useState('');
   const [comments, setComments] = useState([]);
 
+  const closeModal = () => {
+    setDialog(false);
+    setTitle('');
+    setLocation('');
+    setDate('');
+    setTime('');
+    setContact('');
+    setContactNumber('');
+    setDescription('');
+  };
+
   const handleChange = (newValue) => {
     setValue(newValue);
     setTime(value.locale('en').format('LT'));
@@ -66,7 +77,7 @@ function AddActivity() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Dialog open={dialog} onClose={handleCloseDialog}>
+      <Dialog open={dialog}>
         <DialogTitle>
           <img src={Logo} alt="Retirement flip flop" height="45px" />
           Add Activity
@@ -135,7 +146,7 @@ function AddActivity() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button onClick={closeModal}>Cancel</Button>
           <Button onClick={handleCloseDialog}>Share</Button>
         </DialogActions>
       </Dialog>
