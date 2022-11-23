@@ -11,10 +11,42 @@ import {
 import BackGroundSide from '../components/BackGroundSide';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useNavigate } from 'react-router-dom';
+import uniquid from 'uniquid';
+import { useFirestore } from '../hooks/useFirestore';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { timestamp } from '../config/firebase';
+import useDocuments from '../hooks/useDocuments';
+import { useEffect } from 'react';
 
 const ActivityCard = ({ activity }) => {
   const navigate = useNavigate();
+  const { user } = useAuthContext();
   const { title, description, contact, id } = activity;
+  const { updateDocument } = useFirestore('users');
+  const { document } = useDocuments('users', user.uid);
+
+  const activityToupdate = {
+    activity: id,
+    title,
+    id: uniquid(),
+    dateAdded: timestamp.fromDate(new Date()),
+  };
+
+  const handleClick = () => {
+    //? if the activity already exists, then it should not be added again
+    if (
+      !document.activities.some((userAct) => {
+        console.log('Activity Already Added to your list');
+        return userAct.activity === id;
+      })
+    ) {
+      //? if the activity is not in the users saved activities then add it
+      console.log('Activity Added to your list');
+      updateDocument(user.uid, {
+        activities: [...document.activities, activityToupdate],
+      });
+    }
+  };
 
   return (
     <Box
@@ -87,6 +119,7 @@ const ActivityCard = ({ activity }) => {
             right: 8,
             '&:hover': { color: '#988fad', fill: 'blue' },
           }}
+          onClick={() => handleClick()}
         >
           <FavoriteBorderIcon />
         </IconButton>

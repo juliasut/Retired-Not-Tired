@@ -15,7 +15,7 @@ const Profile = ({ user }) => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
-  const [activities, setActivities] = useState('');
+  const [activities, setActivities] = useState([]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
