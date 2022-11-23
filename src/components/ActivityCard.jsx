@@ -52,8 +52,10 @@ const ActivityCard = ({ activity }) => {
   return (
     <Box
       sx={{
-        width: '285px',
-        height: '150px',
+        width: '95%',
+        maxWidth: '420px',
+        height: '100%',
+        maxHeight: '150px',
         borderRadius: '6.7px',
         overflow: 'hidden',
         position: 'relative',
