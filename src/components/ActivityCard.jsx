@@ -16,7 +16,6 @@ import { useFirestore } from '../hooks/useFirestore';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { timestamp } from '../config/firebase';
 import useDocuments from '../hooks/useDocuments';
-import { useEffect } from 'react';
 
 const ActivityCard = ({ activity }) => {
   const navigate = useNavigate();
@@ -36,11 +35,13 @@ const ActivityCard = ({ activity }) => {
     //? if the activity already exists, then it should not be added again
     if (
       !document.activities.some((userAct) => {
+        //todo toast notification here
         console.log('Activity Already Added to your list');
         return userAct.activity === id;
       })
     ) {
       //? if the activity is not in the users saved activities then add it
+      //todo toast notification here
       console.log('Activity Added to your list');
       updateDocument(user.uid, {
         activities: [...document.activities, activityToupdate],
