@@ -1,8 +1,13 @@
 import './profile.css';
 import { useDocuments } from '../../hooks/useDocuments';
+import { Link } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const { user } = useAuthContext();
   const { document, error } = useDocuments('users', user.uid);
+
+  console.log(document);
 
   if (error) {
     return <div>{error}</div>;
@@ -26,7 +31,18 @@ const Profile = ({ user }) => {
             <p>City : {document.city}</p>
             <p>State : {document.state}</p>
             <p>Zip : {document.zip}</p>
-            <p>Activities : {document.activities}</p>
+            <h4>Activities I'm interested in 🤌 : </h4>
+            <ul>
+              {document.activities.map((interest) => (
+                <>
+                  <li key={interest.id}>
+                    <Link to={`/activity-detail/${interest.activity}`}>
+                      {interest.title}
+                    </Link>
+                  </li>
+                </>
+              ))}
+            </ul>
           </div>
         </>
       )}
