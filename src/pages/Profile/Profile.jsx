@@ -1,10 +1,9 @@
 import './profile.css';
 import { useDocuments } from '../../hooks/useDocuments';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const Profile = () => {
-  const navigate = useNavigate();
   const { user } = useAuthContext();
   const { document, error } = useDocuments('users', user.uid);
 
