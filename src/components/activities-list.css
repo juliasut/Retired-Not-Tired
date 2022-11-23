@@ -1,0 +1,12 @@
+.media-scroller {
+  display: grid;
+  /* gap: 1rem; */
+  grid-auto-flow: column;
+  grid-auto-columns: 23%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.media-element {
+
+}
