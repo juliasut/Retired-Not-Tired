@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import "./home.css";
-import "react-calendar/dist/Calendar.css";
-import Logo from "../../assets/images/retired-not-tired-just-flip-flops.png";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import { format, parseISO } from "date-fns";
-import { Link } from "react-router-dom";
-import StaticDatePickerLandscape from "../../components/Calendar";
-import AddActivity from "../../components/AddActivity";
-import { useEffect, useState } from "react";
+import './home.css';
+import 'react-calendar/dist/Calendar.css';
+import Logo from '../../assets/images/retired-not-tired-just-flip-flops.png';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import { format, parseISO } from 'date-fns';
+import { Link } from 'react-router-dom';
+import StaticDatePickerLandscape from '../../components/Calendar';
+import AddActivity from '../../components/AddActivity';
+import { useState } from 'react';
 
 function Home({ user }) {
   const [details, setDetails] = useState([]);

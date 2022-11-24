@@ -31,33 +31,53 @@ function AddActivity() {
   const [description, setDescription] = useState('');
   const [comments, setComments] = useState([]);
 
+  const closeModal = () => {
+    setDialog(false);
+    setTitle('');
+    setLocation('');
+    setDate('');
+    setTime('');
+    setContact('');
+    setContactNumber('');
+    setDescription('');
+  };
+
   const handleChange = (newValue) => {
     setValue(newValue);
+    setTime(value.locale('en').format('LT'));
+    setDate(value.locale('en').format('ddd DD MMM YYYY'));
   };
 
   const activity = {
     uid: user.uid,
     title,
-    location,
+    location: location.replaceAll(', ', ' '),
     date,
     time,
     contact,
     contactNumber,
     description,
     comments,
-    value,
   };
 
   async function handleCloseDialog() {
-    // await addDocument(activity);
-    console.log(activity);
+    await addDocument(activity);
+    (await response.error) ? console.log('error') : setDialog(false);
+  }
 
-    await setDialog(false);
+  if (response.error) {
+    console.log(response.error);
+
+    return (
+      <div>
+        <h1>Something went wrong</h1>
+      </div>
+    );
   }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Dialog open={dialog} onClose={handleCloseDialog}>
+      <Dialog open={dialog}>
         <DialogTitle>
           <img src={Logo} alt="Retirement flip flop" height="45px" />
           Add Activity
@@ -79,7 +99,7 @@ function AddActivity() {
             margin="dense"
             name="location"
             label="Where?"
-            onChange={handleChange}
+            onChange={(e) => setLocation(e.target.value)}
             value={location}
             fullWidth
             required
@@ -87,14 +107,14 @@ function AddActivity() {
           <MobileDatePicker
             label="When?"
             inputFormat="MM/DD/YYYY"
-            value={value}
             onChange={handleChange}
+            value={value}
             renderInput={(params) => <TextField margin="dense" {...params} />}
           />
           <TimePicker
             label="At what time?"
+            onChange={handleChange}
             value={value}
-            onChange={(e) => handleChange(e.target.value)}
             renderInput={(params) => <TextField margin="dense" {...params} />}
           />
           <TextField
@@ -126,7 +146,7 @@ function AddActivity() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button onClick={closeModal}>Cancel</Button>
           <Button onClick={handleCloseDialog}>Share</Button>
         </DialogActions>
       </Dialog>

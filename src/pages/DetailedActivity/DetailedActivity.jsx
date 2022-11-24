@@ -4,17 +4,45 @@ import { useParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { CardContent, Container, Box, Card, Button, Grid } from "@mui/material";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import { useDocuments } from "../../hooks/useDocuments";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFirestore } from "../../hooks/useFirestore";
+import { timestamp } from "../../config/firebase";
+import uniquid from "uniquid";
 
 function DetailedActivity() {
   const { id } = useParams();
   const { document, error } = useDocuments("activities", id);
+  const { user } = useAuthContext();
+  const { document, error } = useDocuments("activities", id);
+  const { updateDocument, response } = useFirestore("activities");
+  const [comment, setComment] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(comment);
+    //? add comments the activity with the users id
+
+    const commentToAdd = {
+      user: user.uid,
+      displayName: user.displayName,
+      photo: user.photoURL,
+      comment,
+      createdAt: timestamp.fromDate(new Date()),
+      id: uniquid(),
+    };
+
+    updateDocument(id, {
+      comments: [...document.comments, commentToAdd],
+    });
+
+    if (!response.error) {
+      setComment("");
+    }
+  };
 
   if (error) {
     return <p>{error}</p>;
-  }
-
-  if (document) {
-    console.log(document);
   }
 
   return (

@@ -1,9 +1,17 @@
 import './profile.css';
 import { useDocuments } from '../../hooks/useDocuments';
+import { Link } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const { user } = useAuthContext();
   const { document, error } = useDocuments('users', user.uid);
 
+  console.log(document);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
   return (
     <div>
       <h1>Profile Update Page</h1>
@@ -15,15 +23,26 @@ const Profile = ({ user }) => {
               src={document.photoURL || 'https://via.placeholder.com/150'}
               alt="avatar"
             />
-            <p>Name : {document.updates.name}</p>
-            <p>Email : {document.updates.email}</p>
-            <p>DOB : {document.updates.dob}</p>
-            <p>About me : {document.updates.bio}</p>
-            <p>Street : {document.updates.street}</p>
-            <p>City : {document.updates.city}</p>
-            <p>State : {document.updates.state}</p>
-            <p>Zip : {document.updates.zip}</p>
-            <p>Activities : {document.updates.activities}</p>
+            <p>Name : {document.name}</p>
+            <p>Email : {document.email}</p>
+            <p>DOB : {document.dob}</p>
+            <p>About me : {document.bio}</p>
+            <p>Street : {document.street}</p>
+            <p>City : {document.city}</p>
+            <p>State : {document.state}</p>
+            <p>Zip : {document.zip}</p>
+            <h4>Activities I'm interested in 🤌 : </h4>
+            <ul>
+              {document.activities.map((interest) => (
+                <>
+                  <li key={interest.id}>
+                    <Link to={`/activity-detail/${interest.activity}`}>
+                      {interest.title}
+                    </Link>
+                  </li>
+                </>
+              ))}
+            </ul>
           </div>
         </>
       )}
