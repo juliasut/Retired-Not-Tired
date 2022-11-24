@@ -13,7 +13,7 @@ import {
 import BackGroundSide from "../components/BackGroundSide";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
-import uniquid from "uniquid";
+//import uniquid from "uniquid";
 import { useFirestore } from "../hooks/useFirestore";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { timestamp } from "../config/firebase";
@@ -29,7 +29,7 @@ const ActivityCard = ({ activity }) => {
   const activityToupdate = {
     activity: id,
     title,
-    id: uniquid(),
+    //id: uniquid(),
     dateAdded: timestamp.fromDate(new Date()),
   };
 
@@ -112,18 +112,6 @@ const ActivityCard = ({ activity }) => {
             </Button>
           </Stack>
         </CardActions>
-          </Stack>
-          <Button
-            variant="contained"
-            size="small"
-            sx={{ height: '25px' }}
-            onClick={() => navigate(`/activity-detail/${id}`)}
-          >
-            <Typography sx={{ fontSize: '11px', textTransform: 'none' }}>
-              More Info
-            </Typography>
-          </Button>
-        </Stack>
         <IconButton
           aria-label="add to favorites"
           sx={{

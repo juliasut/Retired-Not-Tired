@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDocuments } from "../../hooks/useDocuments";
 import { useParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { CardContent, Container, Box, Card, Button, Grid } from "@mui/material";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import { useDocuments } from "../../hooks/useDocuments";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import { timestamp } from "../../config/firebase";
-import uniquid from "uniquid";
+//import uniquid from "uniquid";
 
 function DetailedActivity() {
   const { id } = useParams();
   const { document, error } = useDocuments("activities", id);
   const { user } = useAuthContext();
-  const { document, error } = useDocuments("activities", id);
   const { updateDocument, response } = useFirestore("activities");
   const [comment, setComment] = useState();
 
@@ -29,7 +27,7 @@ function DetailedActivity() {
       photo: user.photoURL,
       comment,
       createdAt: timestamp.fromDate(new Date()),
-      id: uniquid(),
+      //id: uniquid(),
     };
 
     updateDocument(id, {
