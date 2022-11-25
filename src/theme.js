@@ -33,9 +33,6 @@ const theme = createTheme({
     // },
   },
   spacing: 4,
-  shape: {
-    borderRadius: '6.7px',
-  },
   components: {
     // Name of the component
     MuiButton: {
