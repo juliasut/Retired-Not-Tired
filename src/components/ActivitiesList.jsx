@@ -2,8 +2,6 @@ import ActivityCard from './ActivityCard';
 import './activities-list.css';
 
 const ActivitiesList = ({ activities }) => {
-  console.log(activities);
-
   return (
     <div className="media-scroller">
       {activities && activities.length === 0 && <div>No Activities yet</div>}
