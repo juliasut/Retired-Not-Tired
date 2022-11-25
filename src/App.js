@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <nav className="nav">
+          {/* <nav className="nav">
             <ul>
               {user && (
                 <li>
@@ -32,7 +32,7 @@ function App() {
                 </li>
               )}
             </ul>
-          </nav>
+          </nav> */}
 
           <Routes>
             <Route path="/landing" element={<Landing />} />
