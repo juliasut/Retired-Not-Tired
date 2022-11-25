@@ -1,4 +1,6 @@
 import { useCollection } from '../../hooks/useCollection';
+import { useDocuments } from '../../hooks/useDocuments';
+import { useAuthContext } from '../../hooks/useAuthContext';
 import ActivitiesList from '../../components/ActivitiesList';
 import { CircularProgress, Stack, Typography, styled } from '@mui/material';
 import Search from '../../components/Search';
@@ -13,7 +15,13 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
 }));
 
 const Activities = () => {
+  const { user } = useAuthContext();
   const { documents, error } = useCollection('activities');
+  const { document: userActivities } = useDocuments('users', user.uid);
+  const newDocument = userActivities?.activities.map((act) => {
+    return documents.find((doc) => doc.id === act.activity);
+  });
+
   const [loading, setLoading] = useState(false);
 
   const handleChange = (value) => {
@@ -57,8 +65,8 @@ const Activities = () => {
         My Activities
       </Typography>
       {error && <p>{error}</p>}
+      {documents && <ActivitiesList activities={newDocument} />}
       {loading && <StyledCircularProgress />}
-      {documents && <ActivitiesList activities={documents} />}
       <Typography
         variant="body1"
         fontWeight="700"

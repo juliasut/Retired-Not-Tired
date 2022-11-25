@@ -22,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
     authIsReady: false,
   });
 
-  //* Checks with firebase if a user is logged in, if user is looged in with firebase
+  //* Checks with firebase if a user is logged in, if user is logged in with firebase
   //* then set global state with the current logged in user
   useEffect(() => {
     const unsubscribe = authentication.onAuthStateChanged((user) => {
