@@ -1,13 +1,17 @@
-
 .media-scroller {
   display: grid;
-  /* gap: 1rem; */
+  gap: 1rem;
   grid-auto-flow: column;
-  grid-auto-columns: 23%;
+  /* grid-auto-columns: 85%; */
   overflow-x: auto;
+  overflow-y: hidden;
   overscroll-behavior-inline: contain;
 }
 
-.media-element {
+@media (max-width: 300px) {
+  .media-scroller {
+    gap: 0.5rem;
+    grid-auto-columns: 100%;
+  }
 
 }
