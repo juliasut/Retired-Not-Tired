@@ -7,9 +7,20 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
-import { Menu, MenuItem } from '@mui/material';
+import { styled, alpha, Menu, MenuItem } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
+import theme from '../theme';
+
+const StyledBottomNavigationAction = styled(BottomNavigationAction)(
+  ({ theme }) => ({
+    '&:hover': {
+      color: theme.palette.primary.dark,
+      transform: 'scale(1.1)',
+      fontWeight: 'bold',
+    },
+  })
+);
 
 const MobileNav = () => {
   const navigate = useNavigate();
@@ -36,7 +47,7 @@ const MobileNav = () => {
 
   return (
     <Paper
-      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0,}}
       elevation={3}
     >
       <BottomNavigation
@@ -46,15 +57,20 @@ const MobileNav = () => {
           setValue(newValue);
         }}
         sx={{
-          '& .Mui-selected, .Mui-selected > svg': { color: '#625b71' },
+          '& .Mui-selected': {
+            color: 'primary.dark',
+            backgroundColor: alpha(theme.palette.primary.light, 0.2),
+          },
+          '& .Mui-selected > svg': {
+            transform: 'scale(1.1)',
+          },
+          '& .Mui-selected > .MuiBottomNavigationAction-label': {
+            fontWeight: 'bold',
+            backgroundColor: 'transparent',
+          },
         }}
       >
-        <BottomNavigationAction
-          sx={{
-            '&:hover': {
-              color: '#988fad',
-            },
-          }}
+        <StyledBottomNavigationAction
           label="Home"
           value="home"
           icon={<HomeOutlinedIcon />}
@@ -62,49 +78,29 @@ const MobileNav = () => {
           to="/"
         />
 
-        <BottomNavigationAction
-          sx={{
-            '&:hover': {
-              color: '#988fad',
-            },
-          }}
+        <StyledBottomNavigationAction
           label="Activities"
           value="activities"
           icon={<FavoriteBorderOutlinedIcon />}
           component={Link}
           to="/activities"
         />
-        <BottomNavigationAction
-          sx={{
-            '&:hover': {
-              color: '#988fad',
-            },
-          }}
+        <StyledBottomNavigationAction
           label="Messages"
           value="messages"
           icon={<EmailOutlinedIcon />}
           component={Link}
           to="/messages"
         />
-        <BottomNavigationAction
-          sx={{
-            '&:hover': {
-              color: '#988fad',
-            },
-          }}
+        <StyledBottomNavigationAction
           label="Friends"
           value="friends"
           icon={<GroupOutlinedIcon />}
           component={Link}
           to="/friends"
         />
-        <BottomNavigationAction
+        <StyledBottomNavigationAction
           onClick={handleClick}
-          sx={{
-            '&:hover': {
-              color: '#988fad',
-            },
-          }}
           label="More"
           value="more"
           icon={<ListOutlinedIcon />}
