@@ -18,6 +18,8 @@ const Activities = () => {
   const { user } = useAuthContext();
   const { documents, error } = useCollection('activities');
   const { document: userActivities } = useDocuments('users', user.uid);
+
+  //? This finds and replaces the users activities and replaces them with the activities from the firestore collection
   const newDocument = userActivities?.activities.map((act) => {
     return documents.find((doc) => doc.id === act.activity);
   });

@@ -45,8 +45,8 @@ function AddActivity() {
 
   const handleChange = (newValue) => {
     setValue(newValue);
-    setTime(value.locale('en').format('LT'));
-    setDate(value.locale('en').format('ddd DD MMM YYYY'));
+    setTime(value.locale('en-US').format('LT'));
+    setDate(value.locale('en-US').format('DD/MM/YYYY'));
   };
 
   const activity = {

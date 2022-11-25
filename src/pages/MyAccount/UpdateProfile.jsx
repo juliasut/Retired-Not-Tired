@@ -11,6 +11,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import theme from '../../theme';
+import datejs from 'dayjs';
 
 const Profile = ({ user }) => {
   const { updateDocument, response } = useFirestore('users');
@@ -18,6 +19,7 @@ const Profile = ({ user }) => {
 
   const [name, setName] = useState();
   const [email, setEmail] = useState(user.email);
+  const [value, setValue] = useState(datejs());
   const [dob, setDob] = useState('');
   const [bio, setBio] = useState('');
   const [street, setStreet] = useState('');
@@ -25,9 +27,18 @@ const Profile = ({ user }) => {
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
   const [activities, setActivities] = useState([]);
+  const [messages, setMessages] = useState([]);
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+    setDob(value.locale('en-US').format('DD/MM/YYYY'));
+    console.warn(dob);
+  };
 
   const handleUpdate = async (e) => {
+    setDob(e);
     e.preventDefault();
+    console.log(name, email, dob, bio, street, city, state, zip);
 
     await updateDocument(user.uid, {
       name,
@@ -38,6 +49,7 @@ const Profile = ({ user }) => {
       state,
       zip,
       activities,
+      messages,
     });
 
     if (!response.error) {
@@ -101,8 +113,23 @@ const Profile = ({ user }) => {
               height: '95px',
               width: '95px',
               backgroundColor: 'primary.light',
+              position: 'relative',
             }}
           >
+            {document.photoURL ? (
+              <img
+                src={document.photoURL}
+                alt="profile"
+                style={{ height: '95px', width: '95px' }}
+                // position="absolute"
+              />
+            ) : (
+              <img
+                src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+                alt="profile"
+                // style={{ height: '95px', width: '95px' }}
+              />
+            )}
             <IconButton
               // onChange={(e) => console.log(e)}
               size="small"
@@ -142,7 +169,7 @@ const Profile = ({ user }) => {
             <DatePicker
               label="DOB"
               value={dob}
-              onChange={(e) => setDob(e.target.value)}
+              onChange={handleChange}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
