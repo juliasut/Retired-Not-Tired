@@ -1,14 +1,17 @@
 import ActivityCard from './ActivityCard';
-import "./activities-list.css"
+import './activities-list.css';
 
 const ActivitiesList = ({ activities }) => {
+  console.log(activities);
+
   return (
-    <div className='media-scroller'>
-      {activities.length === 0 && <p>No Activities yet</p>}
-      {activities.map((activity) => (
-        <ActivityCard activity={activity} key={activity.id} />
-      ))}
-      </div>
+    <div className="media-scroller">
+      {activities && activities.length === 0 && <div>No Activities yet</div>}
+      {activities &&
+        activities.map((activity) => (
+          <ActivityCard activity={activity} key={activity.id} />
+        ))}
+    </div>
   );
 };
 export default ActivitiesList;

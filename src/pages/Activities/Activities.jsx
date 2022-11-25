@@ -1,4 +1,6 @@
 import { useCollection } from '../../hooks/useCollection';
+import { useDocuments } from '../../hooks/useDocuments';
+import { useAuthContext } from '../../hooks/useAuthContext';
 import ActivitiesList from '../../components/ActivitiesList';
 import { Stack, Typography } from '@mui/material';
 import Search from '../../components/Search';
@@ -6,7 +8,13 @@ import AddActivity from '../../components/AddActivity';
 import PageTitleTypography from '../../components/PageTitleTypography';
 
 const Activities = () => {
+  const { user } = useAuthContext();
   const { documents, error } = useCollection('activities');
+  const { document: userActivities } = useDocuments('users', user.uid);
+
+  const newDocument = userActivities?.activities.map((act) => {
+    return documents.find((doc) => doc.id === act.activity);
+  });
 
   const handleChange = (value) => {
     console.log(value);
@@ -15,7 +23,7 @@ const Activities = () => {
   return (
     <Stack
       spacing={{ xs: 1, sm: 3, md: 4 }}
-      minHeight='100vh'
+      minHeight="100vh"
       justifyContent="space-evenly"
       sx={{ p: '5px 20px 76px' }}
     >
@@ -43,7 +51,7 @@ const Activities = () => {
         My Activities
       </Typography>
       {error && <p>{error}</p>}
-      {documents && <ActivitiesList activities={documents} />}
+      {documents && <ActivitiesList activities={newDocument} />}
       <Typography
         variant="body1"
         fontWeight="700"
