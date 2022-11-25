@@ -8,7 +8,7 @@ const ActivitiesList = ({ activities }) => {
       {activities.map((activity) => (
         <ActivityCard activity={activity} key={activity.id} />
       ))}
-    </div>
+      </div>
   );
 };
 export default ActivitiesList;

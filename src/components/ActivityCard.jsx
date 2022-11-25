@@ -1,7 +1,6 @@
 import {
   Avatar,
   Card,
-  CardHeader,
   IconButton,
   Box,
   Button,
@@ -16,6 +15,8 @@ import { useFirestore } from '../hooks/useFirestore';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { timestamp } from '../config/firebase';
 import useDocuments from '../hooks/useDocuments';
+import './activity-card.css';
+import theme from '../theme';
 
 const ActivityCard = ({ activity }) => {
   const navigate = useNavigate();
@@ -52,80 +53,88 @@ const ActivityCard = ({ activity }) => {
   return (
     <Box
       sx={{
-        width: '95%',
-        maxWidth: '420px',
-        height: '100%',
-        maxHeight: '150px',
-        borderRadius: '6.7px',
+        minWidth: '300px',
+        borderRadius: theme.shape.borderRadius,
         overflow: 'hidden',
         position: 'relative',
         boxShadow: '0px 0.916602px 3.816602px rgba(0, 0, 0, 0.16)',
-        my: 2.5,
+        height: '93%',
+        pl: 0,
+        [theme.breakpoints.up('sm')]: {
+          minWidth: '300px',
+        },
       }}
     >
       <Card
         sx={{
-          border: '1.3px solid #030109',
+          border: `1.3px solid #030109`,
           height: '100%',
-          width: '100%',
-          paddingLeft: '38px',
+          pl: 10,
         }}
       >
-        <CardHeader
-          title={title}
-          titleTypographyProps={{ variant: 'body1', color: 'textColor.main' }}
-          sx={{ pb: 0.6 }}
-        />
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ width: '70%', mx: '9%', mb: '5px' }}
-        >
-          {description.slice(0, 57)}
-        </Typography>
-        <Stack
-          direction="row"
-          spacing={0.7}
-          justifyContent="space-between"
-          width="85%"
-          mx="10%"
-        >
-          <Stack direction="row" spacing={1.5}>
-            <Avatar
-              sx={{ bgcolor: '#ffab3d', width: 18, height: 18 }}
-              aria-label="activity"
-              alt={contact}
-              src=""
-            >
-              S
-            </Avatar>
-            <Typography variant="caption" color="textColor.misc">
-              Added by: {contact}
-            </Typography>
-          </Stack>
-          <Button
-            variant="contained"
-            size="small"
-            sx={{ height: '25px' }}
-            onClick={() => navigate(`/activity-detail/${id}`)}
+        <Stack spacing={{ xs: 1, sm: 3, md: 4 }} p="5px 14px">
+          <Typography
+            className="cutoff-text-title"
+            variant="h6"
+            color="textColor.main"
+            sx={{ fontWeight: '600', width: '85%', fontSize: '18px' }}
           >
-            <Typography sx={{ fontSize: '11px', textTransform: 'none' }}>
-              More Info
-            </Typography>
-          </Button>
+            {title}
+          </Typography>
+          <IconButton
+            aria-label="add to favorites"
+            sx={{
+              color: 'logoColor.dark',
+              position: 'absolute',
+              top: 3,
+              right: 3,
+              '&:hover': {
+                color: 'logoColor.main',
+                backgroundColor: 'logoColor.light',
+              },
+            }}
+            onClick={() => handleClick()}
+          >
+            <FavoriteBorderIcon />
+          </IconButton>
+          <Typography
+            className="cutoff-text"
+            variant="body2"
+            color="text.secondary"
+          >
+            {description}
+          </Typography>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            width="100%"
+            alignItems="center"
+          >
+            <Stack direction="row" spacing={1.5}>
+              <Avatar
+                sx={{ bgcolor: '#ffab3d', width: 18, height: 18, ml: 1.5 }}
+                aria-label="activity"
+                alt={contact}
+                src=""
+              >
+                S
+              </Avatar>
+              <Typography variant="caption" color="logoColor.dark">
+                Added by: {contact}
+              </Typography>
+            </Stack>
+            <Button
+              variant="contained"
+              size="small"
+              sx={{ height: '25px' }}
+              onClick={() => navigate(`/activity-detail/${id}`)}
+            >
+              <Typography sx={{ fontSize: '11px', textTransform: 'none' }}>
+                More Info
+              </Typography>
+            </Button>
+          </Stack>
         </Stack>
-        <IconButton
-          aria-label="add to favorites"
-          sx={{
-            position: 'absolute',
-            top: 9,
-            right: 8,
-            '&:hover': { color: '#988fad', fill: 'blue' },
-          }}
-          onClick={() => handleClick()}
-        >
-          <FavoriteBorderIcon />
-        </IconButton>
       </Card>
       <BackGroundSide />
     </Box>
