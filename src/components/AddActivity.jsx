@@ -16,6 +16,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Logo from '../assets/images/retired-not-tired-just-flip-flops.png';
 import { useFirestore } from '../hooks/useFirestore';
+import theme from '../theme';
 
 function AddActivity() {
   const { user } = useAuthContext();
@@ -154,12 +155,14 @@ function AddActivity() {
         onClick={() => setDialog(true)}
         variant="contained"
         disableElevation={true}
+        fullWidth
         sx={{
           mt: 2,
           mb: 2,
-          width: 300,
-          backgroundColor: '#625b71',
-          '&:hover': { backgroundColor: '#988fad' },
+          alignSelf: 'center',
+          [theme.breakpoints.up('sm')]: {
+            width: '300px',
+          },
         }}
       >
         Share an Activity

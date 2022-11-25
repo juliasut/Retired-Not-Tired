@@ -1,0 +1,45 @@
+.cutoff-text {
+  --max-lines: 2;
+  --line-height: 1.4;
+
+  height: calc(var(--max-lines) * 1em * var(--line-height));
+  line-height: var(--line-height);
+
+  overflow: hidden;
+  position: relative;
+  width: 75%;
+}
+
+.cutoff-text::before {
+  content: '.';
+  color: transparent;
+  position: absolute;
+  height: calc (1em * var(--line-height));
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.cutoff-text-title {
+  --max-lines: 1;
+  --line-height: 1.4;
+
+  height: calc(var(--max-lines) * 1em * var(--line-height));
+  line-height: var(--line-height);
+
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (min-width: 390px) {
+  .cutoff-text {
+    --max-lines: 3;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .cutoff-text {
+    --max-lines: 4;
+  }
+}

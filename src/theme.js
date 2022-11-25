@@ -18,7 +18,9 @@ const theme = createTheme({
       misc: '#846352',
     },
     logoColor: {
+      light: '#FEF2D8',
       main: '#FABC2A',
+      dark: '#846352',
     },
   },
   typography: {
@@ -32,7 +34,7 @@ const theme = createTheme({
   },
   spacing: 4,
   shape: {
-    borderRadius: 6.7,
+    borderRadius: '6.7px',
   },
   components: {
     // Name of the component
