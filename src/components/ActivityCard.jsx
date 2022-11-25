@@ -54,7 +54,7 @@ const ActivityCard = ({ activity }) => {
     <Box
       sx={{
         minWidth: '300px',
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: '6.7px',
         overflow: 'hidden',
         position: 'relative',
         boxShadow: '0px 0.916602px 3.816602px rgba(0, 0, 0, 0.16)',
@@ -67,6 +67,7 @@ const ActivityCard = ({ activity }) => {
     >
       <Card
         sx={{
+          borderRadius: '6.7px',
           border: `1.3px solid #030109`,
           height: '100%',
           pl: 10,
