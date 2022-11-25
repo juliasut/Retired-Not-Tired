@@ -1,52 +1,168 @@
-import './profile.css';
 import { useDocuments } from '../../hooks/useDocuments';
-import { Link } from 'react-router-dom';
+import { useCollection } from '../../hooks/useCollection';
+import ActivitiesList from '../../components/ActivitiesList';
+import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import Container from '@mui/material/Container';
+import PageTitleTypography from '../../components/PageTitleTypography';
+import { Button, Avatar, Stack, Typography } from '@mui/material';
+import BadgeAvatar from '../../components/BadgeAvatar';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import EmailIcon from '@mui/icons-material/Email';
 
 const Profile = () => {
   const { user } = useAuthContext();
   const { document, error } = useDocuments('users', user.uid);
+  const { documents, err } = useCollection('activities');
+  const navigate = useNavigate();
 
-  console.log(document);
+  const ProfileAvatar = () => {
+    return (
+      <Avatar
+        alt={document.name || 'avatar'}
+        src={document.photoURL || 'https://via.placeholder.com/150'}
+        sx={{
+          height: '100px',
+          width: '100px',
+          backgroundColor: 'primary.light',
+        }}
+      ></Avatar>
+    );
+  };
 
-  if (error) {
-    return <div>{error}</div>;
-  }
   return (
-    <div>
-      <h1>Profile Update Page</h1>
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{ minHeight: '100vh', p: '20px 20px 60px' }}
+    >
       {document && (
         <>
-          <div className="online">online: {document.online ? 'yes' : 'no'}</div>
-          <div>
-            <img
-              src={document.photoURL || 'https://via.placeholder.com/150'}
-              alt="avatar"
-            />
-            <p>Name : {document.name}</p>
-            <p>Email : {document.email}</p>
-            <p>DOB : {document.dob}</p>
-            <p>About me : {document.bio}</p>
-            <p>Street : {document.street}</p>
-            <p>City : {document.city}</p>
-            <p>State : {document.state}</p>
-            <p>Zip : {document.zip}</p>
-            <h4>Activities I'm interested in 🤌 : </h4>
-            <ul>
+          <PageTitleTypography>
+            Profile <br />
+            {document.name}
+          </PageTitleTypography>
+          <Stack gap={5} mt={5}>
+            <Stack direction="row" gap={8}>
+              {document.online ? (
+                <BadgeAvatar avatar={<ProfileAvatar />} />
+              ) : (
+                <ProfileAvatar />
+              )}
+
+              <Stack gap={2.5}>
+                <Stack direction="row" gap={1}>
+                  <CalendarTodayOutlinedIcon
+                    sx={{ color: 'text.secondary', height: '20px' }}
+                  />
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: 400, lineHeight: '18px' }}
+                  >
+                    {' '}
+                    Member since 2020
+                  </Typography>
+                </Stack>
+                <Stack direction="row" gap={1}>
+                  <LanguageOutlinedIcon
+                    sx={{ color: 'text.secondary', height: '20px' }}
+                  />
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: 400, lineHeight: '18px' }}
+                  >
+                    3 organized activities
+                  </Typography>
+                </Stack>
+                <Stack direction="row" gap={1}>
+                  <LocationOnOutlinedIcon
+                    sx={{ color: 'text.secondary', height: '20px' }}
+                  />
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: 400, lineHeight: '18px' }}
+                  >
+                    {document.city}, {document.state}
+                  </Typography>
+                </Stack>
+                <Typography variant="caption" sx={{ alignSelf: 'flex-end' }}>
+                  Active 1 minute ago
+                </Typography>
+              </Stack>
+            </Stack>
+
+            <Typography variant="body1" gutterBottom>
+              {document.bio}... <b>Read more</b>
+            </Typography>
+            <Typography
+              variant="body1"
+              fontWeight="700"
+              color="primary.dark"
+              sx={{ fontSize: '18px' }}
+            >
+              Activities I've organized
+            </Typography>
+            <ActivitiesList activities={documents.slice(0, 3)} />
+            <Typography
+              variant="body1"
+              fontWeight="700"
+              color="primary.dark"
+              sx={{ fontSize: '18px' }}
+            >
+              Activities I'm interested in 🤌 :{' '}
+            </Typography>
+            <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 3 }}>
               {document.activities.map((interest) => (
-                <>
-                  <li key={interest.id}>
-                    <Link to={`/activity-detail/${interest.activity}`}>
-                      {interest.title}
-                    </Link>
-                  </li>
-                </>
+                <Button
+                  variant="contained"
+                  sx={{
+                    height: '25px',
+                    fontSize: '11px',
+                    borderRadius: '50px',
+                  }}
+                  key={interest.id}
+                  onClick={() =>
+                    navigate(`/activity-detail/${interest.activity}`)
+                  }
+                >
+                  {interest.title}
+                </Button>
               ))}
-            </ul>
-          </div>
+            </Stack>
+            <Typography
+              variant="body1"
+              fontWeight="700"
+              color="primary.dark"
+              sx={{ fontSize: '18px' }}
+            >
+              Active member
+            </Typography>
+
+            <Typography>
+              <CheckOutlinedIcon
+                sx={{ height: '25px', position: 'relative', bottom: -5 }}
+              />{' '}
+              {document.name.split(' ')[0]} has attended <b>14</b> activities.
+            </Typography>
+            <Button
+              variant="outlined"
+              startIcon={<EmailIcon />}
+              sx={{
+                borderWidth: '1.5px',
+                fontSize: '16px',
+                fontWeight: '600',
+                mt: '20px',
+              }}
+            >
+              Message
+            </Button>
+          </Stack>
         </>
       )}
-    </div>
+    </Container>
   );
 };
 
