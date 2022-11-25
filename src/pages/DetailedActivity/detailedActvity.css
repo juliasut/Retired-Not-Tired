@@ -1,0 +1,14 @@
+.detailed {
+  align-self: center;
+  border-radius: 5px;
+  height: auto;
+  width: 100%;
+  margin-top: 10px;
+}
+h3 {
+  margin-top: 20px;
+}
+span {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
