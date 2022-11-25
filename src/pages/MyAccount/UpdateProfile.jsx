@@ -1,7 +1,16 @@
-import './updateProfile.css';
+// import './updateProfile.css';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useDocuments } from '../../hooks/useDocuments';
 import { useState, useEffect } from 'react';
+import { Box, Button, TextField, Avatar, Stack } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Container from '@mui/material/Container';
+import PageTitleTypography from '../../components/PageTitleTypography';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import theme from '../../theme';
 
 const Profile = ({ user }) => {
   const { updateDocument, response } = useFirestore('users');
@@ -68,76 +77,122 @@ const Profile = ({ user }) => {
   }
 
   return (
-    <div>
-      <h1>Profile Update Page</h1>
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{ minHeight: '100vh', paddingBottom: '60px' }}
+    >
       {document && (
-        <>
-          <h3>Change only what you want to update</h3>
-          <form onSubmit={handleUpdate}>
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-            />
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-            <label>DOB:</label>
-            <input
-              type="date"
-              name="dob"
-              onChange={(e) => setDob(e.target.value)}
+        <Box
+          component="form"
+          onSubmit={handleUpdate}
+          noValidate
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            p: '20px',
+            gap: { xs: 2, sm: 3, md: 4 },
+          }}
+        >
+          <PageTitleTypography>Update Profile</PageTitleTypography>
+          <Avatar
+            sx={{
+              alignSelf: 'center',
+              height: '95px',
+              width: '95px',
+              backgroundColor: 'primary.light',
+            }}
+          >
+            <IconButton
+              // onChange={(e) => console.log(e)}
+              size="small"
+              aria-label="upload picture"
+              component="label"
+              sx={{
+                color: 'logoColor.dark',
+                position: 'relative',
+                top: 37,
+                left: 0,
+                backgroundColor: 'white',
+                zIndex: '10',
+              }}
+            >
+              <input hidden accept="image/*" type="file" />
+              <PhotoCamera />
+            </IconButton>
+          </Avatar>
+          <TextField
+            id="name"
+            label="Name"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            size="small"
+          />
+          <TextField
+            id="email"
+            label="Email"
+            // onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            InputProps={{
+              readOnly: true,
+            }}
+            size="small"
+          />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="DOB"
               value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              renderInput={(params) => <TextField {...params} />}
             />
-            {/* <label>Activities:</label>
+          </LocalizationProvider>
+          {/* <label>Activities:</label>
         <input type="array" name="activities" /> */}
-            <label>About you:</label>
-            <textarea
-              type="text"
-              name="bio"
-              onChange={(e) => setBio(e.target.value)}
-              value={bio}
-            ></textarea>
-            <label>Address:</label>
-            <label>Street:</label>
-            <input
-              type="text"
-              name="street"
-              onChange={(e) => setStreet(e.target.value)}
-              value={street}
-            />
-            <label>City:</label>
-            <input
-              type="text"
-              name="city"
-              onChange={(e) => setCity(e.target.value)}
-              value={city}
-            />
-            <label>State:</label>
-            <input
-              type="text"
-              name="state"
+          <TextField
+            id="bio"
+            label="Bio"
+            multiline
+            maxRows={4}
+            onChange={(e) => setBio(e.target.value)}
+            value={bio}
+            inputProps={{ style: { color: theme.palette.logoColor.dark } }}
+          />
+          <TextField
+            id="street"
+            label="Street"
+            onChange={(e) => setStreet(e.target.value)}
+            value={street}
+            size="small"
+          />
+          <TextField
+            id="city"
+            label="City"
+            onChange={(e) => setCity(e.target.value)}
+            value={city}
+            size="small"
+          />
+          <Stack direction="row" gap={2}>
+            <TextField
+              id="state"
+              label="State"
               onChange={(e) => setState(e.target.value)}
               value={state}
+              size="small"
             />
-            <label>Zip:</label>
-            <input
-              type="text"
-              name="zip"
+            <TextField
+              id="zip"
+              label="Zip"
               onChange={(e) => setZip(e.target.value)}
               value={zip}
+              size="small"
             />
-            <button>Update</button>
-          </form>
-        </>
+          </Stack>
+          <Button type="submit" variant="contained" disableElevation fullWidth>
+            Update
+          </Button>
+        </Box>
       )}
-    </div>
+    </Container>
   );
 };
 
