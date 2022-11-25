@@ -2,23 +2,36 @@ import { useCollection } from '../../hooks/useCollection';
 import { useDocuments } from '../../hooks/useDocuments';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import ActivitiesList from '../../components/ActivitiesList';
-import { Stack, Typography } from '@mui/material';
+import { CircularProgress, Stack, Typography, styled } from '@mui/material';
 import Search from '../../components/Search';
 import AddActivity from '../../components/AddActivity';
 import PageTitleTypography from '../../components/PageTitleTypography';
+import { useEffect, useState } from 'react';
+
+const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
+  color: theme.palette.logoColor.main,
+  size: 10,
+  alignSelf: 'center',
+}));
 
 const Activities = () => {
   const { user } = useAuthContext();
   const { documents, error } = useCollection('activities');
   const { document: userActivities } = useDocuments('users', user.uid);
-
   const newDocument = userActivities?.activities.map((act) => {
     return documents.find((doc) => doc.id === act.activity);
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (value) => {
     console.log(value);
   };
+
+  useEffect(() => {
+    setLoading(true);
+    if (documents) setLoading(false);
+  }, [documents]);
 
   return (
     <Stack
@@ -41,6 +54,7 @@ const Activities = () => {
         Hot and New Activities
       </Typography>
       {error && <p>{error}</p>}
+      {loading && <StyledCircularProgress />}
       {documents && <ActivitiesList activities={documents} />}
       <Typography
         variant="body1"
@@ -52,6 +66,7 @@ const Activities = () => {
       </Typography>
       {error && <p>{error}</p>}
       {documents && <ActivitiesList activities={newDocument} />}
+      {loading && <StyledCircularProgress />}
       <Typography
         variant="body1"
         fontWeight="700"
@@ -61,6 +76,7 @@ const Activities = () => {
         My Friends Activities
       </Typography>
       {error && <p>{error}</p>}
+      {loading && <StyledCircularProgress />}
       {documents && <ActivitiesList activities={documents} />}
       <AddActivity />
     </Stack>

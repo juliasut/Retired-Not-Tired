@@ -117,15 +117,11 @@ const SignUp = () => {
                 <Button
                   type="submit"
                   variant="contained"
-                  disableElevation={true}
+                  disableElevation
                   sx={{
                     mt: 2,
                     mb: 2,
                     width: 140,
-                    backgroundColor: '#625b71',
-                    '&:hover': {
-                      backgroundColor: '#988fad',
-                    },
                   }}
                 >
                   Sign Up
@@ -135,15 +131,11 @@ const SignUp = () => {
                 <Button
                   type="submit"
                   variant="contained"
-                  disableElevation={true}
+                  disableElevation
                   sx={{
                     mt: 2,
                     mb: 2,
                     width: 140,
-                    backgroundColor: '#625b71',
-                    '&:hover': {
-                      backgroundColor: '#988fad',
-                    },
                   }}
                 >
                   Signing Up...
