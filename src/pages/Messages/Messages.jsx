@@ -7,12 +7,17 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import PageTitleTypography from '../../components/PageTitleTypography';
 import { Container } from '@mui/system';
+import BadgeAvatar from '../../components/BadgeAvatar';
 
 export default function Messages() {
   return (
-    <Container sx={{ pt: '30px' }}>
+    <Container
+      component="main"
+      maxWidth="sm"
+      sx={{ minHeight: '100vh', paddingBottom: '60px' }}
+    >
       <PageTitleTypography>Messages</PageTitleTypography>
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <List sx={{ width: '100%', maxWidth: 480, bgcolor: 'background.paper' }}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="" sx={{ bgcolor: '#ffab3d' }}>
@@ -39,13 +44,17 @@ export default function Messages() {
         <Divider variant="inset" component="li" />
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar
-              alt="Travis Howard"
-              src=""
-              sx={{ bgcolor: 'primary.light' }}
-            >
-              R
-            </Avatar>
+            <BadgeAvatar
+              avatar={
+                <Avatar
+                  alt="Travis Howard"
+                  src=""
+                  sx={{ bgcolor: 'primary.light' }}
+                >
+                  R
+                </Avatar>
+              }
+            />
           </ListItemAvatar>
           <ListItemText
             primary="Summer BBQ"
@@ -67,9 +76,17 @@ export default function Messages() {
         <Divider variant="inset" component="li" />
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt="Cindy Baker" src="" sx={{ bgcolor: 'primary.dark' }}>
-              S
-            </Avatar>
+            <BadgeAvatar
+              avatar={
+                <Avatar
+                  alt="Cindy Baker"
+                  src=""
+                  sx={{ bgcolor: 'primary.dark' }}
+                >
+                  S
+                </Avatar>
+              }
+            />
           </ListItemAvatar>
           <ListItemText
             primary="Oui Oui"
