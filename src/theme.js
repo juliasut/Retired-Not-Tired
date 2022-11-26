@@ -34,6 +34,20 @@ const theme = createTheme({
   },
   spacing: 4,
   components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '.95rem',
+        },
+        shrink: {
+          transform: 'translate(14px, -8px) scale(1) !important',
+        },
+        outlined: {
+          transform: 'translate(14px, 16px) scale(1)',
+        },
+      },
+    },
+
     // Name of the component
     MuiButton: {
       styleOverrides: {

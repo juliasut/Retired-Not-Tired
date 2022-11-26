@@ -6,7 +6,7 @@ export default function PageTitleTypography(props) {
       component="h1"
       variant="h5"
       align="center"
-      sx={{ mb: 1, fontWeight: '700', color: 'textColor.dark' }}
+      sx={{ mb: 1, fontWeight: '700', color: 'textColor.main' }}
       {...props}
     />
   );
