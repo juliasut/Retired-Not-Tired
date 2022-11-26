@@ -40,14 +40,13 @@ const MobileNav = () => {
 
   const handleLogout = (e) => {
     logout();
-    setTimeout(() => {
-      navigate('/login'); //? Redirect to home page
-    }, 2000);
+    handleClose();
+    navigate('/landing');
   };
 
   return (
     <Paper
-      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0,}}
+      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
       elevation={3}
     >
       <BottomNavigation
