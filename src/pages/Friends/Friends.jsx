@@ -1,6 +1,5 @@
 import { Container, Typography } from '@mui/material';
 import { useCollection } from '../../hooks/useCollection';
-import { useDocuments } from '../../hooks/useDocuments';
 import PageTitleTypography from '../../components/PageTitleTypography';
 import { Box, Stack, Avatar, Card, Divider } from '@mui/material';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
