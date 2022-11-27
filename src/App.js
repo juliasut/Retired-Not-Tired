@@ -47,7 +47,7 @@ function App() {
 
             <Route
               path="/update-profile"
-              element={user ? <UpdateProfile user={user} /> : <Login />}
+              element={user ? <UpdateProfile user={user} /> : <Login />}/>
           
             <Route path="*" element={<Error />} />
           </Routes>
