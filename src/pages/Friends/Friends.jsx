@@ -1,5 +1,6 @@
 import { Container, Typography } from '@mui/material';
 import { useCollection } from '../../hooks/useCollection';
+import { useDocuments } from '../../hooks/useDocuments';
 import PageTitleTypography from '../../components/PageTitleTypography';
 import { Box, Stack, Avatar, Card, Divider } from '@mui/material';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
@@ -9,6 +10,8 @@ import BadgeAvatar from '../../components/BadgeAvatar';
 
 const Friends = () => {
   const { documents, error } = useCollection('users');
+
+  console.log(documents);
 
   return (
     <Container maxWidth="sm" sx={{ p: '20px' }}>
@@ -72,7 +75,12 @@ const Friends = () => {
                     width="70%"
                     color="text.secondary"
                   >
-                    Interests: dancing, fishing, catpatting
+                    Interests:
+                    {doc.activities?.map((interest) => (
+                      <li key={interest.id} style={{ listStyle: 'none' }}>
+                        {interest.title.substring(0, 14)}...
+                      </li>
+                    ))}
                   </Typography>
                 </Stack>
               </Box>
