@@ -24,16 +24,6 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          {/* <nav className="nav">
-            <ul>
-              {user && (
-                <li>
-                  <Avatar user={user} />
-                </li>
-              )}
-            </ul>
-          </nav> */}
-
           <Routes>
             <Route
               path="/landing"
@@ -73,7 +63,6 @@ function App() {
               path="/update-profile"
               element={user ? <UpdateProfile user={user} /> : <Login />}
             />
-
             <Route path="*" element={<Error />} />
           </Routes>
           <MobileNav />
