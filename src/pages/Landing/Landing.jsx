@@ -4,6 +4,7 @@ import { Typography, Button, Container, Grid } from "@mui/material";
 import React from "react";
 import LandingPage from "../../assets/images/retired-not-tired-big-flip-flop.png";
 import { Link } from "react-router-dom";
+import { margin } from "@mui/system";
 
 export default function Landing() {
   return (
@@ -11,13 +12,26 @@ export default function Landing() {
       <BackGroundTop />
       <div>
         <Typography varient="h2" component="h1" align="center" gutterBottom>
-          Retired Not Tired
-        </Typography>
-        <Typography varient="h3" conponent="h1" align="center" gutterBottom>
-          Connect and Help Members in Your Community Stay Active
+          <h1> Retired Not Tired</h1>
+
+          <h3>Connect and Help Members in Your Community Stay Active </h3>
         </Typography>
       </div>
-      <img className="landing-page" src={LandingPage} alt="Retirement Big Logo Flip Flop" />
+      <img
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "20px",
+          margin: "auto",
+          borderRadius: "100px",
+          width: 400,
+        }}
+        align="center"
+        className="landing-page"
+        src={LandingPage}
+        alt="Retirement Big Logo Flip Flop"
+      />
       <Grid container direction="column" justifyContent="center" alignItems="center" marginY={3}>
         <Button
           type="submit"
@@ -27,6 +41,7 @@ export default function Landing() {
             mt: 2,
             mb: 2,
             width: 140,
+
             backgroundColor: "#625b71",
             "&:hover": {
               backgroundColor: "#988fad",
@@ -45,6 +60,7 @@ export default function Landing() {
             mt: 2,
             mb: 2,
             width: 140,
+
             backgroundColor: "#625b71",
             "&:hover": {
               backgroundColor: "#988fad",
