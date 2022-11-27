@@ -48,7 +48,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(email, password, displayName, profilePic);
-    navigate('/'); //? Redirect to home page
+    navigate('/update-profile');
   };
 
   return (

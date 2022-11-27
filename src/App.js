@@ -31,16 +31,6 @@ function App() {
       </Helmet>
       {authIsReady && (
         <BrowserRouter>
-          {/* <nav className="nav">
-            <ul>
-              {user && (
-                <li>
-                  <Avatar user={user} />
-                </li>
-              )}
-            </ul>
-          </nav> */}
-
           <Routes>
             <Route path="/landing" element={!user ? <Landing /> : <Home user={user} />} />
             <Route path="/" element={user ? <Home user={user} /> : <Landing />} />
@@ -55,6 +45,10 @@ function App() {
 
             <Route path="/update-profile" element={user ? <UpdateProfile user={user} /> : <Login />} />
 
+            <Route
+              path="/update-profile"
+              element={user ? <UpdateProfile user={user} /> : <Login />}
+          
             <Route path="*" element={<Error />} />
           </Routes>
           <MobileNav />
