@@ -8,18 +8,8 @@ const Error = () => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
 
-  //? Redirects user
-  useEffect(() => {
-    setTimeout(() => {
-      if (user) {
-        //? Redirect to home page if a user is signed in
-        navigate('/');
-      } else {
-        //? Redirect to login page if no user is signed in
-        navigate('/login');
-      }
-    }, 5000);
-  }, [navigate, user]);
+  navigate('/');
+  navigate('/login');
 
   return (
     <Container

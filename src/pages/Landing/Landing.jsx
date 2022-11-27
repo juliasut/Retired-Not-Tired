@@ -1,14 +1,14 @@
-import BackGroundTop from "../../components/BackGroundTop";
-import BackGroundBottom from "../../components/BackGroundBottom";
-import { Typography, Button, Container, Grid } from "@mui/material";
-import React from "react";
-import LandingPage from "../../assets/images/retired-not-tired-big-flip-flop.png";
-import { Link } from "react-router-dom";
-import { margin } from "@mui/system";
+'./landing.css';
+import BackGroundTop from '../../components/BackGroundTop';
+import BackGroundBottom from '../../components/BackGroundBottom';
+import { Typography, Button, Container, Grid } from '@mui/material';
+import React from 'react';
+import LandingPage from '../../assets/images/retired-not-tired-big-flip-flop.png';
+import { Link } from 'react-router-dom';
 
 export default function Landing() {
   return (
-    <Container component="main" maxWitdh="xs" className="containter">
+    <Container component="main" maxWidth="xs" className="containter">
       <BackGroundTop />
       <div>
         <Typography varient="h2" component="h1" align="center" gutterBottom>
@@ -19,20 +19,26 @@ export default function Landing() {
       </div>
       <img
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "20px",
-          margin: "auto",
-          borderRadius: "100px",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '20px',
+          marginTop: '150px',
+          borderRadius: '100px',
           width: 400,
         }}
         align="center"
-        className="landing-page"
+        className="landing-page-img"
         src={LandingPage}
         alt="Retirement Big Logo Flip Flop"
       />
-      <Grid container direction="column" justifyContent="center" alignItems="center" marginY={3}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        marginY={3}
+      >
         <Button
           type="submit"
           variant="contained"
@@ -41,10 +47,9 @@ export default function Landing() {
             mt: 2,
             mb: 2,
             width: 140,
-
-            backgroundColor: "#625b71",
-            "&:hover": {
-              backgroundColor: "#988fad",
+            backgroundColor: '#625b71',
+            '&:hover': {
+              backgroundColor: '#988fad',
             },
           }}
           to="/signup"
@@ -60,10 +65,9 @@ export default function Landing() {
             mt: 2,
             mb: 2,
             width: 140,
-
-            backgroundColor: "#625b71",
-            "&:hover": {
-              backgroundColor: "#988fad",
+            backgroundColor: '#625b71',
+            '&:hover': {
+              backgroundColor: '#988fad',
             },
           }}
           to="/login"

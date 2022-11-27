@@ -35,32 +35,44 @@ function App() {
           </nav> */}
 
           <Routes>
-            <Route path="/landing" element={<Landing />} />
-            {user && <Route path="/" element={<Home user={user} />} />}
-            {!user && <Route path="/login" element={<Login />} />}
-            {!user && <Route path="/signup" element={<SignUp />} />}
-            {user && (
-              <Route
-                path="/create-activity"
-                element={<CreateActivity uid={user.uid} />}
-              />
-            )}
-            {user && <Route path="/activities" element={<Activities />} />}
+            <Route
+              path="/landing"
+              element={!user ? <Landing /> : <Home user={user} />}
+            />
+            <Route
+              path="/"
+              element={user ? <Home user={user} /> : <Landing />}
+            />
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Home user={user} />}
+            />
+            <Route
+              path="/signup"
+              element={!user ? <SignUp /> : <Home user={user} />}
+            />
+            <Route
+              path="/create-activity"
+              element={user ? <CreateActivity uid={user.uid} /> : <Login />}
+            />
+            <Route
+              path="/activities"
+              element={user ? <Activities /> : <Login />}
+            />
             {user && (
               <Route
                 path="/activity-detail/:id"
                 element={<DetailedActivity />}
               />
             )}
-            {user && <Route path="/profile" element={<Profile />} />}
-            {user && <Route path="/messages" element={<Messages />} />}
-            {user && <Route path="/friends" element={<Friends />} />}
-            {user && (
-              <Route
-                path="/update-profile"
-                element={<UpdateProfile user={user} />}
-              />
-            )}
+            <Route path="/profile" element={user ? <Profile /> : <Login />} />
+            <Route path="/messages" element={user ? <Messages /> : <Login />} />
+            <Route path="/friends" element={user ? <Friends /> : <Login />} />
+
+            <Route
+              path="/update-profile"
+              element={user ? <UpdateProfile user={user} /> : <Login />}
+            />
 
             <Route path="*" element={<Error />} />
           </Routes>

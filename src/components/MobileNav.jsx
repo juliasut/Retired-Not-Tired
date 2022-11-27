@@ -11,6 +11,7 @@ import { styled, alpha, Menu, MenuItem } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import theme from '../theme';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)(
   ({ theme }) => ({
@@ -28,6 +29,7 @@ const MobileNav = () => {
   const [value, setValue] = useState('home');
   const [anchorEl, setAncorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const { user } = useAuthContext();
 
   const handleClose = async () => {
     setAncorEl(null);
@@ -45,76 +47,84 @@ const MobileNav = () => {
   };
 
   return (
-    <Paper
-      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
-      elevation={3}
-    >
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        sx={{
-          '& .Mui-selected': {
-            color: 'primary.dark',
-            backgroundColor: alpha(theme.palette.primary.light, 0.2),
-          },
-          '& .Mui-selected > svg': {
-            transform: 'scale(1.1)',
-          },
-          '& .Mui-selected > .MuiBottomNavigationAction-label': {
-            fontWeight: 'bold',
-            backgroundColor: 'transparent',
-          },
-        }}
-      >
-        <StyledBottomNavigationAction
-          label="Home"
-          value="home"
-          icon={<HomeOutlinedIcon />}
-          component={Link}
-          to="/"
-        />
+    <>
+      {user && (
+        <Paper
+          sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+          elevation={3}
+        >
+          <BottomNavigation
+            showLabels
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+            sx={{
+              '& .Mui-selected': {
+                color: 'primary.dark',
+                backgroundColor: alpha(theme.palette.primary.light, 0.2),
+              },
+              '& .Mui-selected > svg': {
+                transform: 'scale(1.1)',
+              },
+              '& .Mui-selected > .MuiBottomNavigationAction-label': {
+                fontWeight: 'bold',
+                backgroundColor: 'transparent',
+              },
+            }}
+          >
+            <StyledBottomNavigationAction
+              label="Home"
+              value="home"
+              icon={<HomeOutlinedIcon />}
+              component={Link}
+              to="/"
+            />
 
-        <StyledBottomNavigationAction
-          label="Activities"
-          value="activities"
-          icon={<FavoriteBorderOutlinedIcon />}
-          component={Link}
-          to="/activities"
-        />
-        <StyledBottomNavigationAction
-          label="Messages"
-          value="messages"
-          icon={<EmailOutlinedIcon />}
-          component={Link}
-          to="/messages"
-        />
-        <StyledBottomNavigationAction
-          label="Friends"
-          value="friends"
-          icon={<GroupOutlinedIcon />}
-          component={Link}
-          to="/friends"
-        />
-        <StyledBottomNavigationAction
-          onClick={handleClick}
-          label="More"
-          value="more"
-          icon={<ListOutlinedIcon />}
-        />
-        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={handleClose} component={Link} to="/profile">
-            Profile
-          </MenuItem>
-          <MenuItem onClick={handleClose} component={Link} to="/update-profile">
-            My account
-          </MenuItem>
-          <MenuItem onClick={(e) => handleLogout(e)}>Logout</MenuItem>
-        </Menu>
-      </BottomNavigation>
-    </Paper>
+            <StyledBottomNavigationAction
+              label="Activities"
+              value="activities"
+              icon={<FavoriteBorderOutlinedIcon />}
+              component={Link}
+              to="/activities"
+            />
+            <StyledBottomNavigationAction
+              label="Messages"
+              value="messages"
+              icon={<EmailOutlinedIcon />}
+              component={Link}
+              to="/messages"
+            />
+            <StyledBottomNavigationAction
+              label="Friends"
+              value="friends"
+              icon={<GroupOutlinedIcon />}
+              component={Link}
+              to="/friends"
+            />
+            <StyledBottomNavigationAction
+              onClick={handleClick}
+              label="More"
+              value="more"
+              icon={<ListOutlinedIcon />}
+            />
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <MenuItem onClick={handleClose} component={Link} to="/profile">
+                Profile
+              </MenuItem>
+              <MenuItem
+                onClick={handleClose}
+                component={Link}
+                to="/update-profile"
+              >
+                My account
+              </MenuItem>
+              <MenuItem onClick={(e) => handleLogout(e)}>Logout</MenuItem>
+            </Menu>
+          </BottomNavigation>
+        </Paper>
+      )}
+    </>
   );
 };
 

@@ -48,9 +48,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(email, password, displayName, profilePic);
-    setTimeout(() => {
-      navigate('/'); //? Redirect to home page
-    }, 2000);
+    navigate('/'); //? Redirect to home page
   };
 
   return (
