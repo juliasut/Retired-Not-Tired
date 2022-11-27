@@ -5,10 +5,12 @@
   /* position: relative; */
 }
 
-/* .landing-page {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  width: 500%;
-  height: 500%;
+/* .landing-page-img {
+  display: 'flex';
+  align-items: 'center';
+  justify-content: 'space-between';
+  padding: '20px';
+  margin: 'auto';
+  border-radius: '100px';
+  width: 400;
 } */

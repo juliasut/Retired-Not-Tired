@@ -20,9 +20,7 @@ const Login = () => {
     e.preventDefault();
     await login(email, password);
 
-    setTimeout(() => {
-      navigate('/'); //? Redirect to home page
-    }, 2000);
+    navigate('/'); //? Redirect to home page
   };
 
   return (
