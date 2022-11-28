@@ -20,8 +20,12 @@ export default function Messages() {
       <List sx={{ width: '100%', maxWidth: 480, bgcolor: 'background.paper' }}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="" sx={{ bgcolor: '#ffab3d' }}>
-              A
+            <Avatar
+              alt="Iuliia"
+              src="https://firebasestorage.googleapis.com/v0/b/retired-not-tired.appspot.com/o/thumbnails%2F6NPsoK6axgSGN3FX85854gKnnLt2%2FoldIuliia.png?alt=media&token=2ea1b96a-e0a4-4cac-bc1e-593f68b2fefd"
+              sx={{ bgcolor: '#ffab3d' }}
+            >
+              I
             </Avatar>
           </ListItemAvatar>
           <ListItemText
@@ -34,7 +38,7 @@ export default function Messages() {
                   variant="body2"
                   color="text.primary"
                 >
-                  Ali Connors
+                  Iuliia
                 </Typography>
                 {" — I'll be in your neighborhood doing errands this…"}
               </>
@@ -47,11 +51,11 @@ export default function Messages() {
             <BadgeAvatar
               avatar={
                 <Avatar
-                  alt="Travis Howard"
-                  src=""
+                  alt="Tami"
+                  src="https://firebasestorage.googleapis.com/v0/b/retired-not-tired.appspot.com/o/thumbnails%2FLuCgejR0uVRXPTCZOKmuM8tfQri2%2FoldTami.png?alt=media&token=bf00523e-abb6-45ff-978c-96234a5d9b55"
                   sx={{ bgcolor: 'primary.light' }}
                 >
-                  R
+                  T
                 </Avatar>
               }
             />
@@ -66,7 +70,7 @@ export default function Messages() {
                   variant="body2"
                   color="text.primary"
                 >
-                  to Scott, Alex, Jennifer
+                  to Tami, Alex, Jennifer
                 </Typography>
                 {" — Wish I could come, but I'm out of town this…"}
               </>
@@ -79,11 +83,11 @@ export default function Messages() {
             <BadgeAvatar
               avatar={
                 <Avatar
-                  alt="Cindy Baker"
-                  src=""
+                  alt="Dan"
+                  src="https://firebasestorage.googleapis.com/v0/b/retired-not-tired.appspot.com/o/thumbnails%2FFHHXACai7Zgqh3vTMz63rzgayvR2%2FoldDan.png?alt=media&token=79aab69e-63af-443a-8082-659c75bf5d8d"
                   sx={{ bgcolor: 'primary.dark' }}
                 >
-                  S
+                  D
                 </Avatar>
               }
             />
@@ -98,7 +102,7 @@ export default function Messages() {
                   variant="body2"
                   color="text.primary"
                 >
-                  Sandra Adams
+                  Dan
                 </Typography>
                 {' — Do you have Paris recommendations? Have you ever…'}
               </>
