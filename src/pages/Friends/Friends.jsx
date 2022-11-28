@@ -13,14 +13,13 @@ const Friends = () => {
   console.log(documents);
 
   return (
-    <Container maxWidth="sm" sx={{ p: '20px' }}>
+    <Container maxWidth="sm" sx={{ p: '20px', pb: 15 }}>
       <PageTitleTypography>Friends Page</PageTitleTypography>
       <Stack
         direction="row"
         spacing={2}
         sx={{
-          width: '100%',
-          display: 'flex',
+          maxWidth: '350px',
           justifyContent: 'flex-end',
           mt: 7,
         }}
@@ -36,28 +35,19 @@ const Friends = () => {
             sx={{
               my: 6,
               p: 3,
-              maxWidth: '350px',
+              maxWidth: 350,
+              height: 160,
               background: 'linear-gradient(90deg, #f6f6f6 75%, #988FAD 25%)',
             }}
           >
-            <Stack direction="row" spacing={1}>
-              <Box
-                sx={{ width: '60%' }}
-                divider={<Divider orientation="vertical" flexItem />}
-              >
+            <Stack direction="row" spacing={1} sx={{ height: '100%' }}>
+              <Box sx={{ width: '60%' }}>
                 <Typography
                   variant="h6"
                   sx={{ fontWeight: 600, color: 'textColor.main' }}
                 >
                   {doc.name || 'avatar'}
                 </Typography>
-
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  sx={{ backgroundColor: 'red' }}
-                />
                 <Typography sx={{ color: 'primary.main' }} gutterBottom>
                   {doc.displayName || 'username'}
                 </Typography>
@@ -65,52 +55,50 @@ const Friends = () => {
                   <StarBorderOutlinedIcon
                     sx={{
                       color: 'logoColor.main',
-                      height: '40px',
+                      height: 30,
                     }}
                   />
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     component="p"
-                    width="70%"
+                    width="80%"
                     color="text.secondary"
                   >
-                    Interests:
-                    {doc.activities?.map((interest) => (
-                      <li key={interest.id} style={{ listStyle: 'none' }}>
-                        {interest.title.substring(0, 14)}...
-                      </li>
+                    Interests:{' '}
+                    {doc.activities?.slice(0, 3).map((interest) => (
+                      <span key={interest.id}>{interest.title} | </span>
                     ))}
                   </Typography>
                 </Stack>
               </Box>
-              {document.online ? (
+              {!document.online ? (
                 <BadgeAvatar
                   avatar={
                     <Avatar
                       alt={doc.displayName || 'avatar'}
                       src={doc.photoURL}
                       sx={{
-                        height: '100px',
-                        width: '100px',
-                        backgroundColor: 'primary.light',
+                        height: '105px',
+                        width: '105px',
+                        background:
+                          'linear-gradient(to right bottom, #988FAD, #FEF2D8)',
+                        transform: 'translate(4%, 20%)',
                       }}
                     ></Avatar>
                   }
                 />
               ) : (
-                <BadgeAvatar
-                  avatar={
-                    <Avatar
-                      alt={doc.name || 'avatar'}
-                      src={doc.photoURL}
-                      sx={{
-                        height: '100px',
-                        width: '100px',
-                        backgroundColor: 'primary.light',
-                      }}
-                    ></Avatar>
-                  }
-                />
+                <Avatar
+                  alt={doc.name || 'avatar'}
+                  src={doc.photoURL}
+                  sx={{
+                    height: '100px',
+                    width: '100px',
+                    background:
+                      'linear-gradient(to right bottom, #988FAD, #FEF2D8)',
+                    alignSelf: 'center',
+                  }}
+                ></Avatar>
               )}
               <MoreVertIcon sx={{ color: 'primary.dark' }} />
             </Stack>
