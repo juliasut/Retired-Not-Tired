@@ -1,9 +1,9 @@
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
-import Stack from '@mui/material/Stack';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
+    zIndex: 0,
     backgroundColor: '#44b700',
     color: '#44b700',
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
@@ -31,9 +31,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-export default function BadgeAvatar({avatar}) {
+export default function BadgeAvatar({ avatar }) {
   return (
-    <Stack direction="row" spacing={2}>
       <StyledBadge
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -41,6 +40,5 @@ export default function BadgeAvatar({avatar}) {
       >
         {avatar}
       </StyledBadge>
-    </Stack>
   );
 }
