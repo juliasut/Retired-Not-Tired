@@ -7,7 +7,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
-import { styled, alpha, Menu, MenuItem } from '@mui/material';
+import { styled, alpha, Menu, MenuItem, Badge } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import theme from '../theme';
@@ -91,7 +91,7 @@ const MobileNav = () => {
             <StyledBottomNavigationAction
               label="Messages"
               value="messages"
-              icon={<EmailOutlinedIcon />}
+              icon={<Badge badgeContent={3} color="secondary"><EmailOutlinedIcon /></Badge>}
               component={Link}
               to="/messages"
             />
