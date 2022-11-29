@@ -1,82 +1,140 @@
-'./landing.css';
-import BackGroundTop from '../../components/BackGroundTop';
-import BackGroundBottom from '../../components/BackGroundBottom';
-import { Typography, Button, Container, Grid } from '@mui/material';
+import BackGroundLanding from '../../components/BackGroundLanding';
+import { Typography, Button, Box } from '@mui/material';
 import React from 'react';
-import LandingPage from '../../assets/images/retired-not-tired-big-flip-flop.png';
+import LandingPage from '../../assets/images/retired-not-tired-strike-through-flip-flop.png';
 import { Link } from 'react-router-dom';
+import { Stack } from '@mui/system';
+import { keyframes } from '@mui/system';
+
+const appear = keyframes`
+from {
+  transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fromRight = keyframes`
+from {
+  transform: translateX(200%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const fromAbove = keyframes`
+from {
+  transform: translateY(-200%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
 
 export default function Landing() {
   return (
-    <Container component="main" maxWidth="xs" className="containter">
-      <BackGroundTop />
-      <div>
-        <Typography varient="h2" component="h1" align="center" gutterBottom>
-          <h1> Retired Not Tired</h1>
-
-          <h3>Connect and Help Members in Your Community Stay Active </h3>
-        </Typography>
-      </div>
-      <img
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '20px',
-          marginTop: '150px',
-          borderRadius: '100px',
-          width: 400,
-        }}
-        align="center"
-        className="landing-page-img"
-        src={LandingPage}
-        alt="Retirement Big Logo Flip Flop"
-      />
-      <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        marginY={3}
+    <Box
+      component="main"
+      sx={{
+        backgroundColor: 'primary.light',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+      }}
+    >
+      <Stack
+        gap={{ xs: 3, sm: 9, md: 14 }}
+        p={4}
+        sx={{ maxWidth: '500px', alignSelf: 'center' }}
       >
-        <Button
-          type="submit"
-          variant="contained"
-          disableElevation={true}
-          sx={{
-            mt: 2,
-            mb: 2,
-            width: 140,
-            backgroundColor: '#625b71',
-            '&:hover': {
-              backgroundColor: '#988fad',
-            },
-          }}
-          to="/signup"
-          component={Link}
+        <BackGroundLanding />
+        <Typography
+          variant="h1"
+          align="center"
+          sx={{ fontSize: '48px', fontWeight: '700', animation: `${fromAbove} 1.5s ease-in-out`, }}
         >
-          Sign Up
-        </Button>
-        <Button
-          type="submit"
-          variant="contained"
-          disableElevation={true}
+          Retired <br />
+          Not Tired
+        </Typography>
+        <Typography variant="h6" align="center" sx={{animation: `${fromAbove} 1.1s ease-in-out`,}}>
+          Connect and Help Members in Your Community Stay Active{' '}
+        </Typography>
+        <Box
+          component="img"
           sx={{
-            mt: 2,
-            mb: 2,
-            width: 140,
-            backgroundColor: '#625b71',
-            '&:hover': {
-              backgroundColor: '#988fad',
-            },
+            alignSelf: 'center',
+            padding: '10px',
+            width: '100%',
+            borderRadius: '10px',
+            backgroundColor: '#fafafa',
+            maxHeight: '25%',
+            animation: `${appear} 2s ease-in-out`,
           }}
-          to="/login"
-          component={Link}
+          src={LandingPage}
+          alt="Retirement Big Logo Flip Flop"
+        />
+        <Stack
+          alignItems="flex-end"
+          gap={{ xs: 2, sm: 3, md: 5 }}
+          mt={{ xs: '25%', sm: '29%', md: 30 }}
         >
-          Log In
-        </Button>
-      </Grid>
-      <BackGroundBottom />
-    </Container>
+          <Button
+            type="submit"
+            variant="contained"
+            disableElevation={true}
+            sx={{
+              width: 110,
+              animation: `${fromRight} 1.1s ease-in-out`,
+            }}
+            to="/signup"
+            component={Link}
+          >
+            <Typography
+              sx={{
+                fontWeight: '700',
+                fontSize: '16px',
+                textTransform: 'none',
+              }}
+            >
+              Sign Up
+            </Typography>
+          </Button>
+          <Button
+            type="submit"
+            variant="outlined"
+            disableElevation={true}
+            sx={{
+              width: 110,
+              borderWidth: '1.8px',
+              borderColor: 'primary.dark',
+              color: 'primary.dark',
+              animation: `${fromRight} 1.5s ease-in-out`,
+            }}
+            to="/login"
+            component={Link}
+          >
+            <Typography
+              sx={{
+                fontWeight: '700',
+                fontSize: '16px',
+                textTransform: 'none',
+              }}
+            >
+              Log In
+            </Typography>
+          </Button>
+        </Stack>
+      </Stack>
+    </Box>
   );
 }
