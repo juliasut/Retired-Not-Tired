@@ -108,46 +108,33 @@ const Profile = ({ user }) => {
         >
           <PageTitleTypography>Update Profile</PageTitleTypography>
           <Avatar
+            src={document.photoURL || 'https://via.placeholder.com/150'}
             sx={{
               alignSelf: 'center',
               height: '95px',
               width: '95px',
               backgroundColor: 'primary.light',
-              position: 'relative',
             }}
+          ></Avatar>
+          <IconButton
+            // onChange={(e) => console.log(e)}
+            aria-label="upload picture"
+            component="label"
           >
-            {document.photoURL ? (
-              <img
-                src={document.photoURL}
-                alt="profile"
-                style={{ height: '95px', width: '95px' }}
-                // position="absolute"
-              />
-            ) : (
-              <img
-                src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-                alt="profile"
-                // style={{ height: '95px', width: '95px' }}
-              />
-            )}
-            <IconButton
-              // onChange={(e) => console.log(e)}
-              size="small"
-              aria-label="upload picture"
-              component="label"
+            <input hidden accept="image/*" type="file" />
+            <PhotoCamera
               sx={{
+                height: '30px',
+                width: '30px',
                 color: 'logoColor.dark',
                 position: 'relative',
-                top: 37,
-                left: 0,
+                transform: 'translate(0, -35px)',
+                borderRadius: '50%',
                 backgroundColor: 'white',
-                zIndex: '10',
+                p: '5px',
               }}
-            >
-              <input hidden accept="image/*" type="file" />
-              <PhotoCamera />
-            </IconButton>
-          </Avatar>
+            />
+          </IconButton>
           <TextField
             id="name"
             label="Name"
