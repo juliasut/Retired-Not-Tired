@@ -16,7 +16,10 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
 
 const Activities = () => {
   const { user } = useAuthContext();
-  const { documents, error } = useCollection('activities');
+  const { documents, error } = useCollection('activities', [
+    'createdAt',
+    'desc',
+  ]);
   const { document: userActivities } = useDocuments('users', user.uid);
 
   //? This finds and replaces the users activities and replaces them with the activities from the firestore collection

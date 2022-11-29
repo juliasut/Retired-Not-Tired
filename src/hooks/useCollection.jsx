@@ -1,12 +1,18 @@
 import { database } from '../config/firebase';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const useCollection = (collection) => {
+export const useCollection = (collection, _orderBy) => {
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
 
+  const orderBy = useRef(_orderBy).current;
+
   useEffect(() => {
     let reference = database.collection(collection);
+
+    if (orderBy) {
+      reference = reference.orderBy(...orderBy);
+    }
 
     let unsubscribe = reference.onSnapshot(
       (snapshot) => {
@@ -27,7 +33,7 @@ export const useCollection = (collection) => {
 
     //? Unsubscribes from the collection when the component unmounts
     return () => unsubscribe();
-  }, [collection]);
+  }, [collection, orderBy]);
 
   return { documents, error };
 };
