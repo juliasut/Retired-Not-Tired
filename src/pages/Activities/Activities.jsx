@@ -7,6 +7,7 @@ import Search from '../../components/Search';
 import AddActivity from '../../components/AddActivity';
 import PageTitleTypography from '../../components/PageTitleTypography';
 import { useEffect, useState } from 'react';
+import { database } from '../../config/firebase';
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
   color: theme.palette.logoColor.main,
@@ -16,18 +17,31 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
 
 const Activities = () => {
   const { user } = useAuthContext();
+  const [friends, setFriends] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { document: userActivities } = useDocuments('users', user.uid);
   const { documents, error } = useCollection('activities', [
     'createdAt',
     'desc',
   ]);
-  const { document: userActivities } = useDocuments('users', user.uid);
 
   //? This finds and replaces the users activities and replaces them with the activities from the firestore collection
   const newDocument = userActivities?.activities.map((act) => {
     return documents.find((doc) => doc.id === act.activity);
   });
 
-  const [loading, setLoading] = useState(false);
+  //? This finds the friends of the user and replaces the activities with the activities from the firestore collection
+  useEffect(() => {
+    setLoading(true);
+    const unsubscribe = database.collection('users').onSnapshot(() => {
+      let user = [];
+      user.push({ ...userActivities, id: user.uid });
+      setFriends(user);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, [userActivities]);
 
   const handleChange = (value) => {
     console.log(value);
