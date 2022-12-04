@@ -62,6 +62,20 @@ const theme = createTheme({
         },
       },
     },
+
+    // MuiPickersDay: {
+    //   styleOverrides: {
+    //     root: {
+    //       color: 'red'
+    //     }
+    //   }
+    // },
+
+    // MuiPickersCalendarHeader: {
+    //   styleOverrides: {
+    //     root: { backgroundColor: '#988fad' , borderRadius: '5px'},
+    //   },
+    // },
   },
 });
 
