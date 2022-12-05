@@ -1,15 +1,4 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  overflow-x: hidden;
-  padding: 20px 15px 60px;
-}
-
-.media-scroller {
+.scroller {
   display: grid;
   gap: '10px';
   grid-auto-flow: column;
@@ -17,20 +6,11 @@
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-inline: contain;
+  padding: 2px 0;
 }
 
 .logo {
   width: 100px;
   height: 100px;
-}
-
-.selected {
-  background-color: #988fad;
-}
-
-@media (min-width: 500px) {
-  .media-scroller {
-    gap: 1rem;
-    grid-auto-columns: 33%;
-  }
+  margin: 5px;
 }

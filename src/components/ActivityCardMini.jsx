@@ -7,15 +7,15 @@ export default function ActivityCardMini({ activity }) {
     <Link underline="none" to={`/activity/${activity.id}`}>
       <Card
         sx={{
-          my: 3,
-          py: 2,
-          px: 4,
+          m: 1,
+          py: 1,
+          px: 3,
         }}
       >
-        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+        <Typography variant="body1" color="logoColor.dark" sx={{ fontWeight: 700 }}>
           {format(parseISO(activity.date), 'MMM dd')}
         </Typography>
-        <Typography>{activity.title}</Typography>
+        <Typography color="primary.dark">{activity.title}</Typography>
       </Card>
     </Link>
   );
