@@ -10,6 +10,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#3c2778',
+      light: '#e5def6',
     },
     textColor: {
       main: '#1b2540',
@@ -66,7 +67,8 @@ const theme = createTheme({
     // MuiPickersDay: {
     //   styleOverrides: {
     //     root: {
-    //       color: 'red'
+    //       color: 'red',
+
     //     }
     //   }
     // },
