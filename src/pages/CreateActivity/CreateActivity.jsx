@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFirestore } from '../../hooks/useFirestore';
 
 const CreatActivity = ({ uid }) => {
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
   const { addDocument, response } = useFirestore('activities');
   const [title, setTitle] = useState('');

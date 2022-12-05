@@ -7,13 +7,14 @@ import { Button, Container, Stack } from '@mui/material';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { timestamp } from '../../config/firebase';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 import uniqid from 'uniqid';
 import { Link } from 'react-router-dom';
 
 function DetailedActivity() {
   const { id } = useParams();
   const { user } = useAuthContext();
+  // eslint-disable-next-line no-unused-vars
   const { document, error } = useDocuments('activities', id);
   const { document: userDocument } = useDocuments('users', user.uid);
   const { updateDocument } = useFirestore('users');

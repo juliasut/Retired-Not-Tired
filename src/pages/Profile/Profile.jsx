@@ -15,7 +15,9 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Profile = () => {
   const { user } = useAuthContext();
+  // eslint-disable-next-line no-unused-vars
   const { document, error } = useDocuments('users', user.uid);
+  // eslint-disable-next-line no-unused-vars
   const { documents, err } = useCollection('activities');
   const navigate = useNavigate();
 

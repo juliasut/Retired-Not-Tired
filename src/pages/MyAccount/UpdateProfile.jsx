@@ -26,7 +26,9 @@ const Profile = ({ user }) => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [activities, setActivities] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [messages, setMessages] = useState([]);
 
   const handleChange = (newValue) => {

@@ -1,10 +1,10 @@
 import { Box, Button, CardMedia, Link, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const Error = () => {
+  // eslint-disable-next-line no-unused-vars
   const { user } = useAuthContext();
   const navigate = useNavigate();
 

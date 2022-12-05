@@ -11,7 +11,6 @@ import MobileNav from "./components/MobileNav";
 import Profile from "./pages/Profile/Profile";
 import Messages from "./pages/Messages/Messages";
 import Friends from "./pages/Friends/Friends";
-import Avatar from "./components/Avatar";
 import UpdateProfile from "./pages/MyAccount/UpdateProfile";
 import DetailedActivity from "./pages/DetailedActivity/DetailedActivity";
 import CreateActivity from "./pages/CreateActivity/CreateActivity";

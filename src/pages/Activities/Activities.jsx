@@ -18,6 +18,7 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
 
 const Activities = () => {
   const { user } = useAuthContext();
+  // eslint-disable-next-line no-unused-vars
   const [friends, setFriends] = useState(null);
   const [loading, setLoading] = useState(false);
   const { document: userActivities } = useDocuments('users', user.uid);

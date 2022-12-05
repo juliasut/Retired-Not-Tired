@@ -1,7 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import { useCollection } from '../../hooks/useCollection';
 import PageTitleTypography from '../../components/PageTitleTypography';
-import { Box, Stack, Avatar, Card, Divider } from '@mui/material';
+import { Box, Stack, Avatar, Card} from '@mui/material';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';

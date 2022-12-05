@@ -16,7 +16,6 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Logo from '../assets/images/retired-not-tired-just-flip-flops.png';
 import { useFirestore } from '../hooks/useFirestore';
-import theme from '../theme';
 
 function AddActivity() {
   const { user } = useAuthContext();
@@ -30,6 +29,7 @@ function AddActivity() {
   const [contact, setContact] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [description, setDescription] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [comments, setComments] = useState([]);
 
   const closeModal = () => {
