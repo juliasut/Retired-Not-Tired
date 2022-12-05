@@ -16,7 +16,9 @@ function Home({ user }) {
   const currentUserActivities = currentUser?.activitiesIds.map((id) =>
     allActivities.find((a) => a.id === id)
   );
+  // eslint-disable-next-line no-unused-vars
   const [scheduledDays, setScheduledDays] = useState([10, 11, 20, 27]);
+  // eslint-disable-next-line no-unused-vars
   const [interestedInDays, setInterestedInDays] = useState([16, 31]);
 
 
