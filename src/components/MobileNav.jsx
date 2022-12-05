@@ -50,7 +50,7 @@ const MobileNav = () => {
     <>
       {user && (
         <Paper
-          sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+          sx={{ position: 'sticky', bottom: 0, left: 0, right: 0 }}
           elevation={3}
         >
           <BottomNavigation
@@ -91,7 +91,11 @@ const MobileNav = () => {
             <StyledBottomNavigationAction
               label="Messages"
               value="messages"
-              icon={<Badge badgeContent={3} color="secondary"><EmailOutlinedIcon /></Badge>}
+              icon={
+                <Badge badgeContent={3} color="secondary">
+                  <EmailOutlinedIcon />
+                </Badge>
+              }
               component={Link}
               to="/messages"
             />

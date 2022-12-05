@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 
 export default function CalendarColorMap() {
   return (
-    <Stack direction="row" width="320px" sx={{mb: 3, px: '15px'}}>
+    <Stack direction="row" width="320px" sx={{mb: 5, px: '15px'}}>
         <Stack direction="row" gap={2} width="50%">
           <Box
             sx={{

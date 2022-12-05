@@ -160,9 +160,11 @@ function AddActivity() {
           mt: 2,
           mb: 2,
           alignSelf: 'center',
-          [theme.breakpoints.up('sm')]: {
-            width: '300px',
-          },
+          borderRadius: '8px',
+          height: '42px',
+          // [theme.breakpoints.up('sm')]: {
+          //   width: '300px',
+          // },
         }}
       >
         Share an Activity

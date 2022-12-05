@@ -13,10 +13,11 @@ const Search = ({ placeholder, onChange }) => {
       sx={{
         p: '0 10px',
         border: `1px solid ${theme.palette.textColor.secondary}`,
-        borderRadius: "6px",
-        [theme.breakpoints.up('sm')]: {
-          width: '300px',
-        },
+        borderRadius: "8px",
+        height: "42px",
+        // [theme.breakpoints.up('sm')]: {
+        //   width: '300px',
+        // },
       }}
     >
       <InputBase

@@ -17,7 +17,7 @@ function Home({ user }) {
     allActivities.find((a) => a.id === id)
   );
   const [scheduledDays, setScheduledDays] = useState([10, 11, 20, 27]);
-  const [interestedInDays, setInterestedInDays] = useState([16, 29, 31]);
+  const [interestedInDays, setInterestedInDays] = useState([16, 31]);
 
 
   return (
@@ -27,7 +27,7 @@ function Home({ user }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '20px 20px 60px',
+        padding: '20px 0',
       }}
     >
       <Typography

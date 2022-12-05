@@ -54,12 +54,12 @@ const Activities = () => {
   }, [documents]);
 
   return (
-    <Container maxWidth="md" >
+    <Container maxWidth="xs" >
       <Stack
         spacing={{ xs: 1, sm: 3, md: 4 }}
-        minHeight="100vh"
+        height="100%"
         justifyContent="space-evenly"
-        sx={{ p: '5px 20px 76px' }}
+        sx={{py: 8}}
       >
         <PageTitleTypography>Activities</PageTitleTypography>
         <Search
@@ -69,36 +69,33 @@ const Activities = () => {
         <Typography
           variant="body1"
           fontWeight="700"
-          color="primary.dark"
-          sx={{ fontSize: '18px', pl: 2 }}
+          sx={{ fontSize: '20px', pl: 2 }}
         >
           Hot and New Activities
         </Typography>
         {error && <p>{error}</p>}
         {loading && <StyledCircularProgress />}
-        {documents && <ActivitiesList activities={documents} />}
+        {documents && <ActivitiesList activities={documents}  color='#846352'/>}
         <Typography
           variant="body1"
           fontWeight="700"
-          color="primary.dark"
-          sx={{ fontSize: '18px', pl: 2 }}
+          sx={{ fontSize: '20px', pl: 2 }}
         >
           My Activities
         </Typography>
         {error && <p>{error}</p>}
-        {documents && <ActivitiesList activities={newDocument} />}
+        {documents && <ActivitiesList activities={newDocument} color='#988FAD'/>}
         {loading && <StyledCircularProgress />}
         <Typography
           variant="body1"
           fontWeight="700"
-          color="primary.dark"
-          sx={{ fontSize: '18px', pl: 2 }}
+          sx={{ fontSize: '20px', pl: 2 }}
         >
           My Friends Activities
         </Typography>
         {error && <p>{error}</p>}
         {loading && <StyledCircularProgress />}
-        {documents && <ActivitiesList activities={documents} />}
+        {documents && <ActivitiesList  activities={documents} color='#625B75'/>}
         <AddActivity />
       </Stack>
     </Container>

@@ -5,6 +5,7 @@ import LandingPage from '../../assets/images/retired-not-tired-strike-through-fl
 import { Link } from 'react-router-dom';
 import { Stack } from '@mui/system';
 import { keyframes } from '@mui/system';
+import Container from '@mui/material/Container';
 
 const appear = keyframes`
 from {
@@ -40,11 +41,13 @@ from {
 
 export default function Landing() {
   return (
+    <Container component="main" maxWidth="xs" disableGutters sx={{height: '100%'}}>
     <Box
       component="main"
       sx={{
         backgroundColor: 'primary.light',
-        minHeight: '100vh',
+        height: '100%',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -74,7 +77,7 @@ export default function Landing() {
           sx={{
             alignSelf: 'center',
             padding: '10px',
-            width: '100%',
+            width: '90%',
             borderRadius: '10px',
             backgroundColor: '#fafafa',
             maxHeight: '25%',
@@ -135,6 +138,7 @@ export default function Landing() {
           </Button>
         </Stack>
       </Stack>
-    </Box>
+      </Box>
+      </Container>
   );
 }
