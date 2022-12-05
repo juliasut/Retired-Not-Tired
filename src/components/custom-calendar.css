@@ -1,0 +1,35 @@
+.MuiPickersCalendarHeader-label {
+  color: #423c53;
+  font-weight: 600;
+}
+
+.MuiPickersCalendarHeader-labelContainer {
+  position: relative;
+  left: 90px;
+}
+.MuiPickersCalendarHeader-root .MuiIconButton-edgeStart .MuiSvgIcon-root {
+  color: #423c53;
+}
+.MuiPickersCalendarHeader-root .MuiIconButton-edgeEnd .MuiSvgIcon-root {
+  color: #423c53;
+}
+
+.css-jro82b-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button {
+  position: relative;
+  right: 45px;
+}
+.css-1ae9t7h-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button {
+  position: relative;
+  right: 165px;
+}
+.css-thi368-MuiTypography-root-MuiDayPicker-weekDayLabel {
+  color: #846352 !important;
+}
+.css-1hxfx0p-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
+  color: #846352;
+  border-color: #846352 !important;
+}
+
+.css-sf5t6v-PrivatePickersSlideTransition-root-MuiDayPicker-slideTransition {
+  min-height: 220px !important;
+}
