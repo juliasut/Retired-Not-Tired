@@ -1,17 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import './home.css';
-import 'react-calendar/dist/Calendar.css';
 import Logo from '../../assets/images/retired-not-tired-just-flip-flops.png';
 import Typography from '@mui/material/Typography';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useState } from 'react';
 import AddActivity from '../../components/AddActivity';
 import ActivityCardMini from '../../components/ActivityCardMini';
 import { useDocuments } from '../../hooks/useDocuments';
 import { useCollection } from '../../hooks/useCollection';
-import { CalendarPicker, PickersDay } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
+import CustomCalendar from '../../components/CustomCalendar';
+import CalendarColorMap from '../../components/CalendarColorMap';
+import Container from '@mui/material/Container';
 
 function Home({ user }) {
   const { document: currentUser } = useDocuments('users', user.uid);
@@ -19,17 +16,24 @@ function Home({ user }) {
   const currentUserActivities = currentUser?.activitiesIds.map((id) =>
     allActivities.find((a) => a.id === id)
   );
-  const [date, setDate] = useState(dayjs());
-  const dateArray = [10, 11, 20, 27];
+  const [scheduledDays, setScheduledDays] = useState([10, 11, 20, 27]);
+  const [interestedInDays, setInterestedInDays] = useState([16, 29, 31]);
+
 
   return (
-    <div className="container">
+    <Container
+      maxWidth="xs"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '20px 20px 60px',
+      }}
+    >
       <Typography
-        variant="h5"
-        component="h3"
+        variant="body1"
         align="center"
-        gutterBottom
-        sx={{ fontStyle: 'italic' }}
+        sx={{ fontStyle: 'italic',  }}
       >
         Stay Active
       </Typography>
@@ -38,6 +42,7 @@ function Home({ user }) {
         variant="h4"
         component="h1"
         align="center"
+        color="textColor.main"
         gutterBottom
         sx={{ fontWeight: 700 }}
       >
@@ -45,10 +50,14 @@ function Home({ user }) {
         <br /> Tired
       </Typography>
       <img className="logo" src={Logo} alt="Retirement flip flop" />
-      <Typography variant="h6" component="h2" align="center" >
-        Activites on your schedule:
+      <Typography
+        variant="h6"
+        sx={{ fontWeight: 700, fontSize: '18px', mt: 4 }}
+        gutterBottom
+      >
+        Upcoming Activities:
       </Typography>
-      <div className="media-scroller">
+      <div className="scroller">
         {currentUserActivities
           ?.sort(
             (d1, d2) =>
@@ -58,31 +67,14 @@ function Home({ user }) {
             <ActivityCardMini key={activity.id} activity={activity} />
           ))}
       </div>
-      <Typography variant="h6" sx={{ fontWeight: 700 }}>
-        Upcoming Activities
-      </Typography>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <CalendarPicker
-          value={date}
-          variant="static"
-          onChange={(newValue) => {
-            setDate(newValue);
-          }}
-          renderDay={(day, selectedDays, pickersDayProps) => {
-            let selectedMuiClass = '';
 
-            if (dateArray.includes(day.$D)) {
-              selectedMuiClass = 'selected';
-            }
-
-            return (
-              <PickersDay className={selectedMuiClass} {...pickersDayProps} />
-            );
-          }}
-        />
-      </LocalizationProvider>
+      <CustomCalendar
+        scheduledDays={scheduledDays}
+        interestedInDays={interestedInDays}
+      />
+      <CalendarColorMap />
       <AddActivity />
-    </div>
+    </Container>
   );
 }
 
