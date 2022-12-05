@@ -8,6 +8,7 @@ import AddActivity from '../../components/AddActivity';
 import PageTitleTypography from '../../components/PageTitleTypography';
 import { useEffect, useState } from 'react';
 import { database } from '../../config/firebase';
+import { Container } from '@mui/system';
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
   color: theme.palette.logoColor.main,
@@ -53,52 +54,54 @@ const Activities = () => {
   }, [documents]);
 
   return (
-    <Stack
-      spacing={{ xs: 1, sm: 3, md: 4 }}
-      minHeight="100vh"
-      justifyContent="space-evenly"
-      sx={{ p: '5px 20px 76px' }}
-    >
-      <PageTitleTypography>Activities</PageTitleTypography>
-      <Search
-        placeholder="Search for an activity"
-        onChange={(e) => handleChange(e.target.value)}
-      />
-      <Typography
-        variant="body1"
-        fontWeight="700"
-        color="primary.dark"
-        sx={{ fontSize: '18px', pl: 2 }}
+    <Container maxWidth="md" >
+      <Stack
+        spacing={{ xs: 1, sm: 3, md: 4 }}
+        minHeight="100vh"
+        justifyContent="space-evenly"
+        sx={{ p: '5px 20px 76px' }}
       >
-        Hot and New Activities
-      </Typography>
-      {error && <p>{error}</p>}
-      {loading && <StyledCircularProgress />}
-      {documents && <ActivitiesList activities={documents} />}
-      <Typography
-        variant="body1"
-        fontWeight="700"
-        color="primary.dark"
-        sx={{ fontSize: '18px', pl: 2 }}
-      >
-        My Activities
-      </Typography>
-      {error && <p>{error}</p>}
-      {documents && <ActivitiesList activities={newDocument} />}
-      {loading && <StyledCircularProgress />}
-      <Typography
-        variant="body1"
-        fontWeight="700"
-        color="primary.dark"
-        sx={{ fontSize: '18px', pl: 2 }}
-      >
-        My Friends Activities
-      </Typography>
-      {error && <p>{error}</p>}
-      {loading && <StyledCircularProgress />}
-      {documents && <ActivitiesList activities={documents} />}
-      <AddActivity />
-    </Stack>
+        <PageTitleTypography>Activities</PageTitleTypography>
+        <Search
+          placeholder="Search for an activity"
+          onChange={(e) => handleChange(e.target.value)}
+        />
+        <Typography
+          variant="body1"
+          fontWeight="700"
+          color="primary.dark"
+          sx={{ fontSize: '18px', pl: 2 }}
+        >
+          Hot and New Activities
+        </Typography>
+        {error && <p>{error}</p>}
+        {loading && <StyledCircularProgress />}
+        {documents && <ActivitiesList activities={documents} />}
+        <Typography
+          variant="body1"
+          fontWeight="700"
+          color="primary.dark"
+          sx={{ fontSize: '18px', pl: 2 }}
+        >
+          My Activities
+        </Typography>
+        {error && <p>{error}</p>}
+        {documents && <ActivitiesList activities={newDocument} />}
+        {loading && <StyledCircularProgress />}
+        <Typography
+          variant="body1"
+          fontWeight="700"
+          color="primary.dark"
+          sx={{ fontSize: '18px', pl: 2 }}
+        >
+          My Friends Activities
+        </Typography>
+        {error && <p>{error}</p>}
+        {loading && <StyledCircularProgress />}
+        {documents && <ActivitiesList activities={documents} />}
+        <AddActivity />
+      </Stack>
+    </Container>
   );
 };
 
