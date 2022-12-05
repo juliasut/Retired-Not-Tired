@@ -4,12 +4,8 @@ Midterm group project for [Masterschool](https://www.masterschool.com/?_gl=1*1by
 
 ## The Challenge
 
-Build and style a functioning app from scratch within a two week timeline while working on a small team of three new devs in three different timezones. Our goal is to help resolve a chosen social issue by implementing ideas in this app. Our mission is to help senior, retired, or early retired people stay active socially, stay in touch, and maintain their quality of life.
+Build a functioning app from scratch within a two weeks while working on a team of three new devs in three timezones. Our goal is to help resolve a chosen social issue by implementing ideas in this app. Our mission is to help senior, retired, or early retired people stay active socially, stay in touch, and maintain their quality of life.
 
-
-## This project is using Firebase authentication and database.
-
- In the .env.example file there are the fields that need copied into your own .env file and filled out.
 
  ## Project Features
 
@@ -29,25 +25,41 @@ Build and style a functioning app from scratch within a two week timeline while 
 
  ## Project Stack
 
- React, Firebase, MUI.
+ :heavy_check_mark: React
+ 
+ :heavy_check_mark: Firebase
+ 
+ :heavy_check_mark: MUI
+ 
+ - This project is using Firebase authentication and database.
+ In the .env.example file there are the fields that need to be copied into your own .env file and filled out.
 
- Link to GitHub Repository [Retired Not Tired](https://github.com/juliasut/Retired-Not-Tired).
+ Clone the repo:
+ 
+ ```sh
+ git clone https://github.com/juliasut/Retired-Not-Tired
+ ```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm intstall`
+```sh
+npm intstall
+```
 
 Downloads and installs all the dependencies for the project.
 
-### `npm start`
+```sh
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Collaboration
+## :sparkles: Collaboration :sparkles:
 
-- [Tami](https://github.com/tagaertner)
-- [Dan](https://github.com/danielrees8743)
-- [Iuliia](https://github.com/juliasut)
+<img src="https://user-images.githubusercontent.com/81769855/205560196-5ff09782-9eef-4471-85f0-bfb7d961eaa3.png" alt="oldTami" width="50"/>  [Tami](https://github.com/tagaertner) :us: &nbsp; 
+<img src="https://user-images.githubusercontent.com/81769855/205560380-e5aec978-18ac-43a6-9d84-00aa06330a7a.png" alt="oldDan" width="50"/>  [Dan](https://github.com/danielrees8743) :uk: &nbsp; 
+<img src="https://user-images.githubusercontent.com/81769855/205559052-2a21501d-d77e-4731-b5b4-686868593332.png" alt="oldIuliia" width="50"/>   [Iuliia](https://github.com/juliasut):ukraine:
+
