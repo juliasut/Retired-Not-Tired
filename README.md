@@ -1,6 +1,10 @@
+
 # Retired Not Tired
 
+
 Midterm group project for [Masterschool](https://www.masterschool.com/?_gl=1*1byntnc*_gcl_aw*R0NMLjE2NzAyMTc3NzUuQ2p3S0NBaUFwN0djQmhBMEVpd0E5VTBtdG1zS2RqeS01LXRhYzZBS2IwWHh4ODlNZzZ5TWdYRjN2RDNuUnBELUpGY2NmMlVlNlNlSTNSb0M5d3NRQXZEX0J3RQ..&_ga=2.181127207.1447758722.1670217774-425076933.1670217774&_gac=1.53062618.1670217774.CjwKCAiAp7GcBhA0EiwA9U0mtmsKdjy-5-tac6AKb0Xxx89Mg6yMgXF3vD3nRpD-JFccf2Ue6SeI3RoC9wsQAvD_BwE). This mobile app is a collection of resources for retired people. The app connects retired people to local activites and allows them to reserve their space for their chosen activity. It will offer directions, timings, and any contact information. **_It is a work in progress_**.
+
+<img width="121" alt="retired-not-tired-strike-through-flip-flop" src="https://user-images.githubusercontent.com/81769855/205611651-4408029a-a970-48a9-aa56-332af33baea5.png">
 
 ## The Challenge
 
