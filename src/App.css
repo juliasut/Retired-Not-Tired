@@ -1,35 +1,22 @@
 .App {
-}
-.nav {
-  display: flex;
-  justify-content: center;
-}
-.nav ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-}
-
-.nav ul li {
-  margin: 0 10px;
-}
-.nav ul li a {
-  text-decoration: none;
-  color: #625b71;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  position: relative;
+  width: 420px;
+  height: 966px;
+  margin: auto;
+  border: 16px rgb(35, 25, 41) solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+  overflow-y: scroll;
+  transform: scale(1);
 }
 
-.nav ul li a:hover {
-  background-color: #988fad;
-  color: #fff;
-}
-
-.svg-path {
+.svg-path-purple {
   fill: #988fad;
+}
+
+.svg-path-dark {
+  fill: #625b71;
 }
 
 .svg-path:hover {
