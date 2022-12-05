@@ -45,7 +45,7 @@ const Profile = () => {
             Profile <br />
             {document.name}
           </PageTitleTypography>
-          <Stack gap={5} mt={5}>
+          <Stack gap={4} mt={5}>
             <Stack direction="row" gap={8}>
               {document.online ? (
                 <BadgeAvatar avatar={<ProfileAvatar />} />
@@ -105,7 +105,7 @@ const Profile = () => {
             >
               Activities I've organized
             </Typography>
-            <ActivitiesList activities={documents.slice(0, 3)} />
+            <ActivitiesList activities={documents.slice(0, 3)} color='#988FAD'/>
             <Typography
               variant="body1"
               fontWeight="700"

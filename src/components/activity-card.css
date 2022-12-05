@@ -32,7 +32,7 @@
   position: relative;
 }
 
-@media screen and (min-width: 390px) {
+/* @media screen and (min-width: 390px) {
   .cutoff-text {
     --max-lines: 3;
   }
@@ -42,4 +42,4 @@
   .cutoff-text {
     --max-lines: 4;
   }
-}
+} */

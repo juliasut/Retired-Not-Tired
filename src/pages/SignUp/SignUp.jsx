@@ -55,7 +55,7 @@ const SignUp = () => {
     <Container
       component="main"
       maxWidth="xs"
-      sx={{ display: 'flex', minHeight: '100vh' }}
+      sx={{ display: 'flex', height: '100%' }}
     >
       <BackGroundTop />
       <Box
