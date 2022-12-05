@@ -1,9 +1,9 @@
 import { ReactComponent as BackgroundSide } from '../assets/rectangleSide.svg';
 
-export default function BackGroundSide() {
+export default function BackGroundSide({ color }) {
   return (
     <BackgroundSide
-      className="svg-path"
+      // className="svg-path-purple"
       style={{
         position: 'absolute',
         left: 0,
@@ -11,6 +11,7 @@ export default function BackGroundSide() {
         height: '100%',
         width: '55px',
         transform: 'scale(1.05)',
+        fill: color,
       }}
     />
   );

@@ -18,7 +18,7 @@ import useDocuments from '../hooks/useDocuments';
 import './activity-card.css';
 import theme from '../theme';
 
-const ActivityCard = ({ activity }) => {
+const ActivityCard = ({ activity, color }) => {
   const navigate = useNavigate();
   const { user } = useAuthContext();
   const { title, description, contact, id } = activity;
@@ -53,12 +53,11 @@ const ActivityCard = ({ activity }) => {
   return (
     <Box
       sx={{
-        minWidth: '300px',
+        width: '283px',
         borderRadius: '6.7px',
         overflow: 'hidden',
         position: 'relative',
         boxShadow: '0px 0.916602px 3.816602px rgba(0, 0, 0, 0.16)',
-        height: '93%',
         pl: 0,
         [theme.breakpoints.up('sm')]: {
           minWidth: '300px',
@@ -69,7 +68,8 @@ const ActivityCard = ({ activity }) => {
         sx={{
           borderRadius: '6.7px',
           border: `1.3px solid #030109`,
-          height: '100%',
+          height: '140px',
+          p: 2,
           pl: 10,
         }}
       >
@@ -137,7 +137,7 @@ const ActivityCard = ({ activity }) => {
           </Stack>
         </Stack>
       </Card>
-      <BackGroundSide />
+      <BackGroundSide color={color} />
     </Box>
   );
 };
