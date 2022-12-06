@@ -24,9 +24,9 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{ display: 'flex', height: '100%' , alignItems: 'center'}}>
       <BackGroundTop />
-      <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 35 }}>
+      <Box component="form" onSubmit={handleSubmit} noValidate >
         <PageTitleTypography>Log in</PageTitleTypography>
         <FormTextField
           id="email"

@@ -78,7 +78,14 @@ function AddActivity() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Dialog open={dialog}>
+      <Dialog open={dialog} hideBackdrop maxWidth={"xs"}  sx={{
+      "& .MuiDialog-container": {
+        "& .MuiPaper-root": {
+          width: "380px",
+        },
+      },
+      backgroundColor: 'transparent',
+    }}>
         <DialogTitle>
           <img src={Logo} alt="Retirement flip flop" height="45px" />
           Add Activity

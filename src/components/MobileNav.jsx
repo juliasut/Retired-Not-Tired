@@ -112,7 +112,20 @@ const MobileNav = () => {
               value="more"
               icon={<ListOutlinedIcon />}
             />
-            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+            
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+            >
               <MenuItem onClick={handleClose} component={Link} to="/profile">
                 Profile
               </MenuItem>
