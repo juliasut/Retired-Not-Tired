@@ -13,7 +13,7 @@ const Friends = () => {
   console.log(documents);
 
   return (
-    <Container maxWidth="sm" sx={{ p: '20px', pb: 15, height: '100%' }}>
+    <Container maxWidth="sm" sx={{ p: '20px', pb: 15, minHeight: '100vh' }}>
       <PageTitleTypography>Friends Page</PageTitleTypography>
       <Stack
         direction="row"
