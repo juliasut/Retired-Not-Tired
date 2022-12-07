@@ -21,7 +21,6 @@ function Home({ user }) {
   // eslint-disable-next-line no-unused-vars
   const [interestedInDays, setInterestedInDays] = useState([16, 31]);
 
-
   return (
     <Container
       maxWidth="xs"
@@ -29,14 +28,11 @@ function Home({ user }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '20px 0',
+        py: '20px',
+        height: '100%',
       }}
     >
-      <Typography
-        variant="body1"
-        align="center"
-        sx={{ fontStyle: 'italic',  }}
-      >
+      <Typography variant="body1" align="center" sx={{ fontStyle: 'italic' }}>
         Stay Active
       </Typography>
 

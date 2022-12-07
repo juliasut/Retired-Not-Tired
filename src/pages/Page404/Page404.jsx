@@ -1,15 +1,9 @@
-import { Box, Button, CardMedia, Link, Typography } from '@mui/material';
+import { Box, Button, CardMedia, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../hooks/useAuthContext';
 
 const Error = () => {
-  // eslint-disable-next-line no-unused-vars
-  const { user } = useAuthContext();
   const navigate = useNavigate();
-
-  navigate('/');
-  navigate('/login');
 
   return (
     <Container
@@ -17,7 +11,7 @@ const Error = () => {
       maxWidth="sm"
       sx={{
         display: 'flex',
-        height: '100vh',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
       }}
@@ -38,7 +32,7 @@ const Error = () => {
           404
         </Typography>
         <Typography variant="h6" component="h2" align="center" gutterBottom>
-          Please wait while we redirect you...
+          Hmm... no page found
         </Typography>
         <CardMedia
           component="iframe"
@@ -47,24 +41,24 @@ const Error = () => {
           frameBorder="0"
           allowFullScreen
         ></CardMedia>
-        <Link href="/" underline="none">
-          <Button
-            variant="contained"
-            component="Link"
-            disableElevation={true}
-            sx={{
-              mt: 2,
-              mb: 2,
-              width: 140,
-              backgroundColor: '#625b71',
-              '&:hover': {
-                backgroundColor: '#988fad',
-              },
-            }}
-          >
-            Go home
-          </Button>
-        </Link>
+        <Button
+          variant="contained"
+          disableElevation={true}
+          onClick={() => {
+            navigate('/');
+          }}
+          sx={{
+            mt: 2,
+            mb: 2,
+            width: 140,
+            backgroundColor: '#625b71',
+            '&:hover': {
+              backgroundColor: '#988fad',
+            },
+          }}
+        >
+          Go home
+        </Button>
       </Box>
     </Container>
   );

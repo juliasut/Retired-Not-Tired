@@ -1,7 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import { useCollection } from '../../hooks/useCollection';
 import PageTitleTypography from '../../components/PageTitleTypography';
-import { Box, Stack, Avatar, Card} from '@mui/material';
+import { Box, Stack, Avatar, Card } from '@mui/material';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
@@ -13,7 +13,7 @@ const Friends = () => {
   console.log(documents);
 
   return (
-    <Container maxWidth="sm" sx={{ p: '20px', pb: 15 }}>
+    <Container maxWidth="sm" sx={{ p: '20px', pb: 15, height: '100%' }}>
       <PageTitleTypography>Friends Page</PageTitleTypography>
       <Stack
         direction="row"
@@ -33,7 +33,7 @@ const Friends = () => {
           <Card
             key={doc.id}
             sx={{
-              my: 6,
+              my: 2,
               p: 3,
               maxWidth: 350,
               height: 160,
@@ -59,15 +59,25 @@ const Friends = () => {
                     }}
                   />
                   <Typography
-                    variant="body1"
+                    variant="body2"
                     component="p"
                     width="80%"
                     color="text.secondary"
                   >
                     Interests:{' '}
-                    {doc.activities?.slice(0, 3).map((interest) => (
-                      <span key={interest.id}>{interest.title} | </span>
-                    ))}
+                    {doc.activities.length === 0 ? (
+                      <>
+                        {' '}
+                        <br />
+                        Coming soon...
+                      </>
+                    ) : (
+                      doc.activities
+                        ?.slice(0, 3)
+                        .map((interest) => (
+                          <span key={interest.id}>{interest.title} | </span>
+                        ))
+                    )}
                   </Typography>
                 </Stack>
               </Box>

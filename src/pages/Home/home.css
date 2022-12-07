@@ -14,3 +14,7 @@
   height: 100px;
   margin: 5px;
 }
+
+.css-8je8zh-MuiTouchRipple-root:focus{
+  background-color:  yellow;
+}

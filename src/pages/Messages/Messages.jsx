@@ -14,7 +14,7 @@ export default function Messages() {
     <Container
       component="main"
       maxWidth="sm"
-      sx={{ minHeight: '100vh', paddingBottom: '60px' }}
+      sx={{ height: '100%', paddingBottom: '60px' }}
     >
       <PageTitleTypography>Messages</PageTitleTypography>
       <List sx={{ width: '100%', maxWidth: 480, bgcolor: 'background.paper' }}>

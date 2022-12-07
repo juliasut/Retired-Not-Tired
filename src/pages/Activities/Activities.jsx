@@ -12,7 +12,7 @@ import { Container } from '@mui/system';
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
   color: theme.palette.logoColor.main,
-  size: 10,
+  size: 23,
   alignSelf: 'center',
 }));
 
@@ -55,12 +55,11 @@ const Activities = () => {
   }, [documents]);
 
   return (
-    <Container maxWidth="xs" >
+    <Container maxWidth="xs" sx={{height: '100%', pb: '55px'}}>
       <Stack
         spacing={{ xs: 1, sm: 3, md: 4 }}
         height="100%"
         justifyContent="space-evenly"
-        sx={{py: 8}}
       >
         <PageTitleTypography>Activities</PageTitleTypography>
         <Search
