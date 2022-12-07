@@ -19,6 +19,10 @@ const SignUp = () => {
   const [profilepicError, setProfilepicError] = useState(null);
   const [displayName, setDisplayName] = useState('');
   const [profilePic, setProfilePic] = useState(null);
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
   const handleFileChange = (e) => {
     setProfilePic(null);
@@ -47,6 +51,19 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!displayName.length) {
+      setUsernameError(true);
+    }
+    if (!email.match('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')) {
+      setEmailError(true);
+    }
+    if (password.length < 6) {
+      setPasswordError(true);
+    }
+
+    if (password !== confirmPassword) {
+      setConfirmPasswordError(true);
+    }
     signup(email, password, displayName, profilePic);
     navigate('/update-profile');
   };
@@ -68,26 +85,42 @@ const SignUp = () => {
         <FormTextField
           label="Username"
           autoComplete="given-name"
-          onChange={(e) => setDisplayName(e.target.value)}
+          error={usernameError}
+          onChange={(e) => {
+            setDisplayName(e.target.value);
+            setUsernameError(false);
+          }}
           value={displayName}
         />
         <FormTextField
           label="Email"
           autoComplete="email"
-          onChange={(e) => setEmail(e.target.value)}
+          error={emailError}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setEmailError(false);
+          }}
           value={email}
         />
         <FormTextField
-          label="Create password"
+          label="Create password (6 char min)"
           type="password"
           autoComplete="current-password"
-          onChange={(e) => setPassword(e.target.value)}
+          error={passwordError}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setPasswordError(false);
+          }}
           value={password}
         />
         <FormTextField
           label="Confirm password"
           type="password"
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          error={confirmPasswordError}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+            setConfirmPasswordError(false);
+          }}
           value={confirmPassword}
         />
         <UploadButtons handleFileChange={handleFileChange} />
