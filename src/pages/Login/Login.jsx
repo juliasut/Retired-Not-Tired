@@ -12,27 +12,34 @@ import PageTitleTypography from '../../components/PageTitleTypography';
 const Login = () => {
   const navigate = useNavigate();
 
-  const { login, isPending } = useLogin();
+  const { login, error, isPending } = useLogin();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
-
-    navigate('/'); //? Redirect to home page
+    navigate('/');
   };
 
+  const passwordError = error?.message.includes('password') 
+  const emailError = error?.message.includes('email')|| error?.message.includes('no user')
+
   return (
-    <Container component="main" maxWidth="xs" sx={{ display: 'flex', height: '100%' , alignItems: 'center'}}>
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{ display: 'flex', height: '100%', alignItems: 'center' }}
+    >
       <BackGroundTop />
-      <Box component="form" onSubmit={handleSubmit} noValidate >
+      <Box component="form" onSubmit={handleSubmit} noValidate>
         <PageTitleTypography>Log in</PageTitleTypography>
         <FormTextField
           id="email"
           label="Email"
           name="email"
           autoComplete="email"
+          error={emailError}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -42,11 +49,12 @@ const Login = () => {
           name="password"
           label="Password"
           type="password"
+          autoComplete="current-password"
+          error={passwordError}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
           value={password}
-          autoComplete="current-password"
         />
         <Grid
           container
