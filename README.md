@@ -6,6 +6,15 @@ Midterm group project for [Masterschool](https://www.masterschool.com/?_gl=1*1by
 
 [Retired Not Tired](https://retired-not-tired.netlify.app/) is live on Netlify:
 
+Credentials:
+```sh
+test@dev.com
+```
+
+```sh
+123456
+```
+
 [<img width="121" alt="retired-not-tired-strike-through-flip-flop" src="https://user-images.githubusercontent.com/81769855/205611651-4408029a-a970-48a9-aa56-332af33baea5.png">](https://retired-not-tired.netlify.app/)
 
 **_It is a work in progress_**.
